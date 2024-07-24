@@ -1,0 +1,118 @@
+package testArrays;
+
+import static testArrays.TaskArrays.printArray;
+
+public class Temp {
+    public static void main(String[] args) {
+        int[] myArray = {1, 21, -2, 55, 4, -31};
+//        printArray(insertionSort(myArray));
+
+        String[] words = {"flairstla", "second", "third la", "bla bla bla"};
+        String substring = "la";
+        for (int i = 0; i < words.length; i++) {
+            int first = words[i].indexOf(substring);
+            int second = words[i].lastIndexOf(substring);
+            if (first != second)
+                System.out.println(words[i]);
+        }
+    }
+
+    private static void numbersOrLetters() {
+        char[] array2 = {'5', ')', 'g', '2', '(', '(', 'H', 'D', '7', '3'};
+        int z = 0;
+        int x = 0;
+        for (int i = 0; i < array2.length; i++) {
+            if (array2[i] >= 48 && array2[i] <= 57) {
+                z++;
+            } else if ((array2[i] >= 65 && array2[i] <= 90) || (array2[i] >= 97 && array2[i] <= 122)) {
+                x++;
+            }
+
+        }
+        if (z > x) {
+            System.out.println("Numbers more than letters");
+        } else {
+            System.out.println("Letters more than numbers");
+        }
+    }
+
+    private static void sortArr() {
+        int[] array = {4, 54, -4, 55, 2, 9, 88};
+        for (int i = 1; i < array.length; i++) {
+            for (int j = i; j > 0; j--) {
+                if (array[j] < array[j - 1]) {
+                    int temp = array[j];
+                    array[j] = array[j - 1];
+                    array[j - 1] = temp;
+                }
+            }
+        }
+        printArray(array);
+    }
+
+    /*
+        найти сумму всех элементов массива
+     */
+
+    public static int sumOfArrayElements(int sum) {
+        int[] myArray = {3, -5, 66, 13};
+        for (int i = 0; i < myArray.length; i++) {
+            sum += myArray[i];
+        }
+        return sum;
+    }
+
+    /*
+        найти сумму четных элементов массива
+     */
+
+    public static int sumEven(int sum2) {
+        int[] myArray = {3, -5, 66, 13, 4};
+        for (int i = 0; i < myArray.length; i++) {
+            if (myArray[i] % 2 != 0) {
+                continue;
+            }
+            sum2 = sum2 + myArray[i];
+        }
+        return sum2;
+    }
+
+    /*
+        Сумма положительных элементов массива
+     */
+
+    public static int sumPositive(int sum3) {
+        int[] myArray = {3, 5, 13, -51, 31, 4};
+        for (int i = 0; i < myArray.length; i++) {
+            if (myArray[i] / 2 < 0) {
+                continue;
+            }
+            sum3 = sum3 + myArray[i];
+        }
+        return sum3;
+    }
+
+    /*
+        сортировка вставками
+     */
+    public static int[] insertionSort(int[] array) {
+        int temp;
+        for (int i = 1; i < array.length; i++) {
+            for (int j = i; j > 0; j--) {
+                if (array[j] < array[j - 1]) {
+                    temp = array[j];
+                    array[j] = array[j - 1];
+                    array[j - 1] = temp;
+                }
+            }
+        }
+        return array;
+    }
+    public static Object[] printStringArray(Object[] array) {
+        for (int i = 0; i < array.length; i++) {
+            System.out.println(array[i] + " ");
+        }
+        return array;
+    }
+
+}
