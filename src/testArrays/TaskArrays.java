@@ -1,5 +1,6 @@
 package testArrays;
 
+import static testArrays.Temp.insertionSort;
 import static testArrays.ThreeDimArray.print2DArrayInt;
 
 /**
@@ -10,20 +11,24 @@ import static testArrays.ThreeDimArray.print2DArrayInt;
 public class TaskArrays {
     public static void main(String[] args) {
 
-        int[] arr = {8, 5, 4, 2, 4, 5, 72, 11, 9};
+        int[] arr = {8, 5, 4, 2, 440, 5, 72, 11, 9};
 
 //        printArray(bubbleSort(arr));
 
         int[][] arr1 = {
-                {1, 2, 3},
-                {4, 9, 6},
-                {7, 8, 9}
+                {1, 2, 3, 6, 14, 2},
+                {4, 9, 6, 54, 23, -4},
+                {7, 8, 9, 6, 22, 8}
         };
         System.out.println(largerElement(arr1));
 
         System.out.println(secondMaxElement(arr));
 
-        print2DArrayInt(changeArray(arr1));
+
+        System.out.println(findAnyElement(arr, 4));
+        print2DArrayInt(sortSecondRow(arr1));
+        print2DArrayInt(sortSecondColumn(arr1));
+
 
     }
 
@@ -233,11 +238,10 @@ public class TaskArrays {
 
             int maxElementIndex = i;
             for (int j = i + 1; j < array7.length; j++) {
-                if (array7[j] < array7[maxElementIndex]) {
+                if (array7[j] > array7[maxElementIndex]) {
                     maxElementIndex = j;
                 }
             }
-
 
             array7[i] = array7[maxElementIndex] - array7[i];                    //2
             array7[maxElementIndex] = array7[maxElementIndex] - array7[i];      //3
@@ -381,7 +385,7 @@ public class TaskArrays {
         3 в двумерном массиве упорядочить по возрастанию элементы второго столбца
      */
 
-    public static int[][] changeArray(int[][] array) {
+    public static int[][] sortSecondColumn(int[][] array) {
         for (int i = 1; i < array.length; i++) {
             for (int j = i; j > 0; j--) {
                 if (array[j][1] < array[j - 1][1]) {
@@ -393,4 +397,62 @@ public class TaskArrays {
         }
         return array;
     }
+
+    /*
+        подумать над тем, как найти например 4-й макс элемент
+     */
+    public static int findAnyElement(int[] array, int n) {
+        int temp;
+        for (int i = 0; i < n; i++) {
+            int maxElementIndex = i;
+            for (int j = i + 1; j < array.length; j++) {
+                if (array[j] > array[maxElementIndex]) {
+                    maxElementIndex = j;
+                }
+            }
+            temp = array[i];
+            array[i] = array[maxElementIndex];
+            array[maxElementIndex] = temp;
+        }
+        return array[n - 1];
+    }
+    /*
+        в двумерном массиве упорядочить по возрастанию элементы второй строки
+     */
+    public static int[][] sortSecondRow(int[][] array) {
+        insertionSort(array[1]);
+//        int temp;
+//        for (int i = 1; i < array[1].length; i++) {
+//            for (int j = i; j > 0; j--) {
+//                if (array[1][j] < array[1][j - 1]) {
+//                    temp = array[1][j];
+//                    array[1][j] = array[1][j - 1];
+//                    array[1][j - 1] = temp;
+//                }
+//            }
+//        }
+        return array;
+    }
+
+        /* заполнить массив следующим образом:
+        1 2 3 1 2
+        3 1 2 3 1
+        2 3 1 2 3
+        1 2 3 1 2
+        3 1 2 3 1
+        то есть - дано 2 числа, первое - размер матрицы n*n, второе: k - цифра, до которой мы пробегаем
+        в этом случае:
+        n == 5
+        k == 3
+     */
+    public static int[][] makeArray(int n, int k) {
+        int[][] myArray = new int[n][n];
+        for (int i = 0; i < myArray.length; i++) {
+            for (int j = 0; j < myArray[i].length; j++) {
+
+            }
+        }
+        return myArray;
+    }
+
 }

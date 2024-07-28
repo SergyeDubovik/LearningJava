@@ -264,7 +264,7 @@ public class ThreeDimArray {
         for (int i = array.length - 1; i >= array.length - n && i >= 0; i--) {
             sum += array[i];
         }
-        return  (double) sum / n;
+        return (double) sum / n;
     }
 
     public static Stats calculateStats(int[] array, int n) {
