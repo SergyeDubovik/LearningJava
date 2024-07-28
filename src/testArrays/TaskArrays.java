@@ -28,6 +28,8 @@ public class TaskArrays {
         System.out.println(findAnyElement(arr, 4));
         print2DArrayInt(sortSecondRow(arr1));
         print2DArrayInt(sortSecondColumn(arr1));
+        System.out.println();
+        print2DArrayInt(makeArray(5,11));
 
 
     }
@@ -446,10 +448,18 @@ public class TaskArrays {
         k == 3
      */
     public static int[][] makeArray(int n, int k) {
+        if (k <= 0 || n <= 0) {
+            throw new IllegalArgumentException("n and k should be greater than zero");
+        }
         int[][] myArray = new int[n][n];
+        int inception = 1;
         for (int i = 0; i < myArray.length; i++) {
             for (int j = 0; j < myArray[i].length; j++) {
-
+                myArray[i][j] = inception;
+                inception++;
+                if (inception == k + 1) {
+                    inception = 1;
+                }
             }
         }
         return myArray;
