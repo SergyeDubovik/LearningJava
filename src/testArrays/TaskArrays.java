@@ -12,6 +12,7 @@ public class TaskArrays {
     public static void main(String[] args) {
 
         int[] arr = {8, 5, 4, 2, 440, 5, 72, 11, 9};
+        printArray(selectionSort(arr));
 
 //        printArray(bubbleSort(arr));
 
@@ -234,29 +235,25 @@ public class TaskArrays {
         меняем местами первый и найденый
         повторяем действие для остатка массива
      */
-    public static void selectionSort() {
-        int[] array7 = {3, 44, -1, 77, 8};
-        for (int i = 0; i < array7.length - 1; i++) {
-
+    public static int[] selectionSort(int[] array) {
+        int temp;
+        for (int i = 0; i < array.length - 1; i++) {
             int maxElementIndex = i;
-            for (int j = i + 1; j < array7.length; j++) {
-                if (array7[j] > array7[maxElementIndex]) {
+            for (int j = i + 1; j < array.length; j++) {
+                if (array[j] > array[maxElementIndex]) {
                     maxElementIndex = j;
                 }
             }
+            temp = array[i];
+            array[i] = array[maxElementIndex];
+            array[maxElementIndex] = temp;
+            // меняем местами элементы без временной переменной
 
-            array7[i] = array7[maxElementIndex] - array7[i];                    //2
-            array7[maxElementIndex] = array7[maxElementIndex] - array7[i];      //3
-            array7[i] = array7[i] + array7[maxElementIndex];                    //5
-
-//             temp = array7[i];
-//            array7[i] = array7[maxElementIndex];
-//            array7[maxElementIndex] = temp;
-
+//            array7[i] = array7[maxElementIndex] - array7[i];
+//            array7[maxElementIndex] = array7[maxElementIndex] - array7[i];
+//            array7[i] = array7[i] + array7[maxElementIndex];
         }
-        for (int i = 0; i < array7.length; i++) {
-            System.out.print(array7[i] + " ");
-        }
+        return array;
     }
 
     /*
@@ -464,5 +461,24 @@ public class TaskArrays {
         }
         return myArray;
     }
+
+    /*
+        1 переписать по нормальному метод selectionSort (должно быть принимаемые аргументы и
+        возвращаемое значение)
+     */
+
+    /*
+        2 надо написать метод который принимает строку , в которой слова разделены пробелами НО НЕ ОБЯЗАТЕЛЬНО ОДНИМ.
+        Нужно перевернуть все слова внутри . пробелы сохранить и вернуть строку обратно.
+        пример: ("bla bla bla  bla") -> ("alb alb alb  alb")
+     */
+
+
+    /*
+        3 преобразовать строку в число,
+        например: String "178" -> int 178
+
+        не забыть закоммитить после каждого решенного задания
+     */
 
 }
