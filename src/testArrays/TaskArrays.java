@@ -37,6 +37,9 @@ public class TaskArrays {
         String str = "bla bla bla  bla";
         System.out.println(reverseLineButSpaces(str));
 
+        String string = "178";
+        System.out.println(convertStringToInt(string));
+
 
     }
 
@@ -503,5 +506,14 @@ public class TaskArrays {
 
         не забыть закоммитить после каждого решенного задания
      */
+    public static int convertStringToInt(String str) {
+        int res = 0;
+        char[] temp = str.toCharArray();
+        for (int i = 0; i < temp.length; i++) {
+            int number = temp[i] - '0';
+            res = res * 10 + number;
+        }
+        return res;
+    }
 
 }
