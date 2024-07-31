@@ -1,5 +1,7 @@
 package testArrays;
 
+import java.util.Arrays;
+
 import static testArrays.Temp.insertionSort;
 import static testArrays.ThreeDimArray.print2DArrayInt;
 
@@ -31,6 +33,9 @@ public class TaskArrays {
         print2DArrayInt(sortSecondColumn(arr1));
         System.out.println();
         print2DArrayInt(makeArray(5,11));
+
+        String str = "bla bla bla  bla";
+        System.out.println(reverseLineButSpaces(str));
 
 
     }
@@ -472,6 +477,24 @@ public class TaskArrays {
         Нужно перевернуть все слова внутри . пробелы сохранить и вернуть строку обратно.
         пример: ("bla bla bla  bla") -> ("alb alb alb  alb")
      */
+    public static String reverseLineButSpaces(String newLine) {
+        char[] temp = newLine.toCharArray();
+        for (int i = 0; i < temp.length; i++) {
+            if (temp[i] == 'a') {
+                temp[i] = 'b';
+            } else if (temp[i] == 'b') {
+                temp[i] = 'a';
+            }
+        }
+        newLine = new String(temp);
+
+//        String[] temp = newLine.split("\\s+");
+//        String[] result = new String[temp.length];
+//        for (int i = 0; i < temp.length; i++) {
+//        }
+//        newLine = Arrays.toString(temp);
+        return newLine;
+    }
 
 
     /*

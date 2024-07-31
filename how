@@ -1,0 +1,190 @@
+[33mcommit b7a08fafcaed7997e3b3d20b40ea39b6728093b1[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: Serg <supermirko9@gmail.com>
+Date:   Mon Jul 29 21:58:15 2024 +0300
+
+    improve method selectionSort
+
+[1mdiff --git a/src/testArrays/TaskArrays.java b/src/testArrays/TaskArrays.java[m
+[1mindex 15e6ebb..4aca30a 100644[m
+[1m--- a/src/testArrays/TaskArrays.java[m
+[1m+++ b/src/testArrays/TaskArrays.java[m
+[36m@@ -12,6 +12,7 @@[m [mpublic class TaskArrays {[m
+     public static void main(String[] args) {[m
+ [m
+         int[] arr = {8, 5, 4, 2, 440, 5, 72, 11, 9};[m
+[32m+[m[32m        printArray(selectionSort(arr));[m
+ [m
+ //        printArray(bubbleSort(arr));[m
+ [m
+[36m@@ -234,29 +235,25 @@[m [mpublic class TaskArrays {[m
+         меняем местами первый и найденый[m
+         повторяем действие для остатка массива[m
+      */[m
+[31m-    public static void selectionSort() {[m
+[31m-        int[] array7 = {3, 44, -1, 77, 8};[m
+[31m-        for (int i = 0; i < array7.length - 1; i++) {[m
+[31m-[m
+[32m+[m[32m    public static int[] selectionSort(int[] array) {[m
+[32m+[m[32m        int temp;[m
+[32m+[m[32m        for (int i = 0; i < array.length - 1; i++) {[m
+             int maxElementIndex = i;[m
+[31m-            for (int j = i + 1; j < array7.length; j++) {[m
+[31m-                if (array7[j] > array7[maxElementIndex]) {[m
+[32m+[m[32m            for (int j = i + 1; j < array.length; j++) {[m
+[32m+[m[32m                if (array[j] > array[maxElementIndex]) {[m
+                     maxElementIndex = j;[m
+                 }[m
+             }[m
+[32m+[m[32m            temp = array[i];[m
+[32m+[m[32m            array[i] = array[maxElementIndex];[m
+[32m+[m[32m            array[maxElementIndex] = temp;[m
+[32m+[m[32m            // меняем местами элементы без временной переменной[m
+ [m
+[31m-            array7[i] = array7[maxElementIndex] - array7[i];                    //2[m
+[31m-            array7[maxElementIndex] = array7[maxElementIndex] - array7[i];      //3[m
+[31m-            array7[i] = array7[i] + array7[maxElementIndex];                    //5[m
+[31m-[m
+[31m-//             temp = array7[i];[m
+[31m-//            array7[i] = array7[maxElementIndex];[m
+[31m-//            array7[maxElementIndex] = temp;[m
+[31m-[m
+[31m-        }[m
+[31m-        for (int i = 0; i < array7.length; i++) {[m
+[31m-            System.out.print(array7[i] + " ");[m
+[32m+[m[32m//            array7[i] = array7[maxElementIndex] - array7[i];[m
+[32m+[m[32m//            array7[maxElementIndex] = array7[maxElementIndex] - array7[i];[m
+[32m+[m[32m//            array7[i] = array7[i] + array7[maxElementIndex];[m
+         }[m
+[32m+[m[32m        return array;[m
+     }[m
+ [m
+     /*[m
+[36m@@ -465,4 +462,23 @@[m [mpublic class TaskArrays {[m
+         return myArray;[m
+     }[m
+ [m
+[32m+[m[32m    /*[m
+[32m+[m[32m        1 переписать по нормальному метод selectionSort (должно быть принимаемые аргументы и[m
+[32m+[m[32m        возвращаемое значение)[m
+[32m+[m[32m     */[m
+[32m+[m
+[32m+[m[32m    /*[m
+[32m+[m[32m        2 надо написать метод который принимает строку , в которой слова разделены пробелами НО НЕ ОБЯЗАТЕЛЬНО ОДНИМ.[m
+[32m+[m[32m        Нужно перевернуть все слова внутри . пробелы сохранить и вернуть строку обратно.[m
+[32m+[m[32m        пример: ("bla bla bla  bla") -> ("alb alb alb  alb")[m
+[32m+[m[32m     */[m
+[32m+[m
+[32m+[m
+[32m+[m[32m    /*[m
+[32m+[m[32m        3 преобразовать строку в число,[m
+[32m+[m[32m        например: String "178" -> int 178[m
+[32m+[m
+[32m+[m[32m        не забыть закоммитить после каждого решенного задания[m
+[32m+[m[32m     */[m
+[32m+[m
+ }[m
+
+[33mcommit ad1d9433b8a57fd7b9553d9011a2f0aa67cc6812[m
+Author: Serg <supermirko9@gmail.com>
+Date:   Sun Jul 28 18:52:47 2024 +0300
+
+    added generation matrix using consecutive numbers
+
+[1mdiff --git a/src/testArrays/TaskArrays.java b/src/testArrays/TaskArrays.java[m
+[1mindex aeec147..15e6ebb 100644[m
+[1m--- a/src/testArrays/TaskArrays.java[m
+[1m+++ b/src/testArrays/TaskArrays.java[m
+[36m@@ -28,6 +28,8 @@[m [mpublic class TaskArrays {[m
+         System.out.println(findAnyElement(arr, 4));[m
+         print2DArrayInt(sortSecondRow(arr1));[m
+         print2DArrayInt(sortSecondColumn(arr1));[m
+[32m+[m[32m        System.out.println();[m
+[32m+[m[32m        print2DArrayInt(makeArray(5,11));[m
+ [m
+ [m
+     }[m
+[36m@@ -446,10 +448,18 @@[m [mpublic class TaskArrays {[m
+         k == 3[m
+      */[m
+     public static int[][] makeArray(int n, int k) {[m
+[32m+[m[32m        if (k <= 0 || n <= 0) {[m
+[32m+[m[32m            throw new IllegalArgumentException("n and k should be greater than zero");[m
+[32m+[m[32m        }[m
+         int[][] myArray = new int[n][n];[m
+[32m+[m[32m        int inception = 1;[m
+         for (int i = 0; i < myArray.length; i++) {[m
+             for (int j = 0; j < myArray[i].length; j++) {[m
+[31m-[m
+[32m+[m[32m                myArray[i][j] = inception;[m
+[32m+[m[32m                inception++;[m
+[32m+[m[32m                if (inception == k + 1) {[m
+[32m+[m[32m                    inception = 1;[m
+[32m+[m[32m                }[m
+             }[m
+         }[m
+         return myArray;[m
+
+[33mcommit c826bb5f1ddbec9bbb584afb2c3146c772503474[m
+Author: Serg <supermirko9@gmail.com>
+Date:   Sun Jul 28 17:37:02 2024 +0300
+
+    added sorting for second line and found n-th max element
+
+[1mdiff --git a/.idea/vcs.xml b/.idea/vcs.xml[m
+[1mnew file mode 100644[m
+[1mindex 0000000..94a25f7[m
+[1m--- /dev/null[m
+[1m+++ b/.idea/vcs.xml[m
+[36m@@ -0,0 +1,6 @@[m
+[32m+[m[32m<?xml version="1.0" encoding="UTF-8"?>[m
+[32m+[m[32m<project version="4">[m
+[32m+[m[32m  <component name="VcsDirectoryMappings">[m
+[32m+[m[32m    <mapping directory="$PROJECT_DIR$" vcs="Git" />[m
+[32m+[m[32m  </component>[m
+[32m+[m[32m</project>[m
+\ No newline at end of file[m
+[1mdiff --git a/src/testArrays/TaskArrays.java b/src/testArrays/TaskArrays.java[m
+[1mindex a96d73b..aeec147 100644[m
+[1m--- a/src/testArrays/TaskArrays.java[m
+[1m+++ b/src/testArrays/TaskArrays.java[m
+[36m@@ -1,5 +1,6 @@[m
+ package testArrays;[m
+ [m
+[32m+[m[32mimport static testArrays.Temp.insertionSort;[m
+ import static testArrays.ThreeDimArray.print2DArrayInt;[m
+ [m
+ /**[m
+[36m@@ -10,20 +11,24 @@[m [mimport static testArrays.ThreeDimArray.print2DArrayInt;[m
+ public class TaskArrays {[m
+     public static void main(String[] args) {[m
+ [m
+[31m-        int[] arr = {8, 5, 4, 2, 4, 5, 72, 11, 9};[m
+[32m+[m[32m        int[] arr = {8, 5, 4, 2, 440, 5, 72, 11, 9};[m
+ [m
+ //        printArray(bubbleSort(arr));[m
+ [m
+         int[][] arr1 = {[m
+[31m-                {1, 2, 3},[m
+[31m-                {4, 9, 6},[m
+[31m-                {7, 8, 9}[m
+[32m+[m[32m                {1, 2, 3, 6, 14, 2},[m
+[32m+[m[32m                {4, 9, 6, 54, 23, -4},[m
+[32m+[m[32m                {7, 8, 9, 6, 22, 8}[m
+         };[m
+         System.out.println(largerElement(arr1));[m
+ [m
+         System.out.println(secondMaxElement(arr));[m
+ [m
+[31m-        print2DArrayInt(changeArray(arr1));[m
+[32m+[m
+[32m+[m[32m        System.out.println(findAnyElement(arr, 4));[m
+[32m+[m[32m        print2DArrayInt(sortSecondRow(arr1));[m
+[32m+[m[32m        print2DArrayInt(sortSecondColumn(arr1));[m
+[32m+[m
+ [m
+     }[m
+ [m
+[36m@@ -233,12 +238,11 @@[m [mpublic class TaskArrays {[m
+ [m
+             int maxElementIndex = i;[m
+             for (int j = i + 1; j < array7.length; j++)
