@@ -36,7 +36,7 @@ public class TaskArrays {
 
 
 
-        String string = "178";
+        String string = "178 ";
         System.out.println(convertStringToInt(string));
 
 
@@ -254,6 +254,7 @@ public class TaskArrays {
             temp = array[i];
             array[i] = array[maxElementIndex];
             array[maxElementIndex] = temp;
+
             // меняем местами элементы без временной переменной
 
 //            array7[i] = array7[maxElementIndex] - array7[i];
