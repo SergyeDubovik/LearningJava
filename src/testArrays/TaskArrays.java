@@ -34,7 +34,7 @@ public class TaskArrays {
         System.out.println();
         print2DArrayInt(makeArray(5,11));
 
-        String str = "bla bla bla  bla";
+        String str = "bla brr qwe  toc";
         System.out.println(reverseLineButSpaces(str));
 
         String string = "178";
@@ -479,23 +479,18 @@ public class TaskArrays {
         2 надо написать метод который принимает строку , в которой слова разделены пробелами НО НЕ ОБЯЗАТЕЛЬНО ОДНИМ.
         Нужно перевернуть все слова внутри . пробелы сохранить и вернуть строку обратно.
         пример: ("bla bla bla  bla") -> ("alb alb alb  alb")
+        "bla brr, qwe  toc" -> "alb ,rrb ewq  cot"
      */
     public static String reverseLineButSpaces(String newLine) {
-        char[] temp = newLine.toCharArray();
-        for (int i = 0; i < temp.length; i++) {
-            if (temp[i] == 'a') {
-                temp[i] = 'b';
-            } else if (temp[i] == 'b') {
-                temp[i] = 'a';
+        String[] words = newLine.split("\\s");
+        for (int i = 0; i < words.length; i++) {
+            char[] symbols = words[i].toCharArray();
+            words[i] = "";
+            for (int j = symbols.length - 1; j >= 0; j--) {
+                words[i] = words[i] + symbols[j];
             }
         }
-        newLine = new String(temp);
-
-//        String[] temp = newLine.split("\\s+");
-//        String[] result = new String[temp.length];
-//        for (int i = 0; i < temp.length; i++) {
-//        }
-//        newLine = Arrays.toString(temp);
+        newLine = String.join(" ", words);
         return newLine;
     }
 
