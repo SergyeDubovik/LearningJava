@@ -28,6 +28,8 @@ public class StringTasks {
         String substring = "la";
         contains(words, substring);
 
+        String string = "bla brr qwe  toc";
+        System.out.println(reverseLineButSpaces(string));
     }
 
     public static void printIfContains(String[] strings, char symbol) {
@@ -162,4 +164,23 @@ public class StringTasks {
         2
         написать фильтрацию для книг по разным критериям, например: фильтрация по автору, по году издания, и т.д.
      */
+
+    /*
+        2 надо написать метод который принимает строку , в которой слова разделены пробелами НО НЕ ОБЯЗАТЕЛЬНО ОДНИМ.
+        Нужно перевернуть все слова внутри . пробелы сохранить и вернуть строку обратно.
+        пример: ("bla bla bla  bla") -> ("alb alb alb  alb")
+        "bla brr, qwe  toc" -> "alb ,rrb ewq  cot"
+     */
+    public static String reverseLineButSpaces(String newLine) {
+        String[] words = newLine.split("\\s");
+        for (int i = 0; i < words.length; i++) {
+            char[] symbols = words[i].toCharArray();
+            words[i] = "";
+            for (int j = symbols.length - 1; j >= 0; j--) {
+                words[i] = words[i] + symbols[j];
+            }
+        }
+        newLine = String.join(" ", words);
+        return newLine;
+    }
 }
