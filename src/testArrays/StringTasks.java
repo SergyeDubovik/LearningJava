@@ -167,20 +167,24 @@ public class StringTasks {
 
     /*
         2 надо написать метод который принимает строку , в которой слова разделены пробелами НО НЕ ОБЯЗАТЕЛЬНО ОДНИМ.
-        Нужно перевернуть все слова внутри . пробелы сохранить и вернуть строку обратно.
+        Нужно перевернуть все слова внутри, пробелы сохранить и вернуть строку обратно.
         пример: ("bla bla bla  bla") -> ("alb alb alb  alb")
-        "bla brr, qwe  toc" -> "alb ,rrb ewq  cot"
+                ("bla brr, qwe  toc") -> ("alb ,rrb ewq  cot")
      */
     public static String reverseLineButSpaces(String newLine) {
         String[] words = newLine.split("\\s");
-        for (int i = 0; i < words.length; i++) {
-            char[] symbols = words[i].toCharArray();
-            words[i] = "";
+        String[] reverse = reverseWords(words);
+        newLine = String.join(" ", reverse);
+        return newLine;
+    }
+    public static String[] reverseWords(String[] a) {
+        for (int i = 0; i < a.length; i++) {
+            char[] symbols = a[i].toCharArray();
+            a[i] = "";
             for (int j = symbols.length - 1; j >= 0; j--) {
-                words[i] = words[i] + symbols[j];
+                a[i] = a[i] + symbols[j];
             }
         }
-        newLine = String.join(" ", words);
-        return newLine;
+        return a;
     }
 }
