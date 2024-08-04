@@ -35,11 +35,6 @@ public class TaskArrays {
         print2DArrayInt(makeArray(5,11));
 
 
-
-        String string = "178 ";
-        System.out.println(convertStringToInt(string));
-
-
     }
 
     private static void sum() {
@@ -474,24 +469,5 @@ public class TaskArrays {
         1 переписать по нормальному метод selectionSort (должно быть принимаемые аргументы и
         возвращаемое значение)
      */
-
-
-
-
-    /*
-        3 преобразовать строку в число,
-        например: String "178" -> int 178
-
-        не забыть закоммитить после каждого решенного задания
-     */
-    public static int convertStringToInt(String str) {
-        int res = 0;
-        char[] temp = str.toCharArray();
-        for (int i = 0; i < temp.length; i++) {
-            int number = temp[i] - '0';
-            res = res * 10 + number;
-        }
-        return res;
-    }
 
 }

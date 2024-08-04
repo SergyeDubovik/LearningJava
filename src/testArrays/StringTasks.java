@@ -30,6 +30,9 @@ public class StringTasks {
 
         String string = "bla brr qwe  toc";
         System.out.println(reverseWordsInString(string));
+
+        String given = "178";
+        System.out.println(convertStringToInt(given));
     }
 
     public static void printIfContains(String[] strings, char symbol) {
@@ -206,6 +209,22 @@ public class StringTasks {
             }
         }
         return b;
+    }
+    /*
+        3 преобразовать строку в число,
+        например: String "178" -> int 178
+     */
+    public static int convertStringToInt(String str) {
+        int res = 0;
+        char[] temp = str.toCharArray();
+        for (int i = 0; i < temp.length; i++) {
+            int number = temp[i] - '0';
+            res = res * 10 + number;
+            if (temp[i] < 48 || 58 < temp[i]) {
+                throw new IllegalArgumentException("number contains inappropriate symbols");
+            }
+        }
+        return res;
     }
 
 }
