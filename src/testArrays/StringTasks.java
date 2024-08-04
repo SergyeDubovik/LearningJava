@@ -29,7 +29,7 @@ public class StringTasks {
         contains(words, substring);
 
         String string = "bla brr qwe  toc";
-        System.out.println(reverseLineButSpaces(string));
+        System.out.println(reverseWordsInString(string));
     }
 
     public static void printIfContains(String[] strings, char symbol) {
@@ -187,4 +187,25 @@ public class StringTasks {
         }
         return a;
     }
+
+    /*
+        сделать тоже самое, что и выше, только решением как в методе encode класса SimplePermutationCypher
+     */
+    public static String reverseWordsInString(String input) {
+        String[] words = input.split("\\s");
+        String[] reverse = reverseWords2ndOption(words);
+        input = String.join(" ", reverse);
+        return input;
+    }
+    public static String[] reverseWords2ndOption(String[] b) {
+        for (int i = 0; i < b.length; i++) {
+            char[] result = b[i].toCharArray();
+            b[i] = "";
+            for (int j = 0; j < result.length; j++) {
+                b[i] = b[i] + result[result.length - 1 - j];
+            }
+        }
+        return b;
+    }
+
 }
