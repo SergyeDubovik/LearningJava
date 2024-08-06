@@ -31,7 +31,7 @@ public class StringTasks {
         String string = "bla brr qwe  toc";
         System.out.println(reverseWordsInString(string));
 
-        String given = "178";
+        String given = "17809";
         System.out.println(convertStringToInt(given));
     }
 
