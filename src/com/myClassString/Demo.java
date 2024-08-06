@@ -5,7 +5,6 @@ public class Demo {
         MyString str = new MyString("It will rain soon");
         System.out.println(str.length());
         System.out.println(str.charAt(8));
-        System.out.println(str.toString());
         System.out.println(str.subSequence(2, 10));
     }
 }
