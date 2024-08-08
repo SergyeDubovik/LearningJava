@@ -210,6 +210,10 @@ public class StringTasks {
         }
         return b;
     }
+    public static String reverseWordsInStringOptimized(String inputWord) {
+
+        return inputWord;
+    }
     /*
         3 преобразовать строку в число,
         например: String "178" -> int 178

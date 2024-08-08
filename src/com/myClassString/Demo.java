@@ -6,5 +6,9 @@ public class Demo {
         System.out.println(str.length());
         System.out.println(str.charAt(8));
         System.out.println(str.subSequence(2, 10));
+        MyString[] array = str.split(' ');
+        for (int i = 0; i < array.length; i++) {
+            System.out.println(array[i]);
+        }
     }
 }
