@@ -29,7 +29,7 @@ public class StringTasks {
         contains(words, substring);
 
         String string = "bla brr qwe  toc";
-        System.out.println(reverseWordsInString(string));
+        System.out.println(reverseWordsInStringOptimized(string));
 
         String given = "17809";
         System.out.println(convertStringToInt(given));
@@ -180,6 +180,7 @@ public class StringTasks {
         newLine = String.join(" ", reverse);
         return newLine;
     }
+
     public static String[] reverseWords(String[] a) {
         for (int i = 0; i < a.length; i++) {
             char[] symbols = a[i].toCharArray();
@@ -200,6 +201,7 @@ public class StringTasks {
         input = String.join(" ", reverse);
         return input;
     }
+
     public static String[] reverseWords2ndOption(String[] b) {
         for (int i = 0; i < b.length; i++) {
             char[] result = b[i].toCharArray();
@@ -210,25 +212,46 @@ public class StringTasks {
         }
         return b;
     }
-    public static String reverseWordsInStringOptimized(String inputWord) {
 
-        return inputWord;
-    }
-    /*
-        3 преобразовать строку в число,
-        например: String "178" -> int 178
-     */
-    public static int convertStringToInt(String str) {
-        int res = 0;
-        char[] temp = str.toCharArray();
-        for (int i = 0; i < temp.length; i++) {
-            int number = temp[i] - '0';
-            res = res * 10 + number;
-            if (temp[i] < 48 || 58 < temp[i]) {
-                throw new IllegalArgumentException("number contains inappropriate symbols");
+    public static String reverseWordsInStringOptimized(String input) {
+        String[] words = input.split("\\s");
+        StringBuilder result = new StringBuilder();
+
+        for (int i = 0; i < words.length; i++) {
+            result.append(reverseString(words[i]));
+            if (i < words.length - 1) {
+                result.append(" ");
             }
         }
-        return res;
+
+        return result.toString();
     }
+    public static String reverseString(String input) {
+        char[] chars = input.toCharArray();
+        for (int i = 0; i < chars.length / 2; i++) {
+            char temp = chars[i];
+            chars[i] = chars[chars.length - 1 - i];
+            chars[chars.length - 1 - i] = temp;
+        }
+        return new String(chars);
+    }
+
+
+    /*
+    3 преобразовать строку в число,
+    например: String "178" -> int 178
+ */
+public static int convertStringToInt(String str) {
+    int res = 0;
+    char[] temp = str.toCharArray();
+    for (int i = 0; i < temp.length; i++) {
+        int number = temp[i] - '0';
+        res = res * 10 + number;
+        if (temp[i] < 48 || 58 < temp[i]) {
+            throw new IllegalArgumentException("number contains inappropriate symbols");
+        }
+    }
+    return res;
+}
 
 }
