@@ -30,6 +30,28 @@ public class MyString implements CharSequence {
     public boolean isEmpty() {
         return data.length == 0;
     }
+    public MyString toLowerCase() {
+        char[] chars = new char[data.length];
+        for (int i = 0; i < data.length; i++) {
+            if (data[i] >= 65 && data[i] <= 90) {
+                chars[i] = (char) (data[i] + (97 - 65));
+            } else {
+                chars[i] = data[i];
+            }
+        }
+        return new MyString(new String(chars));
+    }
+    public MyString toUpperCase() {
+        char[] chars = new char[data.length];
+        for (int i = 0; i < data.length; i++) {
+            if (data[i] >= 97 && data[i] <= 122) {
+                chars[i] = (char) (data[i] - 32);
+            } else {
+                chars[i] = data[i];
+            }
+        }
+        return new MyString(new String(chars));
+    }
     public MyString[] split(char delimiter) {
         int segments = 1;
         for (int i = 0; i < data.length; i++) {

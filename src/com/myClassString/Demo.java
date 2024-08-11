@@ -12,5 +12,7 @@ public class Demo {
             System.out.println(array[i]);
         }
         System.out.println(stringOne.isEmpty());
+        System.out.println(str.toLowerCase());
+        System.out.println(str.toUpperCase());
     }
 }
