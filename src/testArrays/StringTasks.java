@@ -226,6 +226,7 @@ public class StringTasks {
 
         return result.toString();
     }
+
     public static String reverseString(String input) {
         char[] chars = input.toCharArray();
         for (int i = 0; i < chars.length / 2; i++) {
@@ -241,17 +242,17 @@ public class StringTasks {
     3 преобразовать строку в число,
     например: String "178" -> int 178
  */
-public static int convertStringToInt(String str) {
-    int res = 0;
-    char[] temp = str.toCharArray();
-    for (int i = 0; i < temp.length; i++) {
-        int number = temp[i] - '0';
-        res = res * 10 + number;
-        if (temp[i] < 48 || 58 < temp[i]) {
-            throw new IllegalArgumentException("number contains inappropriate symbols");
+    public static int convertStringToInt(String str) {
+        int res = 0;
+        char[] temp = str.toCharArray();
+        for (int i = 0; i < temp.length; i++) {
+            int number = temp[i] - '0';
+            res = res * 10 + number;
+            if (temp[i] < 48 || 58 < temp[i]) {
+                throw new IllegalArgumentException("number contains inappropriate symbols");
+            }
         }
+        return res;
     }
-    return res;
-}
 
 }

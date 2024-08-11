@@ -27,6 +27,9 @@ public class MyString implements CharSequence {
     public String toString() {
         return new String(data);
     }
+    public boolean isEmpty() {
+        return data.length == 0;
+    }
     public MyString[] split(char delimiter) {
         int segments = 1;
         for (int i = 0; i < data.length; i++) {
