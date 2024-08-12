@@ -219,11 +219,11 @@ public class StringTasks {
 
         for (int i = 0; i < words.length; i++) {
             result.append(reverseString(words[i]));
-            if (i < words.length - 1) {
+            if (i != words.length - 1) {
                 result.append(" ");
             }
-        }
 
+        }
         return result.toString();
     }
 

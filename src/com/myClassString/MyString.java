@@ -14,6 +14,9 @@ public class MyString implements CharSequence {
     public MyString(String string) {
         this.data = string.toCharArray();
     }
+    public MyString(CharSequence charSequence) {
+        this(charSequence.toString());
+    }
 
     @Override
     public int length() {
@@ -33,24 +36,24 @@ public class MyString implements CharSequence {
     public MyString toLowerCase() {
         char[] chars = new char[data.length];
         for (int i = 0; i < data.length; i++) {
-            if (data[i] >= 65 && data[i] <= 90) {
-                chars[i] = (char) (data[i] + (97 - 65));
+            if (data[i] >= 'A' && data[i] <= 'Z') {
+                chars[i] = (char) (data[i] + 32);     // 32 - разница между большой буквой и маленькой в таблице ASCII
             } else {
                 chars[i] = data[i];
             }
         }
-        return new MyString(new String(chars));
+        return new MyString(chars);
     }
     public MyString toUpperCase() {
         char[] chars = new char[data.length];
         for (int i = 0; i < data.length; i++) {
-            if (data[i] >= 97 && data[i] <= 122) {
-                chars[i] = (char) (data[i] - 32);
+            if (data[i] >= 'a' && data[i] <= 'z') {
+                chars[i] = (char) (data[i] - 32);    // 32 - разница между большой буквой и маленькой в таблице ASCII
             } else {
                 chars[i] = data[i];
             }
         }
-        return new MyString(new String(chars));
+        return new MyString(chars);
     }
     public MyString[] split(char delimiter) {
         int segments = 1;
@@ -66,13 +69,13 @@ public class MyString implements CharSequence {
 
         for (int i = 0; i < data.length; i++) {
             if (data[i] == delimiter) {
-                result[segmentIndex] = new MyString(subSequence(start, i).toString());
+                result[segmentIndex] = new MyString(subSequence(start, i));
                 segmentIndex++;
                 start = i + 1;
             }
         }
 
-        result[segmentIndex] = new MyString(subSequence(start, data.length).toString());
+        result[segmentIndex] = new MyString(subSequence(start, data.length));
         return result;
     }
 
