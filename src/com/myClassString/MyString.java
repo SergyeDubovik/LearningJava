@@ -30,6 +30,14 @@ public class MyString implements CharSequence {
     public String toString() {
         return new String(data);
     }
+    public int indexOf(char ch) {
+        for (int i = 0; i < data.length; i++) {
+            if (ch == data[i]) {
+                return i;
+            }
+        }
+        return -1;
+    }
     public boolean isEmpty() {
         return data.length == 0;
     }
@@ -37,7 +45,7 @@ public class MyString implements CharSequence {
         char[] chars = new char[data.length];
         for (int i = 0; i < data.length; i++) {
             if (data[i] >= 'A' && data[i] <= 'Z') {
-                chars[i] = (char) (data[i] + 32);     // 32 - разница между большой буквой и маленькой в таблице ASCII
+                chars[i] = (char) (data[i] + 32);     // 32 - difference between dig and small letter in ASCII
             } else {
                 chars[i] = data[i];
             }
@@ -48,7 +56,7 @@ public class MyString implements CharSequence {
         char[] chars = new char[data.length];
         for (int i = 0; i < data.length; i++) {
             if (data[i] >= 'a' && data[i] <= 'z') {
-                chars[i] = (char) (data[i] - 32);    // 32 - разница между большой буквой и маленькой в таблице ASCII
+                chars[i] = (char) (data[i] - 32);    // 32 - difference between dig and small letter in ASCII
             } else {
                 chars[i] = data[i];
             }
