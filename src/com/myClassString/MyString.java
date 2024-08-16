@@ -38,6 +38,9 @@ public class MyString implements CharSequence {
         }
         return -1;
     }
+    public boolean contains() {
+        return true;
+    }
     public boolean isEmpty() {
         return data.length == 0;
     }

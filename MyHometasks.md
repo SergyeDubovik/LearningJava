@@ -1,3 +1,9 @@
+Expected tasks:
+
+1 Count volume of water
+
+2 Come up with my own cypher
+
 ### 06.08.24
 - [x] 1 - в задаче про переворот слов в строке применить разворот из шифра (НОРМАЛЬНЫМ методом)
    - вспомогательный метод, который переворачивает String
@@ -5,7 +11,7 @@
 ---
 
 - [ ] 2 - реализовать в классе MyString следующие методы:
-  - [ ] `indexOf` 
+  - [x] `indexOf` 
   - [ ] `lastIndexOf`
   - [x] `split`
   - [x] `toUppercase`
