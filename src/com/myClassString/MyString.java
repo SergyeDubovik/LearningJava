@@ -42,6 +42,22 @@ public class MyString implements CharSequence {
         }
         return -1;
     }
+    public boolean contains(MyString substring) {
+        char[] array = substring.data;
+        for (int i = 0; i < data.length - substring.length(); i++) {
+            boolean found = true;
+            for (int j = 0; j < substring.length(); j++) {
+                if (array[j] != data[i + j]) {
+                    found = false;
+                    break;
+                }
+            }
+            if (found) {
+                return true;
+            }
+        }
+        return false;
+    }
     public boolean isEmpty() {
         return data.length == 0;
     }
