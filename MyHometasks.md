@@ -1,8 +1,8 @@
 Expected tasks:
 
-1 Count volume of water
+1. Count volume of water
 
-2 Come up with my own cypher
+2. Come up with my own cypher
 
 ### 06.08.24
 - [x] 1 - в задаче про переворот слов в строке применить разворот из шифра (НОРМАЛЬНЫМ методом)
@@ -12,7 +12,7 @@ Expected tasks:
 
 - [ ] 2 - реализовать в классе MyString следующие методы:
   - [x] `indexOf` 
-  - [ ] `lastIndexOf`
+  - [x] `lastIndexOf`
   - [x] `split`
   - [x] `toUppercase`
   - [x] `toLowerCase`

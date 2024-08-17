@@ -1,8 +1,5 @@
 package com.myClassString;
 
-import java.util.ArrayList;
-import java.util.regex.Pattern;
-
 public class MyString implements CharSequence {
     private char[] data;
     public MyString() {
@@ -17,7 +14,6 @@ public class MyString implements CharSequence {
     public MyString(CharSequence charSequence) {
         this(charSequence.toString());
     }
-
     @Override
     public int length() {
         return data.length;
@@ -38,8 +34,13 @@ public class MyString implements CharSequence {
         }
         return -1;
     }
-    public boolean contains() {
-        return true;
+    public int lastIndexOf(char c) {
+        for (int i = data.length - 1; i > 0; i--) {
+            if (c == data[i]) {
+                return i;
+            }
+        }
+        return -1;
     }
     public boolean isEmpty() {
         return data.length == 0;
@@ -48,7 +49,7 @@ public class MyString implements CharSequence {
         char[] chars = new char[data.length];
         for (int i = 0; i < data.length; i++) {
             if (data[i] >= 'A' && data[i] <= 'Z') {
-                chars[i] = (char) (data[i] + 32);     // 32 - difference between dig and small letter in ASCII
+                chars[i] = (char) (data[i] + 32);     // 32 - difference between big and small letter in ASCII
             } else {
                 chars[i] = data[i];
             }
@@ -59,7 +60,7 @@ public class MyString implements CharSequence {
         char[] chars = new char[data.length];
         for (int i = 0; i < data.length; i++) {
             if (data[i] >= 'a' && data[i] <= 'z') {
-                chars[i] = (char) (data[i] - 32);    // 32 - difference between dig and small letter in ASCII
+                chars[i] = (char) (data[i] - 32);    // 32 - difference between big and small letter in ASCII
             } else {
                 chars[i] = data[i];
             }
