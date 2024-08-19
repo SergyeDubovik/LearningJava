@@ -58,6 +58,12 @@ public class MyString implements CharSequence {
         }
         return false;
     }
+    public MyString concat(MyString string) {
+        char[] chars = new char[data.length + string.length()];
+        System.arraycopy(data, 0, chars, 0, data.length);
+        System.arraycopy(string.data, 0, chars, data.length, string.length());
+        return new MyString(chars);
+    }
     public boolean isEmpty() {
         return data.length == 0;
     }
