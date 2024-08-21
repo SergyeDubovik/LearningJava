@@ -51,7 +51,7 @@ Expected tasks:
 ---
 
 ### 18.08.24
-:ballot_box_with_check: 1 - в SimpleChess починить расположение белых и черных фигур, (см. [chess](https://lichess.org/analysis))
- - :ballot_box_with_check: 1.1 - починить нумерацию строк (снизу вверх)
+:heavy_check_mark: 1 - в SimpleChess починить расположение белых и черных фигур, (см. [chess](https://lichess.org/analysis))
+ - :heavy_check_mark: 1.1 - починить нумерацию строк (снизу вверх)
 
 :black_square_button: 2 - продолжить реализацию методов MyString
