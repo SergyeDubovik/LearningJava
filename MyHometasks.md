@@ -23,9 +23,11 @@ Expected tasks:
   - :heavy_check_mark: `split`
   - :heavy_check_mark: `toUppercase`
   - :heavy_check_mark: `toLowerCase`
-  - :white_square_button: `concat`
+  - :heavy_check_mark: `concat`
   - :heavy_check_mark: `contains`
   - :heavy_check_mark: `isEmpty` 
+  - :heavy_check_mark: `repeat`
+  - :black_square_button: `System.arraycopy`
 ---
 
 

@@ -34,6 +34,7 @@ public class MyString implements CharSequence {
         }
         return -1;
     }
+
     public int lastIndexOf(char c) {
         for (int i = data.length - 1; i > 0; i--) {
             if (c == data[i]) {
@@ -42,6 +43,7 @@ public class MyString implements CharSequence {
         }
         return -1;
     }
+
     public boolean contains(MyString substring) {
         char[] array = substring.data;
         for (int i = 0; i < data.length - substring.length(); i++) {
@@ -58,12 +60,30 @@ public class MyString implements CharSequence {
         }
         return false;
     }
+
     public MyString concat(MyString string) {
         char[] chars = new char[data.length + string.length()];
         System.arraycopy(data, 0, chars, 0, data.length);
         System.arraycopy(string.data, 0, chars, data.length, string.length());
         return new MyString(chars);
     }
+
+    public MyString repeat(int count) {
+        if (count <= 0) {
+            throw new IllegalArgumentException("Number can't be negative or zero");
+        }
+        if (count == 1) {
+            return this;
+        }
+        char[] chars = new char[count * data.length];
+        for (int i = 0; i < count; i++) {
+            for (int j = 0; j < data.length; j++) {
+                chars[j + i * data.length] = data[j];
+            }
+        }
+        return new MyString(chars);
+    }
+
     public boolean isEmpty() {
         return data.length == 0;
     }
@@ -78,6 +98,7 @@ public class MyString implements CharSequence {
         }
         return new MyString(chars);
     }
+
     public MyString toUpperCase() {
         char[] chars = new char[data.length];
         for (int i = 0; i < data.length; i++) {
@@ -89,6 +110,7 @@ public class MyString implements CharSequence {
         }
         return new MyString(chars);
     }
+
     public MyString[] split(char delimiter) {
         int segments = 1;
         for (int i = 0; i < data.length; i++) {
