@@ -1,5 +1,7 @@
 package com.myClassString;
 
+import java.util.Arrays;
+
 public class MyString implements CharSequence {
     private char[] data;
     public MyString() {
@@ -145,6 +147,26 @@ public class MyString implements CharSequence {
             sub[i] = data[i + start];
         }
         return new MyString(sub);
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        return this == object;
+    }
+//      this is auto generated method (Alt + Ins)
+
+//    @Override
+//    public int hashCode() {
+//        return Arrays.hashCode(data);
+//    }
+
+    @Override
+    public int hashCode() {
+        int code = 1;
+        for (int i = 0; i < data.length; i++) {
+            code = 31 * data[i] * code;
+        }
+        return code;
     }
 
     public char[] getData() {
