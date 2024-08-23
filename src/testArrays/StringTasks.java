@@ -33,6 +33,7 @@ public class StringTasks {
 
         String given = "17809";
         System.out.println(convertStringToInt(given));
+        System.out.println(parseInt(given));
     }
 
     public static void printIfContains(String[] strings, char symbol) {
@@ -253,6 +254,12 @@ public class StringTasks {
             }
         }
         return res;
+    }
+
+    // second and easier way to convert String to int
+
+    public static int parseInt(String s) {
+        return Integer.parseInt(s);
     }
 
 }
