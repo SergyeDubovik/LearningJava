@@ -92,12 +92,13 @@ public class MyString implements CharSequence {
 
     public boolean isBlank() {
         for (int i = 0; i < data.length; i++) {
-            if (data[i] == ' ') {
-                return true;
+            if (data[i] != ' ') {
+                return false;
             }
         }
-        return false;
+        return true;
     }
+
     public MyString toLowerCase() {
         char[] chars = new char[data.length];
         for (int i = 0; i < data.length; i++) {
