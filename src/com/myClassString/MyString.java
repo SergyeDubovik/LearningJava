@@ -86,6 +86,7 @@ public class MyString implements CharSequence {
         return new MyString(chars);
     }
 
+    // returns true if length() == 0
     public boolean isEmpty() {
         return data.length == 0;
     }
@@ -163,7 +164,7 @@ public class MyString implements CharSequence {
     public boolean equals(Object object) {
         return this == object;
     }
-//      this is auto generated method (Alt + Ins)
+//      auto generated method hashCode below (Alt + Ins)
 
 //    @Override
 //    public int hashCode() {

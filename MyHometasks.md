@@ -28,11 +28,12 @@ Expected tasks:
   - :heavy_check_mark: `contains`
   - :heavy_check_mark: `isEmpty` 
   - :heavy_check_mark: `repeat`
-  - :black_square_button: `System.arraycopy`
+  - :heavy_check_mark: `isBlank`
 ---
 
 
-:heavy_check_mark: 3:
+- :heavy_check_mark: 3:
+
 - :heavy_check_mark: склонить репозиторий по ссылке в телеге, импортировать проект в IDE (file -> new -> project from ES)
 разобраться с кодом, почитать, что там есть, подумать:
  - Далее см. __21.08.24__
@@ -41,11 +42,12 @@ Expected tasks:
 ---
 
 ### 13.08.24
-   - [ ] 1 - в SimpleChess проекте наладить распечатку доски
+   -  1 - в SimpleChess проекте наладить распечатку доски
       - выровнять вертикали
       - буквенные обозначения верикалей тоже выровнять
+      - :x: распечатка доски не корректно отображается в консоли ide
 ---
-   - [ ] 2 - реализовать остальные методы MyString
+   - 2 - реализовать остальные методы MyString
 ---
 
 ---
@@ -54,16 +56,16 @@ Expected tasks:
 :heavy_check_mark: 1 - в SimpleChess починить расположение белых и черных фигур, (см. [chess](https://lichess.org/analysis))
  - :heavy_check_mark: 1.1 - починить нумерацию строк (снизу вверх)
 
-:black_square_button: 2 - продолжить реализацию методов MyString
+- 2 - продолжить реализацию методов MyString
 
 ---
 ---
 
 ### 21.08.24
-:black_square_button: 1 - добавить equals and hashCode to MyString
+- :heavy_check_mark: 1 - добавить equals and hashCode to MyString
 
 2 - шахматы:
-- :black_square_button: как можно было улучшить.
+- :heavy_check_mark: как можно было улучшить.
 - :black_square_button: разобраться в каком формате он ожидает выполнение ходов
 - :black_square_button: проверить возможность сделать ход (например: e2, e4)
 - :black_square_button: подумать о том, как учесть и реализовать рокировку короля с ладьёй
