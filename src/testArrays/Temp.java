@@ -5,7 +5,13 @@ import static testArrays.TaskArrays.printArray;
 public class Temp {
     public static void main(String[] args) {
         int[] myArray = {1, 21, -2, 55, 4, -31};
+        int[] myArray1 = {1};
+        System.out.println(findMaxElement(myArray));
 //        printArray(insertionSort(myArray));
+            printArray(sortAr(myArray1));
+        System.out.println();
+        int[] array = {3, -1, 52, -3, 4};
+        System.out.println(sumOfPositiveElements(array));
 
         String[] words = {"flairstla", "second", "third la", "bla bla bla"};
         String substring = "la";
@@ -113,6 +119,48 @@ public class Temp {
             System.out.println(array[i] + " ");
         }
         return array;
+    }
+
+    public static int sumOfPositiveElements(int[] array) {
+
+        int sum = 0;
+        for (int i = 0; i < array.length; i++) {
+            if(array[i] < 0) {
+                sum += array[i];
+            }
+        }
+        return sum;
+    }
+
+    public static int[] sortAr(int[] array) {
+        if (array.length <= 1) {
+            throw new RuntimeException("Array too short to sort");
+        }
+        int tempNumb = 0;
+        for (int i = 1; i < array.length; i++) {
+            for (int j = i; j > 0; j--) {
+                if (array[j] > array[j - 1]) {
+                    tempNumb = array[j];
+                    array[j] = array[j - 1];
+                    array[j - 1] = tempNumb;
+                }
+
+            }
+        }
+        return array;
+    }
+
+    public static int findMaxElement(int[] ar) {
+        if (ar.length <= 1) {
+            throw new RuntimeException("Array is too short to perform any operations");
+        }
+        int maxValue = 0;
+        for (int i = 0; i < ar.length; i++) {
+            if (ar[i] > maxValue) {
+                maxValue = ar[i];
+            }
+        }
+        return maxValue;
     }
 
 }
