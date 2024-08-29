@@ -4,9 +4,9 @@
 Expected tasks:
 
 1. Count volume of water
-
 2. Come up with my own cypher
 3. Make a method arraycopy in MyString
+4. Find 2 different strings with equal hash 
 ---
 
 ---
@@ -62,10 +62,15 @@ Expected tasks:
 ---
 
 ### 21.08.24
-- :heavy_check_mark: 1 - добавить equals and hashCode to MyString
+:heavy_check_mark: 1 - добавить equals and hashCode to MyString 
 
 2 - шахматы:
 - :heavy_check_mark: как можно было улучшить.
-- :black_square_button: разобраться в каком формате он ожидает выполнение ходов
-- :black_square_button: проверить возможность сделать ход (например: e2, e4)
+- :heavy_check_mark: разобраться в каком формате он ожидает выполнение ходов
+- :heavy_check_mark: проверить возможность сделать ход (например: e2, e4)
 - :black_square_button: подумать о том, как учесть и реализовать рокировку короля с ладьёй
+
+### 29.08.24
+- [ ] 1 переделать equals так, чтоб сравнивал не по ссылке, а по содержанию
+- [ ] 2 отдебажить ход черных, и разобраться почему не ходят как положено
+- [ ] 3 подумать и попытаться реализовать ввод ходов в человеческом формате (вместо 2е-4е - е2-е4)

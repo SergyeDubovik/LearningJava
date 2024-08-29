@@ -175,7 +175,7 @@ public class MyString implements CharSequence {
     public int hashCode() {
         int code = 1;
         for (int i = 0; i < data.length; i++) {
-            code = 31 * data[i] * code;
+            code = 31 * code + data[i];
         }
         return code;
     }

@@ -5,7 +5,7 @@ import static testArrays.TaskArrays.printArray;
 public class Temp {
     public static void main(String[] args) {
         int[] myArray = {1, 21, -2, 55, 4, -31};
-        int[] myArray1 = {1};
+        int[] myArray1 = {1, 2, 44};
         System.out.println(findMaxElement(myArray));
 //        printArray(insertionSort(myArray));
             printArray(sortAr(myArray1));
@@ -125,7 +125,7 @@ public class Temp {
 
         int sum = 0;
         for (int i = 0; i < array.length; i++) {
-            if(array[i] < 0) {
+            if(array[i] > 0) {
                 sum += array[i];
             }
         }
