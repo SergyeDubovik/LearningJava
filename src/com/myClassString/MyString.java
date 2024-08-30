@@ -25,8 +25,8 @@ public class MyString implements CharSequence {
     public char charAt(int index) {
         return data[index];
     }
-    public String toString() {
-        return new String(data);
+    public MyString toMyString() {
+        return new MyString(data);
     }
     public int indexOf(char ch) {
         for (int i = 0; i < data.length; i++) {
@@ -87,6 +87,7 @@ public class MyString implements CharSequence {
     }
 
     // returns true if length() == 0
+    @Override
     public boolean isEmpty() {
         return data.length == 0;
     }
@@ -159,10 +160,17 @@ public class MyString implements CharSequence {
         }
         return new MyString(sub);
     }
-
     @Override
-    public boolean equals(Object object) {
-        return this == object;
+    public boolean equals(Object s) {
+        MyString other = (MyString) s;
+        if (other == null || other.isBlank() || other.isEmpty()) return false;
+
+        for (int i = 0; i < data.length; i++) {
+            for (int j = 0; j < other.data.length; j++) {
+                return data[i] == other.data[j];
+            }
+        }
+        return false;
     }
 //      auto generated method hashCode below (Alt + Ins)
 

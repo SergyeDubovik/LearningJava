@@ -8,6 +8,7 @@ public class Demo {
         MyString str5 = new MyString("   ");
         System.out.println(str3.equals(str2));
         System.out.println(str3 == str2);
+        System.out.println(str.equals(str2));
 
     }
 }
