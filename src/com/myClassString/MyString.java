@@ -1,6 +1,5 @@
 package com.myClassString;
 
-import java.util.Arrays;
 
 public class MyString implements CharSequence {
     private char[] data;
@@ -25,9 +24,11 @@ public class MyString implements CharSequence {
     public char charAt(int index) {
         return data[index];
     }
-    public MyString toMyString() {
-        return new MyString(data);
+
+    public String toString() {
+        return new String(data);
     }
+
     public int indexOf(char ch) {
         for (int i = 0; i < data.length; i++) {
             if (ch == data[i]) {
@@ -164,13 +165,14 @@ public class MyString implements CharSequence {
     public boolean equals(Object s) {
         MyString other = (MyString) s;
         if (other == null || other.isBlank() || other.isEmpty()) return false;
+        if (other.length() != data.length) return false;
 
         for (int i = 0; i < data.length; i++) {
-            for (int j = 0; j < other.data.length; j++) {
-                return data[i] == other.data[j];
-            }
+                char ch = other.charAt(i);
+                if (data[i] != ch) return false;
+
         }
-        return false;
+        return true;
     }
 //      auto generated method hashCode below (Alt + Ins)
 
