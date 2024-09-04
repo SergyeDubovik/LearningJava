@@ -20,6 +20,8 @@ public class Demo {
         System.out.println(str3.equals(str2));
         System.out.println(str2.equals(str4));
         System.out.println(str.equals(str4));
+        System.out.println(str5.equals(new MyString("   ")));
+        str.equals(new Object());
 
     }
 }

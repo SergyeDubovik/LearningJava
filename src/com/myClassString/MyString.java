@@ -3,18 +3,22 @@ package com.myClassString;
 
 public class MyString implements CharSequence {
     private char[] data;
+
     public MyString() {
     }
 
     public MyString(char[] data) {
         this.data = data;
     }
+
     public MyString(String string) {
         this.data = string.toCharArray();
     }
+
     public MyString(CharSequence charSequence) {
         this(charSequence.toString());
     }
+
     @Override
     public int length() {
         return data.length;
@@ -161,25 +165,29 @@ public class MyString implements CharSequence {
         }
         return new MyString(sub);
     }
+
     @Override
     public boolean equals(Object s) {
+        if (s == null) {
+            return false;
+        }
+        if (!(s instanceof MyString)) {
+            return false;
+        }
         MyString other = (MyString) s;
-        if (other == null || other.isBlank() || other.isEmpty()) return false;
-        if (other.length() != data.length) return false;
+        if (other.length() != data.length) {
+            return false;
+        }
 
         for (int i = 0; i < data.length; i++) {
-                char ch = other.charAt(i);
-                if (data[i] != ch) return false;
+            char ch = other.data[i];
+            if (data[i] != ch) {
+                return false;
+            }
 
         }
         return true;
     }
-//      auto generated method hashCode below (Alt + Ins)
-
-//    @Override
-//    public int hashCode() {
-//        return Arrays.hashCode(data);
-//    }
 
     @Override
     public int hashCode() {
@@ -190,11 +198,4 @@ public class MyString implements CharSequence {
         return code;
     }
 
-    public char[] getData() {
-        return data;
-    }
-
-    public void setData(char[] data) {
-        this.data = data;
-    }
 }
