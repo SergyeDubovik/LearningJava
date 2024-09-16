@@ -2,7 +2,7 @@ package com.gamesTheory;
 
 public class PrisonersDilemma {
 
-    private static final int ROUNDS = 100;
+    private static final int ROUNDS = 10;
     private static final int POINTS_COOP_COOP = 3;
     private static final int POINTS_DEF_DEF = 1;
     private static final int POINTS_DEF_COOP = 5;
@@ -10,9 +10,9 @@ public class PrisonersDilemma {
     public static void main(String[] args) {
         Suspect suspect1 = new CooperativeSuspect("Henry");
         Suspect suspect2 = new DefectiveSuspect("Nick");
-        GameResult gameResult = processGame(suspect1, suspect2);
+        Suspect suspect3 = new DefectEveryFiveMove("Joe");
+        GameResult gameResult = processGame(suspect1, suspect3);
         System.out.println(gameResult);
-
     }
 
     public static GameResult processGame(Suspect suspect1, Suspect suspect2) {

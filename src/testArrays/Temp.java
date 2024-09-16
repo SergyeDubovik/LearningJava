@@ -18,8 +18,9 @@ public class Temp {
         for (int i = 0; i < words.length; i++) {
             int first = words[i].indexOf(substring);
             int second = words[i].lastIndexOf(substring);
-            if (first != second)
+            if (first != second) {
                 System.out.println(words[i]);
+            }
         }
     }
 

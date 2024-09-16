@@ -7,7 +7,7 @@ public class StringTasks {
         дано: массив из строк, напечатать те их них, которые содержат выбраный символ
      */
     public static void main(String[] args) {
-        String[] strings = {"toronto", "asWE", "a12ff, ", "tente", "!приВет", "hey!!", "S", "Cat"};
+        String[] strings = {"toronto", "asWE", "a12ff, ", "tent", "!приВет", "hey!!", "S", "Cat"};
 //        System.out.println(String.join(", ", strings));
         String str = """
                 @ first
