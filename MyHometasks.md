@@ -8,6 +8,7 @@ Expected tasks:
 3. Make a method arraycopy in MyString
 4. Find 2 different strings with equal hash 
 5. Add to chess castling of king and rook
+6. Come up with my own strategy in Game theory and implement it
 ---
 
 ---
@@ -106,6 +107,14 @@ Expected tasks:
 
 ---
 ### 12.09.24
-- [ ] 1 реализовать tit fot tat (око за око)
-- [ ] 2 реализовать стратегию кооперироваться, но каждый пятый ход предавать
+- :heavy_check_mark: 1 реализовать tit fot tat (око за око)
+- :heavy_check_mark: 2 реализовать стратегию кооперироваться, но каждый пятый ход предавать
+---
+
+---
+
+---
+### 19.09.24
+- [ ] 1 tit for double tat (дефектит только за два подряд дефекта)
+- [ ] 2 изначально кооперируется, но если получил дефект - дефектит до конца (злопамятный)
 - [ ] 3 реализовать чемпионат стратегий
