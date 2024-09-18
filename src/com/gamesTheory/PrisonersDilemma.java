@@ -10,8 +10,9 @@ public class PrisonersDilemma {
     public static void main(String[] args) {
         Suspect suspect1 = new CooperativeSuspect("Henry");
         Suspect suspect2 = new DefectiveSuspect("Nick");
-        Suspect suspect3 = new DefectEveryFiveMove("Joe");
-        GameResult gameResult = processGame(suspect1, suspect3);
+        Suspect suspect3 = new PeriodicallyDefectSuspect("Joe", 5);
+        Suspect suspect4 = new TitForTatSuspect("Harry");
+        GameResult gameResult = processGame(suspect4, suspect3);
         System.out.println(gameResult);
     }
 
