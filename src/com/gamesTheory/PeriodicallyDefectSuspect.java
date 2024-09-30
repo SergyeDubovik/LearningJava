@@ -2,9 +2,9 @@ package com.gamesTheory;
 
 public class PeriodicallyDefectSuspect implements Suspect {
 
-    private String name;
+    private final String name;
     private int movesCount;
-    private int defectPeriod;
+    private final int defectPeriod;
 
     public PeriodicallyDefectSuspect(String name, int defectPeriod) {
         this.name = name;

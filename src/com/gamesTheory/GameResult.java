@@ -19,8 +19,7 @@ public class GameResult {
                 "suspect1 = " + suspect1 +
                 ", points1 = " + points1 + '\n' +
                 "suspect2 = " + suspect2 +
-                ", points2 = " + points2 +
-                '}';
+                ", points2 = " + points2;
     }
 
     public Suspect getSuspect1() {
