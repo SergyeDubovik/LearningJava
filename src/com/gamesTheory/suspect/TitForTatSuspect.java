@@ -1,4 +1,6 @@
-package com.gamesTheory;
+package com.gamesTheory.suspect;
+
+import com.gamesTheory.Move;
 
 public class TitForTatSuspect implements Suspect {
     private String name;
@@ -37,5 +39,10 @@ public class TitForTatSuspect implements Suspect {
     @Override
     public void inform(Move oppenentsMove) {
         previousOpponentsMove = oppenentsMove;
+    }
+
+    @Override
+    public void reset() {
+        previousOpponentsMove = null;
     }
 }

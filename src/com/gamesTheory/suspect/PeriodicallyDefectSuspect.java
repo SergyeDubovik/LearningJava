@@ -1,4 +1,6 @@
-package com.gamesTheory;
+package com.gamesTheory.suspect;
+
+import com.gamesTheory.Move;
 
 public class PeriodicallyDefectSuspect implements Suspect {
 
@@ -35,5 +37,10 @@ public class PeriodicallyDefectSuspect implements Suspect {
     @Override
     public void inform(Move oppenentsMove) {
 
+    }
+
+    @Override
+    public void reset() {
+        movesCount = 0;
     }
 }

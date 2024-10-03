@@ -1,4 +1,6 @@
-package com.gamesTheory;
+package com.gamesTheory.suspect;
+
+import com.gamesTheory.Move;
 
 public class DefectiveSuspect implements Suspect {
     private String name;
@@ -26,6 +28,11 @@ public class DefectiveSuspect implements Suspect {
 
     @Override
     public void inform(Move oppenentsMove) {
+        // ignore
+    }
+
+    @Override
+    public void reset() {
         // ignore
     }
 }

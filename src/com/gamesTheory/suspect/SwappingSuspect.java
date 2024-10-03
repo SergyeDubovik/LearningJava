@@ -1,4 +1,6 @@
-package com.gamesTheory;
+package com.gamesTheory.suspect;
+
+import com.gamesTheory.Move;
 
 public class SwappingSuspect implements Suspect {
     private final String name;
@@ -39,5 +41,10 @@ public class SwappingSuspect implements Suspect {
     @Override
     public void inform(Move oppenentsMove) {
 
+    }
+
+    @Override
+    public void reset() {
+        movesCount = 0;
     }
 }

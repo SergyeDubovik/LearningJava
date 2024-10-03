@@ -1,4 +1,6 @@
-package com.gamesTheory;
+package com.gamesTheory.suspect;
+
+import com.gamesTheory.Move;
 
 public class UnforgivingSuspect  implements Suspect {
     private final String name;
@@ -31,5 +33,10 @@ public class UnforgivingSuspect  implements Suspect {
         if (oppenentsMove == Move.DEFECT) {
             nextMove = Move.DEFECT;
         }
+    }
+
+    @Override
+    public void reset() {
+        nextMove = Move.COOPERATE;
     }
 }

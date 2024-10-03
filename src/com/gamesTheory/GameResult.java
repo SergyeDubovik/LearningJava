@@ -1,5 +1,7 @@
 package com.gamesTheory;
 
+import com.gamesTheory.suspect.Suspect;
+
 public class GameResult {
     private Suspect suspect1;
     private int points1;

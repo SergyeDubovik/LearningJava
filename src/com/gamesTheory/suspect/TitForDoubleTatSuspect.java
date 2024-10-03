@@ -1,7 +1,9 @@
-package com.gamesTheory;
+package com.gamesTheory.suspect;
+
+import com.gamesTheory.Move;
 
 public class TitForDoubleTatSuspect implements Suspect {
-    private String name;
+    private final String name;
     private Move lastOpponentsMove;
     private Move secondLastOpponentsMove;
 
@@ -36,5 +38,11 @@ public class TitForDoubleTatSuspect implements Suspect {
     public void inform(Move oppenentsMove) {
         secondLastOpponentsMove = lastOpponentsMove;
         lastOpponentsMove = oppenentsMove;
+    }
+
+    @Override
+    public void reset() {
+        lastOpponentsMove = null;
+        secondLastOpponentsMove = null;
     }
 }
