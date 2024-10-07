@@ -2,8 +2,6 @@ package com.gamesTheory;
 
 import com.gamesTheory.suspect.*;
 
-import java.util.Arrays;
-
 public class PrisonersDilemma {
     private static boolean log;
     private static final int ROUNDS = 20;
@@ -12,7 +10,7 @@ public class PrisonersDilemma {
     private static final int POINTS_DEF_COOP = 5;
 
     public static void main(String[] args) {
-        log = true;
+        log = false;
         Suspect suspect1 = new CooperativeSuspect("Henry");
         Suspect suspect2 = new DefectiveSuspect("Nick");
         Suspect suspect3 = new PeriodicallyDefectSuspect("Joe", 3, 1);
@@ -24,10 +22,10 @@ public class PrisonersDilemma {
         Suspect suspect9 = new PeriodicallyDefectSuspect("V", 10, 3);
         Suspect suspect10 = new SwappingSuspect("Seth", 4);
         Suspect suspect11 = new VindictiveSuspect("Tim", 2);
-        GameResult gameResult = processGame(suspect9, suspect11);
-        System.out.println(gameResult);
-//        processTournament(suspect1, suspect2, suspect3, suspect4, suspect5, suspect6, suspect7, suspect8,
-//                suspect9, suspect10);
+//        GameResult gameResult = processGame(suspect9, suspect11);
+//        System.out.println(gameResult);
+        processTournament(suspect1, suspect2, suspect3, suspect4, suspect5, suspect6, suspect7, suspect8,
+                suspect9, suspect10, suspect11);
     }
 
     public static void processTournament(Suspect... suspects) {
@@ -48,7 +46,8 @@ public class PrisonersDilemma {
 
         }
         System.out.println();
-        System.out.println("Champion is - " + largest(totalPoints));
+        int championIndex = largestIndex(totalPoints);
+        System.out.println("Champion is - " + suspects[championIndex].getName() + " " + totalPoints[championIndex]);
     }
 
     private static int sum(int[] array) {
@@ -59,14 +58,16 @@ public class PrisonersDilemma {
         return total;
     }
 
-    private static int largest(int[] array) {
+    private static int largestIndex(int[] array) {
         int largestNumb = 0;
+        int index = 0;
         for (int i = 0; i < array.length; i++) {
             if (array[i] > largestNumb) {
                 largestNumb = array[i];
+                index = i;
             }
         }
-        return largestNumb;
+        return index;
     }
 
 
