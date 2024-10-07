@@ -18,7 +18,7 @@ public class DefectiveSuspect implements Suspect {
 
     @Override
     public String getName() {
-        return "defect suspect";
+        return "Defect - " + name;
     }
 
     @Override

@@ -20,7 +20,7 @@ public class UnforgivingSuspect  implements Suspect {
 
     @Override
     public String getName() {
-        return "Unforgivable " + name;
+        return "Unforgivable - " + name;
     }
 
     @Override

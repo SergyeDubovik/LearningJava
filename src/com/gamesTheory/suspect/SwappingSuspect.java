@@ -23,7 +23,7 @@ public class SwappingSuspect implements Suspect {
 
     @Override
     public String getName() {
-        return "SwappingSuspect " + name;
+        return "SwappingSuspect " + "per " + period + " - " + name;
     }
 
     @Override

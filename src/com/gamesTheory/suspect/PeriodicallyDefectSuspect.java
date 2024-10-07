@@ -7,10 +7,12 @@ public class PeriodicallyDefectSuspect implements Suspect {
     private final String name;
     private int movesCount;
     private final int defectPeriod;
+    private final int defectAmount;
 
-    public PeriodicallyDefectSuspect(String name, int defectPeriod) {
+    public PeriodicallyDefectSuspect(String name, int defectPeriod, int defectAmount) {
         this.name = name;
         this.defectPeriod = defectPeriod;
+        this.defectAmount = defectAmount;
     }
 
     @Override
@@ -21,13 +23,13 @@ public class PeriodicallyDefectSuspect implements Suspect {
 
     @Override
     public String getName() {
-        return "Defect every " + defectPeriod + " move " + name;
+        return "Defect every " + defectPeriod + " move - " + name;
     }
 
     @Override
     public Move makeMove() {
         movesCount++;
-        if (movesCount % defectPeriod == 0) {
+        if (movesCount % defectPeriod < defectAmount) {
             return Move.DEFECT;
         }
         return Move.COOPERATE;

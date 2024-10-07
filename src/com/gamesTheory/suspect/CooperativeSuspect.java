@@ -4,7 +4,7 @@ import com.gamesTheory.Move;
 
 public class CooperativeSuspect implements Suspect {
 
-    private String name;
+    private final String name;
 
     public CooperativeSuspect(String name) {
         this.name = name;
@@ -19,7 +19,7 @@ public class CooperativeSuspect implements Suspect {
 
     @Override
     public String getName() {
-        return "cooperative suspect " + name;
+        return "Cooperative - " + name;
     }
 
     @Override

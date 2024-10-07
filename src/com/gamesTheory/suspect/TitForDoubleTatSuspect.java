@@ -20,7 +20,7 @@ public class TitForDoubleTatSuspect implements Suspect {
 
     @Override
     public String getName() {
-        return "TitForDoubleTat suspect" + name;
+        return "TitForDoubleTat - " + name;
     }
 
     @Override

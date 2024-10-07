@@ -2,26 +2,32 @@ package com.gamesTheory;
 
 import com.gamesTheory.suspect.*;
 
+import java.util.Arrays;
+
 public class PrisonersDilemma {
     private static boolean log;
-    private static final int ROUNDS = 10;
+    private static final int ROUNDS = 20;
     private static final int POINTS_COOP_COOP = 3;
     private static final int POINTS_DEF_DEF = 1;
     private static final int POINTS_DEF_COOP = 5;
 
     public static void main(String[] args) {
-        log = false;
+        log = true;
         Suspect suspect1 = new CooperativeSuspect("Henry");
         Suspect suspect2 = new DefectiveSuspect("Nick");
-        Suspect suspect3 = new PeriodicallyDefectSuspect("Joe", 3);
+        Suspect suspect3 = new PeriodicallyDefectSuspect("Joe", 3, 1);
         Suspect suspect4 = new TitForTatSuspect("Harry");
-        Suspect suspect5 = new TitForDoubleTatSuspect("Joe");
+        Suspect suspect5 = new TitForDoubleTatSuspect("Peter");
         Suspect suspect6 = new SwappingSuspect("Mo", 2);
-        Suspect suspect7 = new UnforgivingSuspect("Mort");
-        Suspect suspect8 = new GivesOutDoubleSuspect("zack");
-//        GameResult gameResult = processGame(suspect6, suspect8);
-//        System.out.println(gameResult);
-        processTournament(suspect1, suspect2, suspect3, suspect4, suspect5, suspect6, suspect7, suspect8);
+        Suspect suspect7 = new UnforgivingSuspect("John Wick");
+        Suspect suspect8 = new GivesOutDoubleSuspect("Zack");
+        Suspect suspect9 = new PeriodicallyDefectSuspect("V", 10, 3);
+        Suspect suspect10 = new SwappingSuspect("Seth", 4);
+        Suspect suspect11 = new VindictiveSuspect("Tim", 2);
+        GameResult gameResult = processGame(suspect9, suspect11);
+        System.out.println(gameResult);
+//        processTournament(suspect1, suspect2, suspect3, suspect4, suspect5, suspect6, suspect7, suspect8,
+//                suspect9, suspect10);
     }
 
     public static void processTournament(Suspect... suspects) {
@@ -38,16 +44,31 @@ public class PrisonersDilemma {
         int[] totalPoints = new int[suspects.length];
         for (int i = 0; i < suspects.length; i++) {
             totalPoints[i] = sum(points[i]);
-            System.out.println(suspects[i].getName() + " " + totalPoints[i]);
+            System.out.printf("%-30s %4d%n", suspects[i].getName(), totalPoints[i]);
+
         }
+        System.out.println();
+        System.out.println("Champion is - " + largest(totalPoints));
     }
+
     private static int sum(int[] array) {
         int total = 0;
-        for (int i = 0; i < array.length; i++) {
-            total += array[i];
+        for (int j : array) {
+            total += j;
         }
         return total;
     }
+
+    private static int largest(int[] array) {
+        int largestNumb = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] > largestNumb) {
+                largestNumb = array[i];
+            }
+        }
+        return largestNumb;
+    }
+
 
     public static GameResult processGame(Suspect suspect1, Suspect suspect2) {
         if (log) {

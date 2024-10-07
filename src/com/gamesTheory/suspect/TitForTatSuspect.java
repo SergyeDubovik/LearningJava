@@ -12,7 +12,7 @@ public class TitForTatSuspect implements Suspect {
 
     @Override
     public String getName() {
-        return "Tit for tat " + name;
+        return "Tit for tat - " + name;
     }
 
     @Override
