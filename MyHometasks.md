@@ -130,7 +130,36 @@ Expected tasks:
 
 ---
 
+### 03.10.24
+- :heavy_check_mark: 1 доделать стратегию (удвоенная месть)
+- :heavy_check_mark: 2 выровнять табличку с результатами в консоли
+- :heavy_check_mark: 3 после таблички с результатми, отступив 1 строчку, печатать кто чемпион
+---
+
+---
+
+---
 ### 07.10.24
-- [ ] 1 доделать стратегию (удвоенная месть)
-- [ ] 2 выровнять табличку с результатами в консоли
-- [ ] 3 после таблички с результатми, отступив 1 строчку, печатать кто чемпион
+1. :heavy_check_mark: разобраться с кодом TicTacToe (импорт и т.д)
+---
+
+---
+
+---
+### 13.10.24
+- [ ] 1 баг со вводом некорректного хода
+  - steps to reproduce:
+    - choose human vs. comp - 1
+    - board size - 3
+    - first move - 4b
+    - actual result - X appears in 1c square
+    - expected result - message about wrong move format
+- [ ] make square board
+- [ ] 3 баг со вводом некорректного размера поля
+   - steps to reproduce:
+     - choose human vs. comp - 1
+     - board size - 2b
+     - actual result - exception message
+     - expected result - proper message, ask for one more try
+- [ ] 4 add mode human v human
+

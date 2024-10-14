@@ -28,7 +28,7 @@ public class PrisonersDilemma {
                 suspect9, suspect10, suspect11);
     }
 
-    public static void processTournament(Suspect... suspects) {
+    public static TournamentResult processTournament(Suspect... suspects) {
         int[][] points = new int[suspects.length][suspects.length];
         for (int i = 0; i < suspects.length - 1; i++) {
             for (int j = i + 1; j < suspects.length; j++) {
@@ -45,9 +45,9 @@ public class PrisonersDilemma {
             System.out.printf("%-30s %4d%n", suspects[i].getName(), totalPoints[i]);
 
         }
-        System.out.println();
         int championIndex = largestIndex(totalPoints);
-        System.out.println("Champion is - " + suspects[championIndex].getName() + " " + totalPoints[championIndex]);
+        System.out.println("\nChampion is - " + suspects[championIndex].getName() + " " + totalPoints[championIndex]);
+        return new TournamentResult(suspects, totalPoints);
     }
 
     private static int sum(int[] array) {
