@@ -6,7 +6,7 @@ Expected tasks:
 1. Count volume of water
 2. Come up with my own cypher
 3. Make a method arraycopy in MyString
-4. Find 2 different strings with equal hash 
+4. Find two different strings with equal hash 
 5. Add to chess castling of king and rook
 6. Come up with my own strategy in Game theory and implement it
 ---
@@ -147,19 +147,27 @@ Expected tasks:
 
 ---
 ### 13.10.24
-- [ ] 1 баг со вводом некорректного хода
+- :heavy_check_mark: 1 баг со вводом некорректного хода
   - steps to reproduce:
     - choose human vs. comp - 1
     - board size - 3
     - first move - 4b
     - actual result - X appears in 1c square
-    - expected result - message about wrong move format
-- [ ] make square board
-- [ ] 3 баг со вводом некорректного размера поля
+    - expected result—message about wrong move format
+- :heavy_check_mark: 3 баг со вводом некорректного размера поля
    - steps to reproduce:
      - choose human vs. comp - 1
      - board size - 2b
      - actual result - exception message
      - expected result - proper message, ask for one more try
-- [ ] 4 add mode human v human
+---
+
+---
+
+---
+### 16.10.24
+- [ ] 1 make square board
+- [ ] 2 add mode human v human
+- :heavy_check_mark: 3 в примерах с сортировками массивов заменить заранее предопределенные массивы на случайно генерируемые массивы чисел
+(будет круто если будет метод генерации случайных массивов, которые будут использоваться везде)
 

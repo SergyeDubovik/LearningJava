@@ -1,6 +1,7 @@
 package testArrays;
 
 import java.util.Arrays;
+import java.util.Random;
 
 import static testArrays.Temp.insertionSort;
 import static testArrays.ThreeDimArray.print2DArrayInt;
@@ -12,6 +13,9 @@ import static testArrays.ThreeDimArray.print2DArrayInt;
 
 public class TaskArrays {
     public static void main(String[] args) {
+
+        printArray(selectionSort(randomArray(5, 50)));
+        System.out.println();
 
         int[] arr = {8, 5, 4, 2, 440, 5, 72, 11, 9};
         printArray(selectionSort(arr));
@@ -464,10 +468,16 @@ public class TaskArrays {
         }
         return myArray;
     }
-
-    /*
-        1 переписать по нормальному метод selectionSort (должно быть принимаемые аргументы и
-        возвращаемое значение)
+    /**
+     * generate a random array with specified size and max value
      */
+    public static int[] randomArray(int size, int maxValue) {
+        int[] randomNumbers = new int[size];
+        Random elements = new Random();
+        for (int i = 0; i < randomNumbers.length; i++) {
+            randomNumbers[i] = elements.nextInt(maxValue);
+        }
+        return randomNumbers;
+    }
 
 }
