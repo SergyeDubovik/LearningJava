@@ -13,6 +13,15 @@ public class VindictiveSuspect implements Suspect {
     }
 
     @Override
+    public String toString() {
+        return "VindictiveSuspect{" +
+                "name='" + name + '\'' +
+                ", defectCount=" + defectCount +
+                ", revengeSize=" + revengeSize +
+                '}';
+    }
+
+    @Override
     public String getName() {
         return "Vindictive - " + name;
     }
