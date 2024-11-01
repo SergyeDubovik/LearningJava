@@ -4,13 +4,13 @@ import com.gamesTheory.suspect.*;
 
 public class PrisonersDilemma {
     private static boolean log;
-    private static final int ROUNDS = 20;
+    private static final int ROUNDS = 10;
     private static final int POINTS_COOP_COOP = 3;
     private static final int POINTS_DEF_DEF = 1;
     private static final int POINTS_DEF_COOP = 5;
 
     public static void main(String[] args) {
-        log = false;
+        log = true;
         Suspect suspect1 = new CooperativeSuspect("Henry");
         Suspect suspect2 = new DefectiveSuspect("Nick");
         Suspect suspect3 = new PeriodicallyDefectSuspect("Joe", 3, 1);
@@ -22,13 +22,14 @@ public class PrisonersDilemma {
         Suspect suspect9 = new PeriodicallyDefectSuspect("V", 10, 3);
         Suspect suspect10 = new SwappingSuspect("Seth", 4);
         Suspect suspect11 = new VindictiveSuspect("Tim", 2);
-//        GameResult gameResult = processGame(suspect9, suspect11);
-//        System.out.println(gameResult);
-        processTournament(suspect1, suspect2, suspect3, suspect4, suspect5, suspect6, suspect7, suspect8,
-                suspect9, suspect10, suspect11);
+        Suspect suspect12 = new RandomPeriodicallyDefect("Guy", 10);
+        GameResult gameResult = processGame(suspect9, suspect12);
+        System.out.println(gameResult);
+        //        processTournament(suspect1, suspect2, suspect3, suspect4, suspect5, suspect6, suspect7, suspect8,
+        //                suspect9, suspect10, suspect11);
     }
 
-    public static TournamentResult processTournament(Suspect... suspects) {
+    public static void processTournament(Suspect... suspects) {
         int[][] points = new int[suspects.length][suspects.length];
         for (int i = 0; i < suspects.length - 1; i++) {
             for (int j = i + 1; j < suspects.length; j++) {
@@ -47,7 +48,6 @@ public class PrisonersDilemma {
         }
         int championIndex = largestIndex(totalPoints);
         System.out.println("\nChampion is - " + suspects[championIndex].getName() + " " + totalPoints[championIndex]);
-        return new TournamentResult(suspects, totalPoints);
     }
 
     private static int sum(int[] array) {
