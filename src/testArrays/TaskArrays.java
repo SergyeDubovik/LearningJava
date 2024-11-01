@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 import static testArrays.Temp.insertionSort;
+import static testArrays.Temp.printStringArray;
 import static testArrays.ThreeDimArray.print2DArrayInt;
 
 /**
@@ -13,6 +14,15 @@ import static testArrays.ThreeDimArray.print2DArrayInt;
 
 public class TaskArrays {
     public static void main(String[] args) {
+
+        String[] deckOfCards = {
+                "6D", "7D", "8D", "9D", "10D", "jackDiam", "queenDiam", "kingDiam", "aceDiam",
+                "6H", "7H", "8H", "9H", "10H", "jackHearts", "queenHearts", "kingHearts", "aceHearts",
+                "6C", "7C", "8C", "9C", "10C", "jackClubs", "queenClubs", "kingClubs", "aceClubs",
+                "6S", "7S", "8S", "9S", "10S", "jackSpades", "queenSpades", "kingSpades", "aceSpades"};
+
+        printStringArray(shuffle(deckOfCards));
+
 
         printArray(selectionSort(randomArray(5, 50)));
         System.out.println();
@@ -36,7 +46,7 @@ public class TaskArrays {
         print2DArrayInt(sortSecondRow(arr1));
         print2DArrayInt(sortSecondColumn(arr1));
         System.out.println();
-        print2DArrayInt(makeArray(5,11));
+        print2DArrayInt(makeArray(5, 11));
 
 
     }
@@ -422,6 +432,7 @@ public class TaskArrays {
         }
         return array[n - 1];
     }
+
     /*
         в двумерном массиве упорядочить по возрастанию элементы второй строки
      */
@@ -440,17 +451,17 @@ public class TaskArrays {
         return array;
     }
 
-        /* заполнить массив следующим образом:
-        1 2 3 1 2
-        3 1 2 3 1
-        2 3 1 2 3
-        1 2 3 1 2
-        3 1 2 3 1
-        то есть - дано 2 числа, первое - размер матрицы n*n, второе: k - цифра, до которой мы пробегаем
-        в этом случае:
-        n == 5
-        k == 3
-     */
+    /* заполнить массив следующим образом:
+    1 2 3 1 2
+    3 1 2 3 1
+    2 3 1 2 3
+    1 2 3 1 2
+    3 1 2 3 1
+    то есть - дано 2 числа, первое - размер матрицы n*n, второе: k - цифра, до которой мы пробегаем
+    в этом случае:
+    n == 5
+    k == 3
+ */
     public static int[][] makeArray(int n, int k) {
         if (k <= 0 || n <= 0) {
             throw new IllegalArgumentException("n and k should be greater than zero");
@@ -468,6 +479,7 @@ public class TaskArrays {
         }
         return myArray;
     }
+
     /**
      * generate a random array with specified size and max value
      */
@@ -480,4 +492,15 @@ public class TaskArrays {
         return randomNumbers;
     }
 
+    public static String[] shuffle(String[] origin) {
+        Random index = new Random();
+        String element;
+        for (int i = origin.length - 1; i > 0; i--) {
+            int j = index.nextInt(i + 1);
+            element = origin[i];
+            origin[i] = origin[j];
+            origin[j] = element;
+        }
+        return origin;
+    }
 }
