@@ -4,5 +4,5 @@ public enum Shape {
     SPADES,
     CLUBS,
     DIAMONDS,
-    HEARTS;
+    HEARTS
 }

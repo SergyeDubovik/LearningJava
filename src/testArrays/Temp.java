@@ -115,7 +115,7 @@ public class Temp {
         }
         return array;
     }
-    public static Object[] printStringArray(Object[] array) {
+    public static Object[] printObjectArray(Object[] array) {
         for (int i = 0; i < array.length; i++) {
             System.out.println(array[i] + " ");
         }

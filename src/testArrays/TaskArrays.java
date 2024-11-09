@@ -1,10 +1,9 @@
 package testArrays;
 
-import java.util.Arrays;
 import java.util.Random;
 
 import static testArrays.Temp.insertionSort;
-import static testArrays.Temp.printStringArray;
+import static testArrays.Temp.printObjectArray;
 import static testArrays.ThreeDimArray.print2DArrayInt;
 
 /**
@@ -21,7 +20,7 @@ public class TaskArrays {
                 "6C", "7C", "8C", "9C", "10C", "jackClubs", "queenClubs", "kingClubs", "aceClubs",
                 "6S", "7S", "8S", "9S", "10S", "jackSpades", "queenSpades", "kingSpades", "aceSpades"};
 
-        printStringArray(shuffle(deckOfCards));
+        printObjectArray(shuffle(deckOfCards));
 
 
         printArray(selectionSort(randomArray(5, 50)));
