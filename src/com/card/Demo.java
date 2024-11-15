@@ -44,8 +44,8 @@ public class Demo {
                 new Card(Shape.SPADES, "King"),
                 new Card(Shape.SPADES, "Ace"),
         };
-//            printObjectArray(shuffle(cards));
-            printObjectArray(deckShift(cards));
+            printObjectArray(shuffle(cards));
+//            printObjectArray(deckShift(cards));
 
     }
     public static Card[] shuffle(Card[] origin) {
@@ -60,9 +60,9 @@ public class Demo {
         return origin;
     }
     public static Card[] deckShift(Card[] origin) {
-        Random random = new Random();
+        Random splitIndex = new Random();
         int length = origin.length;
-        int shiftSize = random.nextInt(2, 35);
+        int shiftSize = splitIndex.nextInt(2, 35);
 
         Card[] shifted = new Card[shiftSize];
         System.arraycopy(origin, 0, shifted, 0, shiftSize);

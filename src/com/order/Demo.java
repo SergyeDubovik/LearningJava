@@ -9,6 +9,7 @@ public class Demo {
         System.out.println(order);
         System.out.println(order2);
         System.out.println(order4);
+        int random = (int)(Math.random() + 1);
 
     }
 }

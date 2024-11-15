@@ -110,7 +110,7 @@ public class MyString implements CharSequence {
         char[] chars = new char[data.length];
         for (int i = 0; i < data.length; i++) {
             if (data[i] >= 'A' && data[i] <= 'Z') {
-                chars[i] = (char) (data[i] + 32);     // 32 - difference between big and small letter in ASCII
+                chars[i] = (char) (data[i] + 32);     // 32 - difference between big and small letters in ASCII
             } else {
                 chars[i] = data[i];
             }
@@ -122,7 +122,7 @@ public class MyString implements CharSequence {
         char[] chars = new char[data.length];
         for (int i = 0; i < data.length; i++) {
             if (data[i] >= 'a' && data[i] <= 'z') {
-                chars[i] = (char) (data[i] - 32);    // 32 - difference between big and small letter in ASCII
+                chars[i] = (char) (data[i] - 32);    // 32 - difference between big and small letters in ASCII
             } else {
                 chars[i] = data[i];
             }

@@ -22,6 +22,7 @@ public class Demo {
         System.out.println(str.equals(str4));
         System.out.println(str5.equals(new MyString("   ")));
         str.equals(new Object());
+        System.out.println(str.isBlank());
 
     }
 }
