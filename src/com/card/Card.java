@@ -13,10 +13,7 @@ public class Card {
 
     @Override
     public String toString() {
-        return "Card {" +
-                "shape = " + shape +
-                ", value = " + value +
-                '}';
+        return value + shape.getSymbol();
     }
 
     public Shape getShape() {
