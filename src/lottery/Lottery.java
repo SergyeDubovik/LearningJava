@@ -2,7 +2,7 @@ package lottery;
 
 public interface Lottery {
 
-    void sellTicket(String buyer);
+    Ticket sellTicket(String buyer);
 
-    String winner();
+    int winner();
 }

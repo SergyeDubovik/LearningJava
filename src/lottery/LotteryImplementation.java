@@ -5,18 +5,19 @@ import java.util.List;
 import java.util.Random;
 
 public class LotteryImplementation implements Lottery {
-    protected List<String> ticket = new ArrayList<>();
-    protected Random random = new Random();
+    private final Random random = new Random();
+    private static int nextId = 1;
 
     @Override
-    public void sellTicket(String buyer) {
-        ticket.add(buyer);
+    public Ticket sellTicket(String buyer) {
+        Ticket ticket = new Ticket(nextId, buyer);
+        nextId++;
+        return ticket;
     }
 
     @Override
-    public String winner() {
-        int winnersIndex = random.nextInt(ticket.size());
-        return ticket.get(winnersIndex);
+    public int winner() {
+        return random.nextInt(1, nextId);
     }
 
 }
