@@ -45,7 +45,7 @@ public class Demo {
                 new Card(Shape.SPADES, "A"),
         };
             printObjectArray(shuffle(cards));
-//            printObjectArray(deckShift(cards));
+            printObjectArray(deckShift(cards));
 
     }
     public static Card[] shuffle(Card[] origin) {

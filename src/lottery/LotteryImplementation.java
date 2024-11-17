@@ -1,7 +1,5 @@
 package lottery;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class LotteryImplementation implements Lottery {

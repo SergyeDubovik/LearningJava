@@ -6,8 +6,8 @@ import com.gamesTheory.NamedSuspect;
 import java.util.Random;
 
 public class RandomPeriodicallyDefect extends NamedSuspect {
-    private int defectChance;
-    private Random randomDefect;
+    private final int defectChance;
+    private final Random randomDefect;
 
 
     public RandomPeriodicallyDefect(String name, int defectChance) {
