@@ -1,9 +1,6 @@
 package com.collection;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
 public class MyArrayList implements List<String> {
     private String[] array;
@@ -14,15 +11,19 @@ public class MyArrayList implements List<String> {
         index = 0;
     }
 
+    @Override
+    public String toString() {
+        return Arrays.toString(array);
+    }
 
     @Override
     public int size() {
-        throw new UnsupportedOperationException();
+        return array.length;
     }
 
     @Override
     public boolean isEmpty() {
-        throw new UnsupportedOperationException();
+        return array.length == 0;
     }
 
     @Override
@@ -52,7 +53,7 @@ public class MyArrayList implements List<String> {
 //        если нет, то создаем увеличенный массив, копируем элементы старого массива в новый
 //        и добавляем элемент и сдвигаем указатель
         if (index == array.length) {
-            String[] newArray = new String[(array.length + 1) * 2];
+            String[] newArray = new String[(array.length + 1)];
             System.arraycopy(array, 0, newArray, 0, array.length);
             array = newArray;
         }
@@ -101,7 +102,7 @@ public class MyArrayList implements List<String> {
 //        проверяем что индекс который у нас просят - доступен (имеется в списке)
 //        возвращаем его если он есть и кидаем исключение если его нет
         if (index > this.index || index < 0) {
-            throw new IndexOutOfBoundsException();
+            throw new IndexOutOfBoundsException("Out of bounds");
         }
         return array[index];
     }
