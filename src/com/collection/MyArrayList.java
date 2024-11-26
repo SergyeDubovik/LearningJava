@@ -13,12 +13,20 @@ public class MyArrayList implements List<String> {
 
     @Override
     public String toString() {
-        return Arrays.toString(array);
+        StringBuilder sb = new StringBuilder("[");
+        for (int i = 0; i < index; i++) {
+            sb.append(array[i]);
+            if (i != index - 1) {
+                sb.append(", ");
+            }
+        }
+        sb.append("]");
+        return sb.toString();
     }
 
     @Override
     public int size() {
-        return array.length;
+        return index;
     }
 
     @Override
@@ -53,7 +61,7 @@ public class MyArrayList implements List<String> {
 //        если нет, то создаем увеличенный массив, копируем элементы старого массива в новый
 //        и добавляем элемент и сдвигаем указатель
         if (index == array.length) {
-            String[] newArray = new String[(array.length + 1)];
+            String[] newArray = new String[(array.length + 1) * 2];
             System.arraycopy(array, 0, newArray, 0, array.length);
             array = newArray;
         }
@@ -102,7 +110,7 @@ public class MyArrayList implements List<String> {
 //        проверяем что индекс который у нас просят - доступен (имеется в списке)
 //        возвращаем его если он есть и кидаем исключение если его нет
         if (index > this.index || index < 0) {
-            throw new IndexOutOfBoundsException("Out of bounds");
+            throw new IndexOutOfBoundsException();
         }
         return array[index];
     }
