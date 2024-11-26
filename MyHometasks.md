@@ -239,6 +239,16 @@ Expected tasks:
 
 - 1 . сделать собственный arrayList (как делали стринг)
     - 1.1 . делаем базовый набор методов - добавление, удаление, взятие по индексу, размер, проверка на пустоту
-      - `size`
-      - `isEmpty`
-      - `remove (int index)`, etc.
+      - :heavy_check_mark:`size`
+      - :heavy_check_mark:`isEmpty`
+      
+---
+
+---
+
+---
+### 27.11.24
+- продолжить реализацию методов MyArrayList
+  - `remove (int index)`
+  - `add (int index, str element)`
+  - `contains`
