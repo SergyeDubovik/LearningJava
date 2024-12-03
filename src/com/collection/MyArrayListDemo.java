@@ -1,6 +1,5 @@
 package com.collection;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MyArrayListDemo {
@@ -12,9 +11,8 @@ public class MyArrayListDemo {
         fruits.add("grape");
         fruits.add("melon");
         System.out.println(fruits);
-        System.out.println(fruits.get(3));
-        System.out.println(fruits.size());
-        System.out.println(fruits.isEmpty());
-
+        System.out.println(fruits.remove(2));
+        System.out.println(fruits);
+        System.out.println(fruits.contains("cat"));
     }
 }

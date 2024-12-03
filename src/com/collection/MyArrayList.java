@@ -36,7 +36,12 @@ public class MyArrayList implements List<String> {
 
     @Override
     public boolean contains(Object o) {
-        throw new UnsupportedOperationException();
+        for(int i = 0; i < array.length; i++) {
+            if (array[i] == (o)) {
+                    return true;
+            }
+        }
+        return false;
     }
 
     @Override
@@ -57,9 +62,9 @@ public class MyArrayList implements List<String> {
     @Override
     public boolean add(String string) {
 //        проверяем, есть ли свободные места в массиве,
-//        если да - то добавляем элемент и сдвигаем указатель
 //        если нет, то создаем увеличенный массив, копируем элементы старого массива в новый
 //        и добавляем элемент и сдвигаем указатель
+//        если да - то добавляем элемент и сдвигаем указатель
         if (index == array.length) {
             String[] newArray = new String[(array.length + 1) * 2];
             System.arraycopy(array, 0, newArray, 0, array.length);
@@ -126,8 +131,24 @@ public class MyArrayList implements List<String> {
     }
 
     @Override
+//    public String remove(int index) {
+//        if (index < 0 || index >= this.index) {
+//            throw new RuntimeException("Index mustn't be less than zero and more than the array's length");
+//        }
+//        String removed = array[index];
+//        for (int i = index + 1; i < array.length; i++) {
+//            array[i - 1] = array[i];
+//        }
+//        this.index--;
+//        return removed;
+
+//    }
+
     public String remove(int index) {
-        throw new UnsupportedOperationException();
+        String removed = array[index];
+        System.arraycopy(array, index + 1, array, index, array.length - index - 1);
+        this.index--;
+        return removed;
     }
 
     @Override
