@@ -14,5 +14,6 @@ public class MyArrayListDemo {
         System.out.println(fruits.remove(2));
         System.out.println(fruits);
         System.out.println(fruits.contains("cat"));
+        System.out.println(fruits.contains("grape"));
     }
 }
