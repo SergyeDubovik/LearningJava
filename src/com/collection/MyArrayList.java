@@ -4,19 +4,19 @@ import java.util.*;
 
 public class MyArrayList implements List<String> {
     private String[] array;
-    private int index;
+    private int size;
 
     public MyArrayList() {
         array = new String[0];
-        index = 0;
+        size = 0;
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("[");
-        for (int i = 0; i < index; i++) {
+        for (int i = 0; i < size; i++) {
             sb.append(array[i]);
-            if (i != index - 1) {
+            if (i != size - 1) {
                 sb.append(", ");
             }
         }
@@ -26,7 +26,7 @@ public class MyArrayList implements List<String> {
 
     @Override
     public int size() {
-        return index;
+        return size;
     }
 
     @Override
@@ -36,9 +36,9 @@ public class MyArrayList implements List<String> {
 
     @Override
     public boolean contains(Object o) {
-        for(int i = 0; i < array.length; i++) {
-            if (array[i] == (o)) {
-                    return true;
+        for (int i = 0; i < size; i++) {
+            if (Objects.equals(o, array[i])) {
+                return true;
             }
         }
         return false;
@@ -65,13 +65,13 @@ public class MyArrayList implements List<String> {
 //        если нет, то создаем увеличенный массив, копируем элементы старого массива в новый
 //        и добавляем элемент и сдвигаем указатель
 //        если да - то добавляем элемент и сдвигаем указатель
-        if (index == array.length) {
+        if (size == array.length) {
             String[] newArray = new String[(array.length + 1) * 2];
             System.arraycopy(array, 0, newArray, 0, array.length);
             array = newArray;
         }
-        array[index] = string;
-        index += 1;
+        array[size] = string;
+        size += 1;
         return true;
     }
 
@@ -114,7 +114,7 @@ public class MyArrayList implements List<String> {
     public String get(int index) {
 //        проверяем что индекс который у нас просят - доступен (имеется в списке)
 //        возвращаем его если он есть и кидаем исключение если его нет
-        if (index > this.index || index < 0) {
+        if (index > this.size || index < 0) {
             throw new IndexOutOfBoundsException();
         }
         return array[index];
@@ -130,7 +130,6 @@ public class MyArrayList implements List<String> {
         throw new UnsupportedOperationException();
     }
 
-    @Override
 //    public String remove(int index) {
 //        if (index < 0 || index >= this.index) {
 //            throw new RuntimeException("Index mustn't be less than zero and more than the array's length");
@@ -144,10 +143,14 @@ public class MyArrayList implements List<String> {
 
 //    }
 
+    @Override
     public String remove(int index) {
+        if (index < 0 || index >= this.size) {
+            throw new IndexOutOfBoundsException("Index mustn't be less than zero and more than the array's length");
+        }
         String removed = array[index];
         System.arraycopy(array, index + 1, array, index, array.length - index - 1);
-        this.index--;
+        this.size--;
         return removed;
     }
 
