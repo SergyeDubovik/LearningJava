@@ -250,5 +250,13 @@ Expected tasks:
 ### 27.11.24
 - продолжить реализацию методов MyArrayList
   - `remove (int index)`
-  - `add (int index, str element)`
   - `contains`
+- 
+- 08.12.24
+  - `add (int index, str element)
+  - `remove(Object o)
+  - `clear()
+  - `set(int index, String element)
+  - попытаться найти баг в isEmpty (написать тестовые сценарии, подсказка - проверить - станет ли список пустым после
+    удаления последнего элемента)
+  - задачка из телеги

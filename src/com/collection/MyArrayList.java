@@ -107,7 +107,10 @@ public class MyArrayList implements List<String> {
 
     @Override
     public void clear() {
-        throw new UnsupportedOperationException();
+        String element = "";
+        for (int i = 0; i < array.length; i++) {
+            array[i] = element;
+        }
     }
 
     @Override
