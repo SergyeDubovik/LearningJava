@@ -255,7 +255,7 @@ Expected tasks:
 - 08.12.24
   - `add (int index, str element)
   - `remove(Object o)
-  - `clear()
+  - `clear()`
   - `set(int index, String element)
   - попытаться найти баг в isEmpty (написать тестовые сценарии, подсказка - проверить - станет ли список пустым после
     удаления последнего элемента)

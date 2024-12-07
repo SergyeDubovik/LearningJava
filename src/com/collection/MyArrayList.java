@@ -31,7 +31,7 @@ public class MyArrayList implements List<String> {
 
     @Override
     public boolean isEmpty() {
-        return array.length == 0;
+        return size == 0;
     }
 
     @Override
@@ -107,10 +107,10 @@ public class MyArrayList implements List<String> {
 
     @Override
     public void clear() {
-        String element = "";
-        for (int i = 0; i < array.length; i++) {
-            array[i] = element;
+        for (int i = 1; i < size; i++) {
+            array[i] = null;
         }
+        size = 0;
     }
 
     @Override
@@ -133,7 +133,7 @@ public class MyArrayList implements List<String> {
         throw new UnsupportedOperationException();
     }
 
-//    public String remove(int index) {
+//    public String remove(int index)
 //        if (index < 0 || index >= this.index) {
 //            throw new RuntimeException("Index mustn't be less than zero and more than the array's length");
 //        }
@@ -144,7 +144,7 @@ public class MyArrayList implements List<String> {
 //        this.index--;
 //        return removed;
 
-//    }
+//
 
     @Override
     public String remove(int index) {
