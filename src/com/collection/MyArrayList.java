@@ -107,7 +107,7 @@ public class MyArrayList implements List<String> {
 
     @Override
     public void clear() {
-        for (int i = 1; i < size; i++) {
+        for (int i = 0; i < size; i++) {
             array[i] = null;
         }
         size = 0;

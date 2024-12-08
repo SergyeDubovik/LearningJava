@@ -13,6 +13,7 @@ public class MyArrayListTest {
         testRemoveNegative(of("soda", "sugar", "salt"), -1);
         testRemoveNegative(of("soda", "sugar", "salt"), 3);
 
+
         testContains(of("bat", "two", null, "three"), "bat");
         testContains(of("bat", "two", null, "three"), new String("two"));
         testContains(of("bat", "two", null, "three"), null);
@@ -65,6 +66,12 @@ public class MyArrayListTest {
         assertFalse(result);
     }
 
+    private static void testIsEmpty(MyArrayList list) {
+        int expectedSize = 0;
+
+
+    }
+
     private static void assertEquals(int expected, int actual) {
         if (expected != actual) {
             throw new RuntimeException("Actual number isn't equal to expected number!");
@@ -74,6 +81,12 @@ public class MyArrayListTest {
     private static void assertEquals(String expected, String actual) {
         if ((expected != null || actual != null) && (expected == null || !expected.equals(actual))) {
             throw new RuntimeException("Actual string isn't equal to expected string!");
+        }
+    }
+
+    private static void assertEquals(MyArrayList expectedList, MyArrayList actualList) {
+        if (expectedList != actualList) {
+            throw new RuntimeException("actual list isn't equal expected");
         }
     }
 
