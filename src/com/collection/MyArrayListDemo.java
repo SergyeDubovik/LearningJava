@@ -10,12 +10,8 @@ public class MyArrayListDemo {
         fruits.add("mandarin");
         fruits.add("grape");
         fruits.add("melon");
+
+        System.out.println(fruits.remove("grape"));
         System.out.println(fruits);
-        System.out.println(fruits.isEmpty());
-        fruits.clear();
-        System.out.println(fruits);
-        System.out.println(fruits.isEmpty());
-        fruits.add("cherry");
-        System.out.println(fruits.isEmpty());
     }
 }

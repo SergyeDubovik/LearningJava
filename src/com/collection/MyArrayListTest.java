@@ -21,6 +21,11 @@ public class MyArrayListTest {
         testNotContains(of("bat", "two", "three"), "one");
         testNotContains(of("bat", "two", "three"), null);
 
+        testListIsEmptyAfterClear();
+
+        testRemove(of("bat", "two", "three"), "two");
+        testRemoveNegative(of("bat", "two", "three"), "cat");
+
 
     }
 
@@ -54,6 +59,26 @@ public class MyArrayListTest {
         }
     }
 
+    private static void testRemove(MyArrayList list, Object o) {
+        int expectedSize = list.size() - 1;
+
+        boolean result = list.remove(o);
+
+        assertEquals(expectedSize, list.size());
+        assertTrue(result);
+        assertFalse(list.contains(o));
+    }
+
+    private static void testRemoveNegative(MyArrayList list, Object o) {
+        int expectedSize = list.size();
+
+        boolean result = list.remove(o);
+
+        assertEquals(expectedSize, list.size());
+        assertFalse(result);
+        assertFalse(list.contains(o));
+    }
+
     private static void testContains(MyArrayList list, String contains) {
         boolean result = list.contains(contains);
 
@@ -66,10 +91,18 @@ public class MyArrayListTest {
         assertFalse(result);
     }
 
-    private static void testIsEmpty(MyArrayList list) {
-        int expectedSize = 0;
+    private static void testListIsEmptyAfterClear() {
+        MyArrayList list = new MyArrayList();
 
+        assertTrue(list.isEmpty());
 
+        list.add("zombie");
+
+        assertFalse(list.isEmpty());
+
+        list.clear();
+
+        assertTrue(list.isEmpty());
     }
 
     private static void assertEquals(int expected, int actual) {
@@ -81,12 +114,6 @@ public class MyArrayListTest {
     private static void assertEquals(String expected, String actual) {
         if ((expected != null || actual != null) && (expected == null || !expected.equals(actual))) {
             throw new RuntimeException("Actual string isn't equal to expected string!");
-        }
-    }
-
-    private static void assertEquals(MyArrayList expectedList, MyArrayList actualList) {
-        if (expectedList != actualList) {
-            throw new RuntimeException("actual list isn't equal expected");
         }
     }
 

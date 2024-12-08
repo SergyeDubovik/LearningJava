@@ -77,7 +77,13 @@ public class MyArrayList implements List<String> {
 
     @Override
     public boolean remove(Object o) {
-        throw new UnsupportedOperationException();
+        for (int i = 0; i < size; i++) {
+            if (array[i].equals(o)) {
+                remove(i);
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
