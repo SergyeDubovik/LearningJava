@@ -13,5 +13,8 @@ public class MyArrayListDemo {
 
         System.out.println(fruits.remove("grape"));
         System.out.println(fruits);
+        fruits.add(2, "pear");
+        fruits.add(4, "orange");
+        System.out.println(fruits);
     }
 }

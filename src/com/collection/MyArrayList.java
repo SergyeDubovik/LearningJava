@@ -136,7 +136,12 @@ public class MyArrayList implements List<String> {
 
     @Override
     public void add(int index, String element) {
-        throw new UnsupportedOperationException();
+        if (index < 0 || index > size) {
+            throw new IndexOutOfBoundsException();
+        }
+        System.arraycopy(array, index, array, index + 1, size - index);
+        array[index] = element;
+        size++;
     }
 
 //    public String remove(int index)
