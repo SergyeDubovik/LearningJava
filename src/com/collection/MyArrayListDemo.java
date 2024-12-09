@@ -16,5 +16,9 @@ public class MyArrayListDemo {
         fruits.add(2, "pear");
         fruits.add(4, "orange");
         System.out.println(fruits);
+        fruits.set(1, "pineapple");
+        System.out.println(fruits);
+        fruits.set(5, "kiwi");
+        System.out.println(fruits);
     }
 }

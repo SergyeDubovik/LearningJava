@@ -253,10 +253,10 @@ Expected tasks:
   - `contains`
 - 
 - 08.12.24
-  - `add (int index, str element)
+  - `add (int index, str element)`
   - `remove(Object o)`
   - `clear()`
-  - `set(int index, String element)
-  - попытаться найти баг в isEmpty (написать тестовые сценарии, подсказка - проверить - станет ли список пустым после
-    удаления последнего элемента)
+  - `set(int index, String element)`
+  - `попытаться найти баг в isEmpty (написать тестовые сценарии, подсказка - проверить - станет ли список пустым после
+    удаления последнего элемента)`
   - задачка из телеги

@@ -131,7 +131,10 @@ public class MyArrayList implements List<String> {
 
     @Override
     public String set(int index, String element) {
-        throw new UnsupportedOperationException();
+        for (int i = 0; i < size; i++) {
+            array[index] = element;
+        }
+        return array[index];
     }
 
     @Override
