@@ -10,15 +10,15 @@ public class MyArrayListDemo {
         fruits.add("mandarin");
         fruits.add("grape");
         fruits.add("melon");
+        fruits.add(0, "123");
+        fruits.add(0, "123");
+        fruits.add(0, "123");
+        fruits.add(0, "123");
+        fruits.add(0, "123");
+        fruits.add(0, "123");
+        fruits.add(0, "123");
 
-        System.out.println(fruits.remove("grape"));
-        System.out.println(fruits);
-        fruits.add(2, "pear");
-        fruits.add(4, "orange");
-        System.out.println(fruits);
-        fruits.set(1, "pineapple");
-        System.out.println(fruits);
-        fruits.set(5, "kiwi");
+        fruits.set(4, "kiwi");
         System.out.println(fruits);
     }
 }
