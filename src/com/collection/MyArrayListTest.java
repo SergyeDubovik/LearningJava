@@ -6,6 +6,9 @@ public class MyArrayListTest {
         testAdd(of("door", "plate"), "glass");
         testAdd(of("pepsi", null, "coffee"), null);
 
+        testAddIndex(of("coin", "rocket"), 1, "shit");
+        testAddIndex(of("coin", "rocket"), 0, "shit");
+
         testRemove(of("cake", "mood"), 1);
         testRemove(of("cake", "mood", "cat", "dog"), 2);
         testRemove(of("cake", "mood", "cat", "dog"), 0);
@@ -36,6 +39,14 @@ public class MyArrayListTest {
 
         assertEquals(expectedSize, list.size());
         assertEquals(element, list.get(list.size() - 1));
+    }
+
+    private static void testAddIndex(MyArrayList list, int index, String element) {
+        int expectedSize = list.size() + 1;
+
+        list.add(index, element);
+
+        assertEquals(expectedSize, list.size());
     }
 
     private static void testRemove(MyArrayList list, int index) {
