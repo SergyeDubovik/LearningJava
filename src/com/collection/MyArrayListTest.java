@@ -7,7 +7,9 @@ public class MyArrayListTest {
         testAdd(of("pepsi", null, "coffee"), null);
 
         testAddIndex(of("coin", "rocket"), 1, "shit");
-        testAddIndex(of("coin", "rocket"), 0, "shit");
+        testAddIndex(of("coin", "rocket"), 0, "circle");
+        testAddIndex(of("coin", "rocket"), 2, "circle");
+        testAddIndex(of("coin", "rocket"), 2, null);
 
         testRemove(of("cake", "mood"), 1);
         testRemove(of("cake", "mood", "cat", "dog"), 2);
@@ -47,6 +49,7 @@ public class MyArrayListTest {
         list.add(index, element);
 
         assertEquals(expectedSize, list.size());
+        assertEquals(element, list.get(index));
     }
 
     private static void testRemove(MyArrayList list, int index) {
