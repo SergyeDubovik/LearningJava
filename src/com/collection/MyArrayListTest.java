@@ -31,6 +31,8 @@ public class MyArrayListTest {
         testRemove(of("bat", "two", "three"), "two");
         testRemoveNegative(of("bat", "two", "three"), "cat");
 
+        testSet(of("cat", "dog", "bull"), 1, "ape");
+
 
     }
 
@@ -117,6 +119,19 @@ public class MyArrayListTest {
         list.clear();
 
         assertTrue(list.isEmpty());
+    }
+
+    private static void testSet(MyArrayList list, int index, String element) {
+
+        int expectedSize = list.size();
+
+        list.set(index, element);
+
+        String expectedResult = list.get(index);
+
+        assertEquals(expectedSize, list.size());
+        assertEquals(expectedResult, element);
+
     }
 
     private static void assertEquals(int expected, int actual) {
