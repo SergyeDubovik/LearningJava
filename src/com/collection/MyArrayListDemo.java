@@ -10,15 +10,11 @@ public class MyArrayListDemo {
         fruits.add("mandarin");
         fruits.add("grape");
         fruits.add("melon");
-        fruits.add(0, "123");
-        fruits.add(0, "123");
-        fruits.add(0, "123");
-        fruits.add(0, "123");
-        fruits.add(0, "123");
-        fruits.add(0, "123");
-        fruits.add(0, "123");
 
-        fruits.set(4, "kiwi");
-        System.out.println(fruits);
+        List<String> sweets = new MyArrayList();
+        sweets.add("apple");
+        sweets.add("grape");
+        System.out.println(fruits.containsAll(sweets));
+
     }
 }

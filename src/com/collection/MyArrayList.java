@@ -51,7 +51,7 @@ public class MyArrayList implements List<String> {
 
     @Override
     public Object[] toArray() {
-        throw new UnsupportedOperationException();
+        return Arrays.copyOf(array, size);
     }
 
     @Override
@@ -84,7 +84,13 @@ public class MyArrayList implements List<String> {
 
     @Override
     public boolean containsAll(Collection<?> c) {
-        throw new UnsupportedOperationException();
+        Object[] elements = c.toArray();
+        for (int i = 0; i < elements.length; i++) {
+            if (!this.contains(elements[i])) {
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override
