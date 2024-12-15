@@ -65,7 +65,7 @@ public class MyArrayList implements List<String> {
 //        если нет, то создаем увеличенный массив, копируем элементы старого массива в новый
 //        и добавляем элемент и сдвигаем указатель
 //        если да - то добавляем элемент и сдвигаем указатель
-        extracted();
+        expandingArray();
         array[size] = string;
         size += 1;
         return true;
@@ -142,7 +142,7 @@ public class MyArrayList implements List<String> {
         if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException();
         }
-        extracted();
+        expandingArray();
         System.arraycopy(array, index, array, index + 1, size - index);
         array[index] = element;
         size++;
@@ -197,7 +197,7 @@ public class MyArrayList implements List<String> {
         throw new UnsupportedOperationException();
     }
 
-    private void extracted() {
+    private void expandingArray() {
         if (size == array.length) {
             String[] newArray = new String[(array.length + 1) * 2];
             System.arraycopy(array, 0, newArray, 0, array.length);

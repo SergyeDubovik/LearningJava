@@ -20,7 +20,7 @@ public class MyArrayListTest {
 
 
         testContains(of("bat", "two", null, "three"), "bat");
-        testContains(of("bat", "two", null, "three"), new String("two"));
+        testContains(of("bat", "two", null, "three"), "two");
         testContains(of("bat", "two", null, "three"), null);
         testContains(of("bat", "two", null, "three"), "three");
         testNotContains(of("bat", "two", "three"), "one");
@@ -32,6 +32,7 @@ public class MyArrayListTest {
         testRemoveNegative(of("bat", "two", "three"), "cat");
 
         testSet(of("cat", "dog", "bull"), 1, "ape");
+        testSet(of("cat", "dog", "bull"), 2, "donkey");
 
 
     }

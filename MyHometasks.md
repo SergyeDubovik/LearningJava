@@ -265,10 +265,10 @@ Expected tasks:
 
 
 ### 11.12.24
-- закончить тесты
+- `закончить тесты (set)`
 
   - методы ArrayList
-    containsAll
+    `containsAll`
     addAll(Collection<? extends String> c)
     addAll(int index, Collection<? extends String> c)
     removeAll(Collection<?> c)
