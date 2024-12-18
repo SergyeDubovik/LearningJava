@@ -5,6 +5,7 @@ import java.util.*;
 public class MyArrayList implements List<String> {
     private String[] array;
     private int size;
+    private boolean change;
 
     public MyArrayList() {
         array = new String[0];
@@ -105,12 +106,26 @@ public class MyArrayList implements List<String> {
 
     @Override
     public boolean removeAll(Collection<?> c) {
-        throw new UnsupportedOperationException();
+        for (int i = 0; i < array.length; i++) {
+            if (c.contains(array[i])) {
+                remove(array[i]);
+                i--;
+                change = true;
+            }
+        }
+        return change;
     }
 
     @Override
     public boolean retainAll(Collection<?> c) {
-        throw new UnsupportedOperationException();
+        for (int i = 0; i < size; i++) {
+            if (!c.contains(array[i])) {
+                remove(array[i]);
+                i--;
+                change = true;
+            }
+        }
+        return change;
     }
 
     @Override

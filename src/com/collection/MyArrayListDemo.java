@@ -12,9 +12,11 @@ public class MyArrayListDemo {
         fruits.add("melon");
 
         List<String> sweets = new MyArrayList();
-        sweets.add("apple");
+        sweets.add("cat");
         sweets.add("grape");
         System.out.println(fruits.containsAll(sweets));
+        System.out.println(fruits.retainAll(sweets));
+        System.out.println(fruits);
 
     }
 }
