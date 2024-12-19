@@ -14,9 +14,13 @@ public class MyArrayListDemo {
         List<String> sweets = new MyArrayList();
         sweets.add("cat");
         sweets.add("grape");
+        sweets.add("melon");
         System.out.println(fruits.containsAll(sweets));
-        System.out.println(fruits.retainAll(sweets));
+        System.out.println("first remove: " + fruits.removeAll(sweets));
+        System.out.println("second remove: " + fruits.removeAll(sweets));
         System.out.println(fruits);
-
+        for (String s : fruits) {
+            System.out.println(s);
+        }
     }
 }

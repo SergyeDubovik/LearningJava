@@ -34,6 +34,14 @@ public class MyArrayListTest {
         testSet(of("cat", "dog", "bull"), 1, "ape");
         testSet(of("cat", "dog", "bull"), 2, "donkey");
 
+        testContainsAll(of("red", "white"), of("red"));
+        testContainsAll(of("red", "white"), of("white", "red"));
+        testContainsAll(of("red", "white"), new MyArrayList());
+
+        testContainsAllNegative(of("red", "white"), of("black"));
+        testContainsAllNegative(of("red", "white"), of("black", "red", "white"));
+        testContainsAllNegative(new MyArrayList(), of("black", "red", "white"));
+
     }
 
     private static void testAdd(MyArrayList list, String element) {
@@ -136,8 +144,16 @@ public class MyArrayListTest {
 
     private static void testContainsAll(MyArrayList list, MyArrayList list2) {
 
-        list2.clear();
         boolean compare = list.containsAll(list2);
+
+        assertTrue(compare);
+
+    }
+
+    private static void testContainsAllNegative(MyArrayList list, MyArrayList list2) {
+
+        boolean compare = list.containsAll(list2);
+
         assertFalse(compare);
 
     }

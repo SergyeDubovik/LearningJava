@@ -5,7 +5,6 @@ import java.util.*;
 public class MyArrayList implements List<String> {
     private String[] array;
     private int size;
-    private boolean change;
 
     public MyArrayList() {
         array = new String[0];
@@ -47,7 +46,7 @@ public class MyArrayList implements List<String> {
 
     @Override
     public Iterator<String> iterator() {
-        throw new UnsupportedOperationException();
+        return new MyIterator(this);
     }
 
     @Override
@@ -66,7 +65,7 @@ public class MyArrayList implements List<String> {
 //        если нет, то создаем увеличенный массив, копируем элементы старого массива в новый
 //        и добавляем элемент и сдвигаем указатель
 //        если да - то добавляем элемент и сдвигаем указатель
-        expandingArray();
+        expandArray();
         array[size] = string;
         size += 1;
         return true;
@@ -85,9 +84,8 @@ public class MyArrayList implements List<String> {
 
     @Override
     public boolean containsAll(Collection<?> c) {
-        Object[] elements = c.toArray();
-        for (int i = 0; i < elements.length; i++) {
-            if (!this.contains(elements[i])) {
+        for (Object element : c) {
+            if (!contains(element)) {
                 return false;
             }
         }
@@ -106,7 +104,8 @@ public class MyArrayList implements List<String> {
 
     @Override
     public boolean removeAll(Collection<?> c) {
-        for (int i = 0; i < array.length; i++) {
+        boolean change = false;
+        for (int i = 0; i < size; i++) {
             if (c.contains(array[i])) {
                 remove(array[i]);
                 i--;
@@ -118,9 +117,10 @@ public class MyArrayList implements List<String> {
 
     /**
      *    remove all elements that not contains in second list
-     * */
+     */
     @Override
     public boolean retainAll(Collection<?> c) {
+        boolean change = false;
         for (int i = 0; i < size; i++) {
             if (!c.contains(array[i])) {
                 remove(array[i]);
@@ -160,7 +160,7 @@ public class MyArrayList implements List<String> {
         if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException();
         }
-        expandingArray();
+        expandArray();
         System.arraycopy(array, index, array, index + 1, size - index);
         array[index] = element;
         size++;
@@ -181,12 +181,12 @@ public class MyArrayList implements List<String> {
 
     @Override
     public String remove(int index) {
-        if (index < 0 || index >= this.size) {
+        if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Index mustn't be less than zero and more than the array's length");
         }
         String removed = array[index];
         System.arraycopy(array, index + 1, array, index, array.length - index - 1);
-        this.size--;
+        size--;
         return removed;
     }
 
@@ -215,7 +215,7 @@ public class MyArrayList implements List<String> {
         throw new UnsupportedOperationException();
     }
 
-    private void expandingArray() {
+    private void expandArray() {
         if (size == array.length) {
             String[] newArray = new String[(array.length + 1) * 2];
             System.arraycopy(array, 0, newArray, 0, array.length);

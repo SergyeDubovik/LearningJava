@@ -269,8 +269,15 @@ Expected tasks:
 
   - методы ArrayList
     - `containsAll`
-    - addAll(Collection<? extends String> c)
-    - addAll(int index, Collection<? extends String> c)
     - `removeAll(Collection<?> c)`
     - `retainAll(Collection<?> c)`
-    - Iterator<String> iterator
+    - `Iterator<String> iterator`
+
+### 19.12.24
+- дописать тесты на removeAll и retainAll
+- addAll(Collection<? extends String> c)
+- addAll(int index, Collection<? extends String> c)
+- indexOf
+- lastIndexOf
+- subList
+- добавить тесты ко всем методам
