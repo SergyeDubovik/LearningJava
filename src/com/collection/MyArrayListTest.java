@@ -34,7 +34,6 @@ public class MyArrayListTest {
         testSet(of("cat", "dog", "bull"), 1, "ape");
         testSet(of("cat", "dog", "bull"), 2, "donkey");
 
-
     }
 
     private static void testAdd(MyArrayList list, String element) {
@@ -132,6 +131,14 @@ public class MyArrayListTest {
 
         assertEquals(expectedSize, list.size());
         assertEquals(expectedResult, element);
+
+    }
+
+    private static void testContainsAll(MyArrayList list, MyArrayList list2) {
+
+        list2.clear();
+        boolean compare = list.containsAll(list2);
+        assertFalse(compare);
 
     }
 

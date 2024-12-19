@@ -268,9 +268,9 @@ Expected tasks:
 - `закончить тесты (set)`
 
   - методы ArrayList
-    `containsAll`
-    addAll(Collection<? extends String> c)
-    addAll(int index, Collection<? extends String> c)
-    removeAll(Collection<?> c)
-    retainAll(Collection<?> c)
-    Iterator<String> iterator
+    - `containsAll`
+    - addAll(Collection<? extends String> c)
+    - addAll(int index, Collection<? extends String> c)
+    - `removeAll(Collection<?> c)`
+    - `retainAll(Collection<?> c)`
+    - Iterator<String> iterator
