@@ -42,6 +42,17 @@ public class MyArrayListTest {
         testContainsAllNegative(of("red", "white"), of("black", "red", "white"));
         testContainsAllNegative(new MyArrayList(), of("black", "red", "white"));
 
+        testRemoveAll(of("one", "two", "three"), of("two"));
+        testRemoveAll(of("one", "two", "three"), of("two", "one"));
+
+        testRemoveAllNegative(of("one", "two", "three"), of("four", "five"));
+        testRemoveAllNegative(new MyArrayList(), of("four", "five"));
+
+        testRetainAll(of("one", "two"), of("one"));
+
+        testRetainAllNegative(of("one", "two"), of("one", "two"));
+        testRetainAllNegative(new MyArrayList(), of("one", "two"));
+
     }
 
     private static void testAdd(MyArrayList list, String element) {
@@ -155,6 +166,35 @@ public class MyArrayListTest {
         boolean compare = list.containsAll(list2);
 
         assertFalse(compare);
+
+    }
+
+    private static void testRemoveAll(MyArrayList list, MyArrayList list2) {
+
+        boolean result = list.removeAll(list2);
+
+        assertTrue(result);
+    }
+
+    private static void testRemoveAllNegative(MyArrayList list, MyArrayList list2) {
+
+        boolean result = list.removeAll(list2);
+
+        assertFalse(result);
+    }
+
+    private static void testRetainAll(MyArrayList list, MyArrayList list2) {
+
+        boolean result = list.retainAll(list2);
+
+        assertTrue(result);
+    }
+
+    private static void testRetainAllNegative(MyArrayList list, MyArrayList list2) {
+
+        boolean result = list.retainAll(list2);
+
+        assertFalse(result);
 
     }
 
