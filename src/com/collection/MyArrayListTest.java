@@ -44,11 +44,13 @@ public class MyArrayListTest {
 
         testRemoveAll(of("one", "two", "three"), of("two"));
         testRemoveAll(of("one", "two", "three"), of("two", "one"));
+        testRemoveAll(of("one", "two", "three"), of("two", "one", "four"));
 
         testRemoveAllNegative(of("one", "two", "three"), of("four", "five"));
         testRemoveAllNegative(new MyArrayList(), of("four", "five"));
 
         testRetainAll(of("one", "two"), of("one"));
+        testRetainAll(of("one", "two"), of("one", "six", "seven"));
 
         testRetainAllNegative(of("one", "two"), of("one", "two"));
         testRetainAllNegative(new MyArrayList(), of("one", "two"));
@@ -171,16 +173,32 @@ public class MyArrayListTest {
 
     private static void testRemoveAll(MyArrayList list, MyArrayList list2) {
 
+        int actualSize = list.size();
+
         boolean result = list.removeAll(list2);
+
+        assertFalse(list.containsAll(list2));
+
+        int expectedSize = list.size();
+
+        assertFalse(actualSize == expectedSize);
 
         assertTrue(result);
     }
 
     private static void testRemoveAllNegative(MyArrayList list, MyArrayList list2) {
 
+        int actualSize = list.size();
+
         boolean result = list.removeAll(list2);
 
         assertFalse(result);
+
+        int expectedSize = list.size();
+
+        assertTrue(actualSize == expectedSize);
+
+
     }
 
     private static void testRetainAll(MyArrayList list, MyArrayList list2) {
@@ -192,10 +210,15 @@ public class MyArrayListTest {
 
     private static void testRetainAllNegative(MyArrayList list, MyArrayList list2) {
 
+        int actualSize = list.size();
+
         boolean result = list.retainAll(list2);
 
         assertFalse(result);
 
+        int expectedSize = list.size();
+
+        assertTrue(actualSize == expectedSize);
     }
 
     private static void assertEquals(int expected, int actual) {
