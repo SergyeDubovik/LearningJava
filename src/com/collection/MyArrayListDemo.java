@@ -15,12 +15,9 @@ public class MyArrayListDemo {
         sweets.add("cat");
         sweets.add("grape");
         sweets.add("melon");
-        System.out.println(fruits.containsAll(sweets));
-        System.out.println("first remove: " + fruits.removeAll(sweets));
-        System.out.println("second remove: " + fruits.removeAll(sweets));
+
+        fruits.addAll(sweets);
         System.out.println(fruits);
-        for (String s : fruits) {
-            System.out.println(s);
-        }
+
     }
 }

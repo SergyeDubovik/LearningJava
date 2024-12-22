@@ -173,30 +173,30 @@ public class MyArrayListTest {
 
     private static void testRemoveAll(MyArrayList list, MyArrayList list2) {
 
-        int actualSize = list.size();
+        int sizeBefore = list.size();
 
         boolean result = list.removeAll(list2);
 
         assertFalse(list.containsAll(list2));
 
-        int expectedSize = list.size();
+        int sizeAfter = list.size();
 
-        assertFalse(actualSize == expectedSize);
+        assertFalse(sizeBefore == sizeAfter);
 
         assertTrue(result);
     }
 
     private static void testRemoveAllNegative(MyArrayList list, MyArrayList list2) {
 
-        int actualSize = list.size();
+        int sizeBefore = list.size();
 
         boolean result = list.removeAll(list2);
 
         assertFalse(result);
 
-        int expectedSize = list.size();
+        int sizeAfter = list.size();
 
-        assertTrue(actualSize == expectedSize);
+        assertTrue(sizeBefore == sizeAfter);
 
 
     }
@@ -210,15 +210,15 @@ public class MyArrayListTest {
 
     private static void testRetainAllNegative(MyArrayList list, MyArrayList list2) {
 
-        int actualSize = list.size();
+        int sizeBefore = list.size();
 
         boolean result = list.retainAll(list2);
 
         assertFalse(result);
 
-        int expectedSize = list.size();
+        int sizeAfter = list.size();
 
-        assertTrue(actualSize == expectedSize);
+        assertTrue(sizeBefore == sizeAfter);
     }
 
     private static void assertEquals(int expected, int actual) {

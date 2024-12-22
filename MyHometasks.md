@@ -274,7 +274,7 @@ Expected tasks:
     - `Iterator<String> iterator`
 
 ### 19.12.24
-- дописать тесты на removeAll и retainAll
+- `дописать тесты на removeAll и retainAll`
 - addAll(Collection<? extends String> c)
 - addAll(int index, Collection<? extends String> c)
 - indexOf

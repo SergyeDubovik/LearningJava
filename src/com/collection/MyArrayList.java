@@ -94,7 +94,11 @@ public class MyArrayList implements List<String> {
 
     @Override
     public boolean addAll(Collection<? extends String> c) {
-        throw new UnsupportedOperationException();
+        expandArray();
+        Object[] list = c.toArray(new String[0]);
+        System.arraycopy(list, 0, array, size, list.length);
+        size += list.length;
+        return true;
     }
 
     @Override
