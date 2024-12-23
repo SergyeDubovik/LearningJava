@@ -94,8 +94,10 @@ public class MyArrayList implements List<String> {
 
     @Override
     public boolean addAll(Collection<? extends String> c) {
-        expandArray();
-        Object[] list = c.toArray(new String[0]);
+        String[] list = (String[])c.toArray();
+        if (size + list.length > array.length) {
+            expandArray();
+        }
         System.arraycopy(list, 0, array, size, list.length);
         size += list.length;
         return true;
@@ -221,7 +223,7 @@ public class MyArrayList implements List<String> {
 
     private void expandArray() {
         if (size == array.length) {
-            String[] newArray = new String[(array.length + 1) * 2];
+            String[] newArray = new String[(array.length + 1) * 3];
             System.arraycopy(array, 0, newArray, 0, array.length);
             array = newArray;
         }
