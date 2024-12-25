@@ -94,8 +94,8 @@ public class MyArrayList implements List<String> {
 
     @Override
     public boolean addAll(Collection<? extends String> c) {
-        String[] list = (String[])c.toArray();
-        if (size + list.length > array.length) {
+        String[] list = (String[]) c.toArray();
+        if (size + list.length <= array.length) {
             expandArray();
         }
         System.arraycopy(list, 0, array, size, list.length);
@@ -105,7 +105,15 @@ public class MyArrayList implements List<String> {
 
     @Override
     public boolean addAll(int index, Collection<? extends String> c) {
-        throw new UnsupportedOperationException();
+        if (index < 0 || index > size) {
+            throw new IndexOutOfBoundsException();
+        }
+        String[] list = (String[]) c.toArray();
+        expandArray();
+        System.arraycopy(array, index, array, index + list.length, size - index);
+        size += list.length;
+        System.arraycopy(list, 0, array, index, list.length);
+        return true;
     }
 
     @Override
@@ -122,7 +130,7 @@ public class MyArrayList implements List<String> {
     }
 
     /**
-     *    remove all elements that not contains in second list
+     * remove all elements that not contains in second list
      */
     @Override
     public boolean retainAll(Collection<?> c) {
@@ -157,7 +165,7 @@ public class MyArrayList implements List<String> {
 
     @Override
     public String set(int index, String element) {
-            array[index] = element;
+        array[index] = element;
         return array[index];
     }
 
@@ -222,8 +230,8 @@ public class MyArrayList implements List<String> {
     }
 
     private void expandArray() {
-        if (size == array.length) {
-            String[] newArray = new String[(array.length + 1) * 3];
+        if (size <= array.length) {
+            String[] newArray = new String[(array.length + 1) * 2];
             System.arraycopy(array, 0, newArray, 0, array.length);
             array = newArray;
         }

@@ -16,7 +16,7 @@ public class MyArrayListDemo {
         sweets.add("grape");
         sweets.add("melon");
 
-        fruits.addAll(sweets);
+        fruits.addAll(0, sweets);
         System.out.println(fruits);
 
     }
