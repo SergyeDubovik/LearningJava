@@ -18,6 +18,9 @@ public class MyArrayListDemo {
 
         fruits.addAll(0, sweets);
         System.out.println(fruits);
+        System.out.println(fruits.indexOf("cat"));
+        System.out.println(fruits.lastIndexOf("melon"));
+        System.out.println(fruits.indexOf("melon"));
 
     }
 }

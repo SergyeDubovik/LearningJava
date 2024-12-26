@@ -206,12 +206,22 @@ public class MyArrayList implements List<String> {
 
     @Override
     public int indexOf(Object o) {
-        throw new UnsupportedOperationException();
+        for (int i = 0; i < size; i++) {
+            if (o.equals(array[i])) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     @Override
     public int lastIndexOf(Object o) {
-        throw new UnsupportedOperationException();
+        for (int i = size; i >= 0; i--) {
+            if (o.equals(array[i])) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     @Override
