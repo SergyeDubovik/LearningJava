@@ -206,6 +206,13 @@ public class MyArrayList implements List<String> {
 
     @Override
     public int indexOf(Object o) {
+        if (o == null) {
+            for (int i = 0; i < size; i++) {
+                if (array[i] == null) {
+                    return i;
+                }
+            }
+        }
         for (int i = 0; i < size; i++) {
             if (o.equals(array[i])) {
                 return i;
@@ -216,6 +223,13 @@ public class MyArrayList implements List<String> {
 
     @Override
     public int lastIndexOf(Object o) {
+        if (o == null) {
+            for (int i = size; i >= 0; i--) {
+                if (array[i] == null) {
+                    return i;
+                }
+            }
+        }
         for (int i = size; i >= 0; i--) {
             if (o.equals(array[i])) {
                 return i;
@@ -236,7 +250,10 @@ public class MyArrayList implements List<String> {
 
     @Override
     public List<String> subList(int fromIndex, int toIndex) {
-        throw new UnsupportedOperationException();
+        int subListSize = toIndex - fromIndex;
+        String[] subList = new String[subListSize];
+        System.arraycopy(array, fromIndex, subList, 0, subListSize);
+        return Arrays.asList(subList);
     }
 
     private void expandArray() {
