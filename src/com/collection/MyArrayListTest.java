@@ -1,5 +1,7 @@
 package com.collection;
 
+import java.util.List;
+
 public class MyArrayListTest {
     public static void main(String[] args) {
         testAdd(emptyList(), "apple");
@@ -54,6 +56,10 @@ public class MyArrayListTest {
 
         testRetainAllNegative(of("one", "two"), of("one", "two"));
         testRetainAllNegative(new MyArrayList(), of("one", "two"));
+
+        testSubList(of("one", "two", "three"), 0, 2);
+        testSubList(of("one", "two", "three"), 1, 3);
+        testSubList(of("one", "two", "three"), 0, 3);
 
     }
 
@@ -177,7 +183,9 @@ public class MyArrayListTest {
 
         boolean result = list.removeAll(list2);
 
-        assertFalse(list.containsAll(list2));
+        for (String s : list2) {
+            assertFalse(list.contains(s));
+        }
 
         int sizeAfter = list.size();
 
@@ -219,6 +227,16 @@ public class MyArrayListTest {
         int sizeAfter = list.size();
 
         assertTrue(sizeBefore == sizeAfter);
+    }
+
+    private static void testSubList(MyArrayList list, int fromIndex, int toIndex) {
+
+        int expectedSize = toIndex - fromIndex;
+
+        List<String> subList = list.subList(fromIndex, toIndex);
+
+        assertEquals(expectedSize, subList.size());
+        assertTrue(list.containsAll(subList));
     }
 
     private static void assertEquals(int expected, int actual) {

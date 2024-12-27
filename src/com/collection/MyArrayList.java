@@ -56,7 +56,7 @@ public class MyArrayList implements List<String> {
 
     @Override
     public <T> T[] toArray(T[] a) {
-        throw new UnsupportedOperationException();
+        return (T[]) Arrays.copyOf(array, size);
     }
 
     @Override
@@ -65,7 +65,7 @@ public class MyArrayList implements List<String> {
 //        если нет, то создаем увеличенный массив, копируем элементы старого массива в новый
 //        и добавляем элемент и сдвигаем указатель
 //        если да - то добавляем элемент и сдвигаем указатель
-        expandArray();
+        expandArray(1);
         array[size] = string;
         size += 1;
         return true;
@@ -94,10 +94,11 @@ public class MyArrayList implements List<String> {
 
     @Override
     public boolean addAll(Collection<? extends String> c) {
-        String[] list = (String[]) c.toArray();
-        if (size + list.length <= array.length) {
-            expandArray();
+        if (c.isEmpty()) {
+            return false;
         }
+        String[] list = c.toArray(new String[0]);
+        expandArray(c.size());
         System.arraycopy(list, 0, array, size, list.length);
         size += list.length;
         return true;
@@ -108,8 +109,11 @@ public class MyArrayList implements List<String> {
         if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException();
         }
-        String[] list = (String[]) c.toArray();
-        expandArray();
+        if (c.isEmpty()) {
+            return false;
+        }
+        String[] list = c.toArray(new String[0]);
+        expandArray(c.size());
         System.arraycopy(array, index, array, index + list.length, size - index);
         size += list.length;
         System.arraycopy(list, 0, array, index, list.length);
@@ -174,7 +178,7 @@ public class MyArrayList implements List<String> {
         if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException();
         }
-        expandArray();
+        expandArray(1);
         System.arraycopy(array, index, array, index + 1, size - index);
         array[index] = element;
         size++;
@@ -206,15 +210,8 @@ public class MyArrayList implements List<String> {
 
     @Override
     public int indexOf(Object o) {
-        if (o == null) {
-            for (int i = 0; i < size; i++) {
-                if (array[i] == null) {
-                    return i;
-                }
-            }
-        }
         for (int i = 0; i < size; i++) {
-            if (o.equals(array[i])) {
+            if (Objects.equals(o, array[i])) {
                 return i;
             }
         }
@@ -223,15 +220,8 @@ public class MyArrayList implements List<String> {
 
     @Override
     public int lastIndexOf(Object o) {
-        if (o == null) {
-            for (int i = size; i >= 0; i--) {
-                if (array[i] == null) {
-                    return i;
-                }
-            }
-        }
-        for (int i = size; i >= 0; i--) {
-            if (o.equals(array[i])) {
+        for (int i = size - 1; i >= 0; i--) {
+            if (Objects.equals(o, array[i])) {
                 return i;
             }
         }
@@ -256,10 +246,10 @@ public class MyArrayList implements List<String> {
         return Arrays.asList(subList);
     }
 
-    private void expandArray() {
-        if (size <= array.length) {
-            String[] newArray = new String[(array.length + 1) * 2];
-            System.arraycopy(array, 0, newArray, 0, array.length);
+    private void expandArray(int count) {
+        if (size + count > array.length) {
+            String[] newArray = new String[(array.length + count) * 2];
+            System.arraycopy(array, 0, newArray, 0, size);
             array = newArray;
         }
     }

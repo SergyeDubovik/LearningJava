@@ -1,5 +1,6 @@
 package com.collection;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MyArrayListDemo {
@@ -17,12 +18,15 @@ public class MyArrayListDemo {
         sweets.add("grape");
         sweets.add("melon");
 
-        fruits.addAll(0, sweets);
+//        fruits.addAll(0, sweets);
+        sweets.addAll(fruits);
+        System.out.println(sweets);
         System.out.println(fruits);
         System.out.println(fruits.indexOf("cat"));
         System.out.println(fruits.lastIndexOf("melon"));
         System.out.println(fruits.indexOf(null));
         System.out.println(fruits.subList(1, 5));
+
 
     }
 }
