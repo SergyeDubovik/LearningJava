@@ -275,11 +275,11 @@ Expected tasks:
 
 ### 19.12.24
 - `дописать тесты на removeAll и retainAll`
-- addAll(Collection<? extends String> c)
-- addAll(int index, Collection<? extends String> c)
-- indexOf
-- lastIndexOf
-- subList
-- добавить тесты ко всем методам
+- `addAll(Collection<? extends String> c)`
+- `addAll(int index, Collection<? extends String> c)`
+- `indexOf`
+- `lastIndexOf`
+- `subList`
 
-доработать тест ретеин и все остальные
+### 27.12.24
+- добавить тесты ко всем методам и доработать тест retainAll

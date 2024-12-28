@@ -211,9 +211,8 @@ public class MyArrayListTest {
 
     private static void testRetainAll(MyArrayList list, MyArrayList list2) {
 
-        boolean result = list.retainAll(list2);
+        assertTrue(list.retainAll(list2));
 
-        assertTrue(result);
     }
 
     private static void testRetainAllNegative(MyArrayList list, MyArrayList list2) {
