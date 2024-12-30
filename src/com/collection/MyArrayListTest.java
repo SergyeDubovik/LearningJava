@@ -53,6 +53,7 @@ public class MyArrayListTest {
 
         testRetainAll(of("one", "two"), of("one"));
         testRetainAll(of("one", "two"), of("one", "six", "seven"));
+        testRetainAll(of("one", "two", "three"), of("four", "five", "six"));
 
         testRetainAllNegative(of("one", "two"), of("one", "two"));
         testRetainAllNegative(new MyArrayList(), of("one", "two"));
@@ -60,6 +61,19 @@ public class MyArrayListTest {
         testSubList(of("one", "two", "three"), 0, 2);
         testSubList(of("one", "two", "three"), 1, 3);
         testSubList(of("one", "two", "three"), 0, 3);
+
+        testAddAll(of("one", "two"), of("three", "four"));
+        testAddAll(emptyList(), of("one", "two"));
+
+        testAddAllIndex(of("one"), of("two"), 0);
+        testAddAllIndex(of("one", "three"), of("two"), 1);
+        testAddAllIndex(of("one", "three", null), of("two", "four", "six"), 2);
+
+        testIndexOf(of("one", "two"), "two");
+        testIndexOf(of("one", "two"), "six");
+
+        testLastIndexOf(of("x", "y", "z"), "z");
+        testLastIndexOf(of("x", "y", "z"), "w");
 
     }
 
@@ -213,6 +227,9 @@ public class MyArrayListTest {
 
         assertTrue(list.retainAll(list2));
 
+        for (String s : list) {
+            assertTrue(list2.contains(s));
+        }
     }
 
     private static void testRetainAllNegative(MyArrayList list, MyArrayList list2) {
@@ -236,6 +253,40 @@ public class MyArrayListTest {
 
         assertEquals(expectedSize, subList.size());
         assertTrue(list.containsAll(subList));
+    }
+
+    private static void testAddAll(MyArrayList list, MyArrayList list2) {
+
+        int expectedSize = list.size() + list2.size();
+
+        list.addAll(list2);
+
+        assertEquals(expectedSize, list.size());
+
+        assertTrue(list.addAll(list2));
+
+    }
+
+    private static void testAddAllIndex(MyArrayList list, MyArrayList list2, int index) {
+
+        int expectedSize = list.size() + list2.size();
+
+        list.addAll(index, list2);
+
+        assertEquals(expectedSize, list.size());
+
+    }
+
+    private static void testIndexOf(MyArrayList list, String string) {
+
+        list.indexOf(string);
+
+    }
+
+    private static void testLastIndexOf(MyArrayList list, String string) {
+
+        list.lastIndexOf(string);
+
     }
 
     private static void assertEquals(int expected, int actual) {
