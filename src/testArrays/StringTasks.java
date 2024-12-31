@@ -1,6 +1,8 @@
 package testArrays;
 
-import java.util.Arrays;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class StringTasks {
     /*
@@ -34,6 +36,8 @@ public class StringTasks {
         String given = "17809";
         System.out.println(convertStringToInt(given));
         System.out.println(parseInt(given));
+        System.out.println("--------------");
+        calculateLettersCountStats();
     }
 
     public static void printIfContains(String[] strings, char symbol) {
@@ -260,6 +264,54 @@ public class StringTasks {
 
     public static int parseInt(String s) {
         return Integer.parseInt(s);
+    }
+
+    // есть строка, которая содержит текст, надо подсчитать статистику частоты использования слов разной длины,
+    // слово из скольки букв чаще всего встречается в тексте
+
+    public static void calculateLettersCountStats() {
+        String text = "Хіба я що знаю? Хіба я знаю... Хіба я можу впевненим бути, що не відхиляться двері... " +
+                " отак трошки, з легким скрипінням, і з невідомої темряви, такої глибокої та безконечної, " +
+                "не почнуть виходити люди... всі ті, що складали у моє серце, як до власного сховку, свої надії, " +
+                "гнів і страждання або криваву жорстокість звіра. Всі ті, що я не можу розминутись із ними, " +
+                "що мене утомили... Що ж дивного в тім, коли вони ще раз прийдуть... От я їх вже бачу. " +
+                "Ба, ба! Як вас багато... Се ви, що з вас витекла кров в маленьку дірку від солдатської кульки," +
+                " а се ви... сухі препарати; вас завивали у білі мішки, гойдали на мотузках в повітрі," +
+                " а потому складали в погано прикриті ями, звідки вас вигрібали собаки... " +
+                "Ви дивитесь на мене з докором — і ваша правда. " +
+                "Знаєте, я раз читав, як вас повішали цілих дванадцять… " +
+                "Цілих дванадцять... і позіхнув. А другий раз звістку про ряд білих мішків заїв стиглою сливою. " +
+                "Так взяв, знаєте, в пальці чудову сочисту сливу... і почув в роті приємний солодкий смак... " +
+                "Ви бачите, я навіть не червонію, лице моє біле, як і у вас, бо жах висмоктав з мене всю кров. " +
+                "Я не маю вже краплі гарячої крові й для тих живих мертвяків, серед яких ви йдете, як кривава мара. " +
+                "Проходьте! Я утомився." +
+                "А люди йдуть. За одним другий і третій, і так без кінця. Вороги й друзі, " +
+                "близькі й сторонні — і всі кричать у мої вуха криком свого життя або своєї смерті, " +
+                "і всі лишають на душі моїй сліди своїх підошов. Затулю вуха, замкну свою душу і буду кричати: " +
+                "тут вхід не вільний!";
+        Map<Integer, Integer> stats = new HashMap<>();
+        String[] words = text.split(" ");
+        for (String word : words) {
+            int wordLength = word.length();
+            if (stats.containsKey(wordLength)) {
+                int value = stats.get(wordLength);
+                stats.put(wordLength, value + 1);
+            } else {
+                stats.put(wordLength, 1);
+            }
+        }
+        for (Integer k : stats.keySet()) {
+            System.out.println(k + " = " + stats.get(k));
+        }
+        int maxValue = Integer.MIN_VALUE;
+        int key = 0;
+        for (Integer k : stats.keySet()) {
+            if (stats.get(k) > maxValue) {
+                maxValue = stats.get(k);
+                key = k;
+            }
+        }
+        System.out.println("This text contains frequently word " + key + " = " + maxValue);
     }
 
 }

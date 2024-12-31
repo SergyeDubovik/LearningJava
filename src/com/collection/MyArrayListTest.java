@@ -69,11 +69,13 @@ public class MyArrayListTest {
         testAddAllIndex(of("one", "three"), of("two"), 1);
         testAddAllIndex(of("one", "three", null), of("two", "four", "six"), 2);
 
-        testIndexOf(of("one", "two"), "two");
-        testIndexOf(of("one", "two"), "six");
+        testIndexOf(of("one", "two"), "two", 1);
+        testIndexOf(of("one", "two"), "six", -1);
+        testIndexOf(of("one", "two", "one", "four"), "one", 0);
 
-        testLastIndexOf(of("x", "y", "z"), "z");
-        testLastIndexOf(of("x", "y", "z"), "w");
+        testLastIndexOf(of("x", "y", "z"), "z", 2);
+        testLastIndexOf(of("x", "y", "z"), "w", -1);
+        testLastIndexOf(of("x", "y", "y", "z"), "y", 2);
 
     }
 
@@ -163,7 +165,6 @@ public class MyArrayListTest {
     }
 
     private static void testSet(MyArrayList list, int index, String element) {
-
         int expectedSize = list.size();
 
         list.set(index, element);
@@ -172,27 +173,21 @@ public class MyArrayListTest {
 
         assertEquals(expectedSize, list.size());
         assertEquals(expectedResult, element);
-
     }
 
     private static void testContainsAll(MyArrayList list, MyArrayList list2) {
-
         boolean compare = list.containsAll(list2);
 
         assertTrue(compare);
-
     }
 
     private static void testContainsAllNegative(MyArrayList list, MyArrayList list2) {
-
         boolean compare = list.containsAll(list2);
 
         assertFalse(compare);
-
     }
 
     private static void testRemoveAll(MyArrayList list, MyArrayList list2) {
-
         int sizeBefore = list.size();
 
         boolean result = list.removeAll(list2);
@@ -204,27 +199,21 @@ public class MyArrayListTest {
         int sizeAfter = list.size();
 
         assertFalse(sizeBefore == sizeAfter);
-
         assertTrue(result);
     }
 
     private static void testRemoveAllNegative(MyArrayList list, MyArrayList list2) {
-
         int sizeBefore = list.size();
 
         boolean result = list.removeAll(list2);
 
-        assertFalse(result);
-
         int sizeAfter = list.size();
 
+        assertFalse(result);
         assertTrue(sizeBefore == sizeAfter);
-
-
     }
 
     private static void testRetainAll(MyArrayList list, MyArrayList list2) {
-
         assertTrue(list.retainAll(list2));
 
         for (String s : list) {
@@ -233,15 +222,13 @@ public class MyArrayListTest {
     }
 
     private static void testRetainAllNegative(MyArrayList list, MyArrayList list2) {
-
         int sizeBefore = list.size();
 
         boolean result = list.retainAll(list2);
 
-        assertFalse(result);
-
         int sizeAfter = list.size();
 
+        assertFalse(result);
         assertTrue(sizeBefore == sizeAfter);
     }
 
@@ -256,37 +243,32 @@ public class MyArrayListTest {
     }
 
     private static void testAddAll(MyArrayList list, MyArrayList list2) {
-
         int expectedSize = list.size() + list2.size();
 
         list.addAll(list2);
 
         assertEquals(expectedSize, list.size());
-
-        assertTrue(list.addAll(list2));
-
+        assertTrue(list.containsAll(list2));
     }
 
     private static void testAddAllIndex(MyArrayList list, MyArrayList list2, int index) {
-
         int expectedSize = list.size() + list2.size();
 
         list.addAll(index, list2);
 
         assertEquals(expectedSize, list.size());
-
     }
 
-    private static void testIndexOf(MyArrayList list, String string) {
+    private static void testIndexOf(MyArrayList list, String string, int expectedIndex) {
+        int index = list.indexOf(string);
 
-        list.indexOf(string);
-
+        assertEquals(expectedIndex, index);
     }
 
-    private static void testLastIndexOf(MyArrayList list, String string) {
+    private static void testLastIndexOf(MyArrayList list, String string, int expectedIndex) {
+        int index = list.lastIndexOf(string);
 
-        list.lastIndexOf(string);
-
+        assertEquals(expectedIndex, index);
     }
 
     private static void assertEquals(int expected, int actual) {
