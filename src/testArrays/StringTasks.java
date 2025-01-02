@@ -38,6 +38,7 @@ public class StringTasks {
         System.out.println(parseInt(given));
         System.out.println("--------------");
         calculateLettersCountStats();
+        calculateLetterPercent();
     }
 
     public static void printIfContains(String[] strings, char symbol) {
@@ -311,7 +312,34 @@ public class StringTasks {
                 key = k;
             }
         }
-        System.out.println("This text contains frequently word " + key + " = " + maxValue);
+        System.out.println("This text contains the most frequently word " + key + " = " + maxValue);
+    }
+
+    // посчитать статистику частоты встречания букв в тексте в процентах
+
+    public static void calculateLetterPercent() {
+        String text = "I will eat last year's bread tomorrow";
+        Map<Character, Integer> stats = new HashMap<>();
+        int totalLetters = 0;
+        for (char symbol : text.toCharArray()) {
+            if (Character.isLetter(symbol)) {
+                stats.put(symbol, stats.getOrDefault(symbol, 0) + 1);
+                totalLetters++;
+            }
+        }
+        for (Character k : stats.keySet()) {
+            float percent = ((float)stats.get(k) / totalLetters) * 100;
+            System.out.println(k + " - " + percent + " %");
+        }
+        int maxValue = Integer.MIN_VALUE;
+        int key = 0;
+        for (Character k : stats.keySet()) {
+            if (stats.get(k) > maxValue) {
+                maxValue = stats.get(k);
+                key = k;
+            }
+        }
+        System.out.println("the most frequently letter in this text is: " + (char) key + " - " + maxValue + " times");
     }
 
 }
