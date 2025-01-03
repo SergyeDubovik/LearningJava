@@ -323,23 +323,24 @@ public class StringTasks {
         int totalLetters = 0;
         for (char symbol : text.toCharArray()) {
             if (Character.isLetter(symbol)) {
-                stats.put(symbol, stats.getOrDefault(symbol, 0) + 1);
+                stats.put(Character.toLowerCase(symbol), stats.getOrDefault(symbol, 0) + 1);
                 totalLetters++;
             }
         }
+        System.out.println('\n' + "letter stats count in the text:");
         for (Character k : stats.keySet()) {
             float percent = ((float)stats.get(k) / totalLetters) * 100;
             System.out.println(k + " - " + percent + " %");
         }
         int maxValue = Integer.MIN_VALUE;
-        int key = 0;
+        char key = 0;
         for (Character k : stats.keySet()) {
             if (stats.get(k) > maxValue) {
                 maxValue = stats.get(k);
                 key = k;
             }
         }
-        System.out.println("the most frequently letter in this text is: " + (char) key + " - " + maxValue + " times");
+        System.out.println("the most frequently used letter in this text is: " + key + " - " + maxValue + " times");
     }
 
 }
