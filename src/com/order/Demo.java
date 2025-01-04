@@ -2,14 +2,16 @@ package com.order;
 
 public class Demo {
     public static void main(String[] args) {
-        Order order = new Order("watch");
-        Order order2 = new Order("shirt");
-        Order order3 = new Order("shirt");
-        Order order4 = new Order("trousers");
+        Order order = new Order();
+        order.addProducts("laptop", 2);
+        order.addProducts("headphones", 1);
         System.out.println(order);
+        Order order2 = new Order();
+        order2.addProducts("lamp", 3);
+        order2.addProducts("battery", 4);
+        order2.addProducts("power bank", 1);
         System.out.println(order2);
-        System.out.println(order4);
-        int random = (int)(Math.random() + 1);
-
+        order.clearBasket();
+        System.out.println(order);
     }
 }
