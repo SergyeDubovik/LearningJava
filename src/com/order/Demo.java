@@ -13,5 +13,8 @@ public class Demo {
         System.out.println(order2);
         order.clearBasket();
         System.out.println(order);
+        order2.removeProduct("lamp", 1);
+        System.out.println(order2);
+
     }
 }

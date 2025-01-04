@@ -6,33 +6,58 @@ import java.util.Map;
 public class Order {
     private static int nextId = 1;
     private final int id;
-    private final Map<String, Integer> product;
-
+    private final Map<String, Integer> products;
 
     public Order() {
         id = nextId++;
-        product = new HashMap<>();
+        products = new HashMap<>();
     }
 
     public void addProducts(String item, int quantity) {
         if (quantity <= 0) {
             throw new IllegalArgumentException("quantity must be more than zero!");
         }
-        product.put(item, product.getOrDefault(item, 0) + 1);
+        products.put(item, products.getOrDefault(item, 0) + quantity);
+    }
+
+    public void removeProduct(String item) {
+        products.remove(item);
+    }
+
+    public void removeProduct(String item, int quantity) {
+        Integer value = products.get(item);
+        if (value == null) {
+            throw new IllegalArgumentException("there is no item found");
+        }
+        if (value - quantity < 0) {
+            throw new IllegalArgumentException("quantity must be more than zero!");
+        }
+        if (value == quantity) {
+            removeProduct(item);
+            return;
+        }
+        products.put(item, value - quantity);
     }
 
     public void clearBasket() {
-        product.clear();
+        products.clear();
     }
 
     @Override
     public String toString() {
-        if (product.isEmpty()) {
+        if (products.isEmpty()) {
             return "basket is empty";
         }
-        return "Order{" +
-                "id=" + id +
-                ", product=" + product +
-                '}';
+        StringBuilder sb = new StringBuilder("Order # ");
+        sb.append(id);
+        sb.append(", products - ");
+        for (String s : products.keySet()) {
+            sb.append("Name: ");
+            sb.append(s);
+            sb.append(", quantity: ");
+            sb.append(products.get(s));
+            sb.append("; ");
+        }
+        return sb.toString();
     }
 }
