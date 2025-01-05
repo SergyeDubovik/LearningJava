@@ -271,7 +271,7 @@ Expected tasks:
     - `containsAll`
     - `removeAll(Collection<?> c)`
     - `retainAll(Collection<?> c)`
-      - `Iterator<String> iterator`2`1
+    - `Iterator<String> iterator`
 
 ### 19.12.24
 - `дописать тесты на removeAll и retainAll`
@@ -294,6 +294,7 @@ Expected tasks:
 1. дано: список целых чисел, задача - посчитать кол-во уникальных чисел в списке
    пример: 1 1 2 2 5 7 7 7 (кол-во уникальных - это 4)
 
-2. Given an integer list numbers, return true if any value appears at least twice in the list, and return false if every element is distinct.
+2. Given an integer list numbers, return true if any value appears at least twice in the list, 
+   and return false if every element is distinct.
 
 3. посмотреть код checkers с гитхаба https://github.com/MckennaCisler/checkers-java , потестить

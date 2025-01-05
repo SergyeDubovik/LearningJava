@@ -1,9 +1,7 @@
 package com.collection;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+
 public class MapTasks {
     public static void main(String[] args) {
         Map<String, Integer> grades = new HashMap<>();
@@ -17,15 +15,22 @@ public class MapTasks {
         numbers.add(7);
         numbers.add(5);
         numbers.add(5);
+        numbers.add(5);
+        numbers.add(5);
         numbers.add(1);
+        numbers.add(1);
+        numbers.add(1);
+        numbers.add(99);
         numbers.add(7);
         numbers.add(3);
         numbers.add(3);
-        numbers.add(12);
-        numbers.add(1);
-        numbers.add(19);
-        numbers.add(18);
-        System.out.println(calculateUniqueNumbersAmount(numbers));
+        numbers.add(5);
+        numbers.add(11);
+        numbers.add(5);
+        numbers.add(7);
+        numbers.add(3);
+        System.out.println(calculateNonRepeatingNumbersAmount(numbers));
+        System.out.println(countUniqueNumbers(numbers));
     }
 
 //    есть школьный табель в виде мапы: предмет - оценка, посчитать средний балл успеваемости
@@ -40,7 +45,7 @@ public class MapTasks {
 
 //    дано: список целых чисел, задача - посчитать кол-во неповторяющихся чисел в списке
 
-    private static int calculateUniqueNumbersAmount(List<Integer> numbers) {
+    private static int calculateNonRepeatingNumbersAmount(List<Integer> numbers) {
         Map<Integer, Integer> occurrence = new HashMap<>();
         for (Integer i : numbers) {
             occurrence.put(i, occurrence.getOrDefault(i, 0) + 1);
@@ -52,6 +57,17 @@ public class MapTasks {
             }
         }
         return res;
+    }
+
+//    дано: список целых чисел, задача - посчитать кол-во уникальных чисел в списке
+//   пример: 1 1 2 2 5 7 7 7 (кол-во уникальных - это 4)
+
+    private static int countUniqueNumbers(List<Integer> numbers) {
+        Map<Integer, Integer> numbersFromList = new HashMap<>();
+        for (Integer i : numbers) {
+            numbersFromList.put(i, numbersFromList.getOrDefault(i, 0) + 1);
+        }
+        return numbersFromList.size();
     }
 
 }
