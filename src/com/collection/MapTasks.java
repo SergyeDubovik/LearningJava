@@ -29,6 +29,7 @@ public class MapTasks {
         numbers.add(5);
         numbers.add(7);
         numbers.add(3);
+        numbers.add(96);
         System.out.println(calculateNonRepeatingNumbersAmount(numbers));
         System.out.println(countUniqueNumbers(numbers));
     }
@@ -65,7 +66,7 @@ public class MapTasks {
     private static int countUniqueNumbers(List<Integer> numbers) {
         Map<Integer, Integer> numbersFromList = new HashMap<>();
         for (Integer i : numbers) {
-            numbersFromList.put(i, numbersFromList.getOrDefault(i, 0) + 1);
+            numbersFromList.put(i, numbersFromList.get(i));
         }
         return numbersFromList.size();
     }
