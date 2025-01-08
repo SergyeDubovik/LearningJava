@@ -291,10 +291,15 @@ Expected tasks:
  3. добавить тесты на корзину (опционально)
 
 ### 04.01.25
-1. дано: список целых чисел, задача - посчитать кол-во уникальных чисел в списке
-   пример: 1 1 2 2 5 7 7 7 (кол-во уникальных - это 4)
+1. `дано: список целых чисел, задача - посчитать кол-во уникальных чисел в списке
+   пример: 1 1 2 2 5 7 7 7 (кол-во уникальных - это 4)`
 
-2. Given an integer list numbers, return true if any value appears at least twice in the list, 
-   and return false if every element is distinct.
+2. `Given an integer list numbers, return true if any value appears at least twice in the list, 
+   and return false if every element is distinct.`
 
-3. посмотреть код checkers с гитхаба https://github.com/MckennaCisler/checkers-java , потестить
+3. `посмотреть код checkers с гитхаба https://github.com/MckennaCisler/checkers-java , потестить`
+
+### 08.01.25
+1. добавить третью опцию в шашки - ии против ии
+2. потестить, понаходить ошибки
+3. добавить вначале вопрос о размере поля
