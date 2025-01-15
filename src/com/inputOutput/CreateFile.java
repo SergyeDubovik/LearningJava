@@ -14,7 +14,7 @@ public class CreateFile {
 
         writeToFile(text, file);
         readFromFile(file);
-        sortInputArray(5);
+        sortInputArray();
 
     }
 //        написать программу, которая умеет записывать в файл, то что я ввел с клавиатуры
@@ -37,23 +37,26 @@ public class CreateFile {
 
 //    написать программу, котоая читает массив чисел с клавы, сортирует их и печатает
 
-    private static void sortInputArray(int size) {
+    private static void sortInputArray() {
         Scanner sc = new Scanner(System.in);
-        int[] numbs = new int[size];
+        System.out.println("input array size: ");
+        int size = sc.nextInt();
+        System.out.println("input " + size + " numbers below:");
+        int[] numbers = new int[size];
         for (int i = 0; i < size; i++) {
-            numbs[i] = sc.nextInt();
+            numbers[i] = sc.nextInt();
         }
         System.out.println("Sorted array: ");
         int tmp;
-        for (int j = 1; j < size; j++) {
-            for (int u = j; u > 0; u--) {
-                if(numbs[u] > numbs[u - 1]) {
-                    tmp = numbs[u];
-                    numbs[u] = numbs[u - 1];
-                    numbs[u - 1] = tmp;
+        for (int i = 1; i < size; i++) {
+            for (int j = i; j > 0; j--) {
+                if(numbers[j] > numbers[j - 1]) {
+                    tmp = numbers[j];
+                    numbers[j] = numbers[j - 1];
+                    numbers[j - 1] = tmp;
                 }
             }
         }
-        printArray(numbs);
+        printArray(numbers);
     }
 }

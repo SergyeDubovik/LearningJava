@@ -1,6 +1,7 @@
 package testArrays;
 
 
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,8 +38,9 @@ public class StringTasks {
         System.out.println(convertStringToInt(given));
         System.out.println(parseInt(given));
         System.out.println("--------------");
+        File someText = new File("C:/users/Сергей/Desktop/some text.txt");
         calculateLettersCountStats();
-        calculateLetterPercent();
+        calculateLetterPercent(someText);
     }
 
     public static void printIfContains(String[] strings, char symbol) {
@@ -317,11 +319,20 @@ public class StringTasks {
 
     // посчитать статистику частоты встречания букв в тексте в процентах
 
-    public static void calculateLetterPercent() {
-        String text = "I will eat last year's bread tomorrow";
+    public static void calculateLetterPercent(File file) {
+        String text;
+        StringBuilder sb = new StringBuilder();
+        try (InputStream inStr = new FileInputStream(file)) {
+            LineNumberReader nr = new LineNumberReader(new InputStreamReader(inStr));
+            while ((text = nr.readLine()) != null) {
+                sb.append(text);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         Map<Character, Integer> stats = new HashMap<>();
         int totalLetters = 0;
-        for (char symbol : text.toCharArray()) {
+        for (char symbol : sb.toString().toCharArray()) {
             if (Character.isLetter(symbol)) {
                 stats.put(Character.toLowerCase(symbol), stats.getOrDefault(symbol, 0) + 1);
                 totalLetters++;
