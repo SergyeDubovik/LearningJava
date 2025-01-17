@@ -3,6 +3,7 @@ package com.inputOutput;
 import java.io.*;
 import java.util.Scanner;
 
+import static testArrays.TaskArrays.bubbleSort;
 import static testArrays.TaskArrays.printArray;
 
 public class CreateFile {
@@ -47,16 +48,7 @@ public class CreateFile {
             numbers[i] = sc.nextInt();
         }
         System.out.println("Sorted array: ");
-        int tmp;
-        for (int i = 1; i < size; i++) {
-            for (int j = i; j > 0; j--) {
-                if(numbers[j] > numbers[j - 1]) {
-                    tmp = numbers[j];
-                    numbers[j] = numbers[j - 1];
-                    numbers[j - 1] = tmp;
-                }
-            }
-        }
+        bubbleSort(numbers);
         printArray(numbers);
     }
 }

@@ -2,7 +2,6 @@ package testArrays;
 
 import java.util.Random;
 
-import static testArrays.Temp.insertionSort;
 import static testArrays.Temp.printObjectArray;
 import static testArrays.ThreeDimArray.print2DArrayInt;
 
@@ -171,7 +170,7 @@ public class TaskArrays {
             если он больше, то мы меняем местами элементы эти
 
      */
-    private static void sort() {
+    private static void insertionSort() {
         int[] array4 = {2, 7, 42, 3, 33, 5};
         int temp;
         for (int i = 1; i < array4.length; i++) {
@@ -436,7 +435,7 @@ public class TaskArrays {
         в двумерном массиве упорядочить по возрастанию элементы второй строки
      */
     public static int[][] sortSecondRow(int[][] array) {
-        insertionSort(array[1]);
+        Temp.insertionSort(array[1]);
 //        int temp;
 //        for (int i = 1; i < array[1].length; i++) {
 //            for (int j = i; j > 0; j--) {
