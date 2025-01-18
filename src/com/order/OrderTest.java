@@ -4,7 +4,7 @@ import java.util.Map;
 
 public class OrderTest {
     public static void main(String[] args) {
-
+        testAddProduct(Map.of("Banana", 1), "Banana", "Banana");
 
     }
 
