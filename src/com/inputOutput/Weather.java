@@ -2,6 +2,7 @@ package com.inputOutput;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Weather {
@@ -19,7 +20,8 @@ public class Weather {
 
     public static void main(String[] args) throws IOException {
         File file = new File("C:/Users/Сергей/Downloads/open-meteo-40.74N73.91W9m.csv");
-        calculateAverageByYear(file);
+//        calculateAverageByYear(file);
+        countMaxValue(file);
     }
 
     private static List<Double> readFile(File file) throws IOException {
@@ -68,6 +70,22 @@ public class Weather {
             sum += n;
         }
         return sum / numbers.size();
+    }
+
+//    посчитать максимальную температуру за год
+
+    private static void countMaxValue(File file) throws IOException {
+        List<Double> temperature = readFile(file);
+        List<List<Double>> yearsTemperature = split(temperature);
+        int showYear = 2004;
+        for (List<Double> years : yearsTemperature) {
+            System.out.println(showYear + ": " + Collections.max(years));
+            showYear++;
+        }
+    }
+
+    private static void maxValue() {
+
     }
 
 }
