@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Weather {
 
-//    посчитать среднюю температуру за год за последние 10 лет из файла (учесть високосные года**)
+    //    посчитать среднюю температуру за год за последние 10 лет из файла (учесть високосные года**)
 //    алгоритм:
 //              1.1 прочитать файл и проигнорировать первые 4 строчки
 //              1.2 построчно считываем файл, вырезаем из строки всё, что после запятой
@@ -79,13 +79,14 @@ public class Weather {
         List<Double> temperature = readFile(file);
         List<List<Double>> yearsTemperature = split(temperature);
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(output))) {
-            int showYear = 2004;
+            int year = 2004;
+            writer.write("Year; Max Temperature");
+            writer.newLine();
             for (List<Double> years : yearsTemperature) {
-                String result = showYear + ": " + Collections.max(years);
+                String result = year + ";           " + Collections.max(years);
                 writer.write(result);
                 writer.newLine();
-                showYear++;
-                System.out.println(result);
+                year++;
             }
         }
     }
