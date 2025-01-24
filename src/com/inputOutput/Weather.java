@@ -1,9 +1,8 @@
 package com.inputOutput;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.time.LocalDateTime;
+import java.util.*;
 
 public class Weather {
 
@@ -21,33 +20,42 @@ public class Weather {
     public static void main(String[] args) throws IOException {
         File file = new File("C:/Users/Сергей/Downloads/open-meteo-40.74N73.91W9m.csv");
         File outputData = new File("C:/Users/Сергей/Desktop/max temperature.csv");
-//        calculateAverageByYear(file);
-        countMaxValue(file, outputData);
+        calculateAverageByYear(file);
+//        countMaxValue(file, outputData);
     }
 
-    private static List<Double> readFile(File file) throws IOException {
+    private static Map<Integer, List<Double>> readFile(File file) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(file));
         String text;
         for (int i = 0; i < 4; i++) {
             br.readLine();
         }
         String temperature;
-        double result;
-        List<Double> degreesCelsius = new ArrayList<>();
+        String date;
+        double parsedTemperature;
+        Map<Integer, List<Double>> temperatureMap = new HashMap<>();
         while ((text = br.readLine()) != null) {
             int delimiter = text.indexOf(',');
             temperature = text.substring(delimiter + 1);
-            result = Double.parseDouble(temperature);
-            degreesCelsius.add(result);
+            parsedTemperature = Double.parseDouble(temperature);
+            date = text.substring(0, delimiter);
+            LocalDateTime dateTime = LocalDateTime.parse(date);
+            int year = dateTime.getYear();
+            List<Double> temperatures = temperatureMap.get(year);
+            if (temperatures == null) {
+                temperatures = new ArrayList<>();
+                temperatureMap.put(year, temperatures);
+            }
+            temperatures.add(parsedTemperature);
         }
-        return degreesCelsius;
+        return temperatureMap;
     }
 
+
     private static void calculateAverageByYear(File file) throws IOException {
-        List<Double> temperatures = readFile(file);
-        List<List<Double>> temperaturesByYear = split(temperatures);
-        for (List<Double> numbers : temperaturesByYear) {
-            System.out.println(average(numbers));
+        Map<Integer, List<Double>> temperatures = readFile(file);
+        for (Integer year : temperatures.keySet()) {
+            System.out.println(year + ": " + average(temperatures.get(year)));
         }
     }
 
@@ -75,20 +83,20 @@ public class Weather {
 
 //    посчитать максимальную температуру за год
 
-    private static void countMaxValue(File file, File output) throws IOException {
-        List<Double> temperature = readFile(file);
-        List<List<Double>> yearsTemperature = split(temperature);
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(output))) {
-            int year = 2004;
-            writer.write("Year; Max Temperature");
-            writer.newLine();
-            for (List<Double> years : yearsTemperature) {
-                String result = year + ";           " + Collections.max(years);
-                writer.write(result);
-                writer.newLine();
-                year++;
-            }
-        }
-    }
+//    private static void countMaxValue(File file, File output) throws IOException {
+//        List<Double> temperature = readFile(file);
+//        List<List<Double>> yearsTemperature = split(temperature);
+//        try (BufferedWriter writer = new BufferedWriter(new FileWriter(output))) {
+//            int year = 2004;
+//            writer.write("Year; Max Temperature");
+//            writer.newLine();
+//            for (List<Double> years : yearsTemperature) {
+//                String result = year + ";" + Collections.max(years);
+//                writer.write(result);
+//                writer.newLine();
+//                year++;
+//            }
+//        }
+//    }
 
 }
