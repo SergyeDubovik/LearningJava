@@ -20,8 +20,8 @@ public class Weather {
     public static void main(String[] args) throws IOException {
         File file = new File("C:/Users/Сергей/Downloads/open-meteo-40.74N73.91W9m.csv");
         File outputData = new File("C:/Users/Сергей/Desktop/max temperature.csv");
-        calculateAverageByYear(file);
-//        countMaxValue(file, outputData);
+//        calculateAverageByYear(file);
+        countMaxValue(file, outputData);
     }
 
     private static Map<Integer, List<Double>> readFile(File file) throws IOException {
@@ -48,7 +48,7 @@ public class Weather {
             }
             temperatures.add(parsedTemperature);
         }
-        return temperatureMap;
+        return new TreeMap<>(temperatureMap);
     }
 
 
@@ -83,20 +83,17 @@ public class Weather {
 
 //    посчитать максимальную температуру за год
 
-//    private static void countMaxValue(File file, File output) throws IOException {
-//        List<Double> temperature = readFile(file);
-//        List<List<Double>> yearsTemperature = split(temperature);
-//        try (BufferedWriter writer = new BufferedWriter(new FileWriter(output))) {
-//            int year = 2004;
-//            writer.write("Year; Max Temperature");
-//            writer.newLine();
-//            for (List<Double> years : yearsTemperature) {
-//                String result = year + ";" + Collections.max(years);
-//                writer.write(result);
-//                writer.newLine();
-//                year++;
-//            }
-//        }
-//    }
+    private static void countMaxValue(File file, File output) throws IOException {
+        Map<Integer, List<Double>> temperature = new TreeMap<>(readFile(file));
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(output))) {
+            writer.write("Year; Max Temperature");
+            writer.newLine();
+            for (Integer year : temperature.keySet()) {
+                Double maxTemperature = Collections.max(temperature.get(year));
+                writer.write((year + ";" + maxTemperature));
+                writer.newLine();
+            }
+        }
+    }
 
 }
