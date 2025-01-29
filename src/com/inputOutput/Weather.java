@@ -1,6 +1,7 @@
 package com.inputOutput;
 
 import java.io.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -24,7 +25,8 @@ public class Weather {
         countMaxValue(file, outputData);
     }
 
-    private static Map<Integer, List<Double>> readFile(File file) throws IOException {
+    private static Map<LocalDate, List<Double>> readFile(File file) throws IOException {
+//        frame of whole line - 2015-01-01T00:00,-17.2
         BufferedReader br = new BufferedReader(new FileReader(file));
         String text;
         for (int i = 0; i < 4; i++) {
@@ -33,7 +35,7 @@ public class Weather {
         String temperature;
         String date;
         double parsedTemperature;
-        Map<Integer, List<Double>> temperatureMap = new HashMap<>();
+        Map<LocalDate, List<Double>> temperatureMap = new HashMap<>();
         while ((text = br.readLine()) != null) {
             int delimiter = text.indexOf(',');
             temperature = text.substring(delimiter + 1);
@@ -41,10 +43,11 @@ public class Weather {
             date = text.substring(0, delimiter);
             LocalDateTime dateTime = LocalDateTime.parse(date);
             int year = dateTime.getYear();
+            LocalDate wholeDate = dateTime.toLocalDate();
             List<Double> temperatures = temperatureMap.get(year);
             if (temperatures == null) {
                 temperatures = new ArrayList<>();
-                temperatureMap.put(year, temperatures);
+                temperatureMap.put(wholeDate, temperatures);
             }
             temperatures.add(parsedTemperature);
         }
@@ -53,9 +56,9 @@ public class Weather {
 
 
     private static void calculateAverageByYear(File file) throws IOException {
-        Map<Integer, List<Double>> temperatures = readFile(file);
-        for (Integer year : temperatures.keySet()) {
-            System.out.println(year + ": " + average(temperatures.get(year)));
+        Map<LocalDate, List<Double>> temperatures = readFile(file);
+        for (LocalDate date : temperatures.keySet()) {
+            System.out.println(date + ": " + average(temperatures.get(date)));
         }
     }
 
@@ -84,13 +87,13 @@ public class Weather {
 //    посчитать максимальную температуру за год
 
     private static void countMaxValue(File file, File output) throws IOException {
-        Map<Integer, List<Double>> temperature = new TreeMap<>(readFile(file));
+        Map<LocalDate, List<Double>> temperature = new TreeMap<>(readFile(file));
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(output))) {
             writer.write("Year; Max Temperature");
             writer.newLine();
-            for (Integer year : temperature.keySet()) {
-                Double maxTemperature = Collections.max(temperature.get(year));
-                writer.write((year + ";" + maxTemperature));
+            for (LocalDate date : temperature.keySet()) {
+                Double maxTemperature = Collections.max(temperature.get(date));
+                writer.write((date + ";" + maxTemperature));
                 writer.newLine();
             }
         }
