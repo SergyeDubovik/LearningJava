@@ -19,8 +19,10 @@ public class Weather {
     private static final int MEASUREMENTS_PER_YEAR = 24 * 365;
 
     public static void main(String[] args) throws IOException {
-        File file = new File("C:/Users/Сергей/Downloads/open-meteo-40.74N73.91W9m.csv");
-        File outputData = new File("C:/Users/Сергей/Desktop/max temperature.csv");
+//        File file = new File("C:/Users/Сергей/Downloads/open-meteo-40.74N73.91W9m.csv");
+        File file = new File("D:/open-meteo-40.74N73.91W9m.csv");
+//        File outputData = new File("C:/Users/Сергей/Desktop/max temperature.csv");
+        File outputData = new File("D:/max temperature.csv");
 //        calculateAverageByYear(file);
         countMaxValue(file, outputData);
     }
@@ -42,9 +44,8 @@ public class Weather {
             parsedTemperature = Double.parseDouble(temperature);
             date = text.substring(0, delimiter);
             LocalDateTime dateTime = LocalDateTime.parse(date);
-            int year = dateTime.getYear();
             LocalDate wholeDate = dateTime.toLocalDate();
-            List<Double> temperatures = temperatureMap.get(year);
+            List<Double> temperatures = temperatureMap.get(wholeDate);
             if (temperatures == null) {
                 temperatures = new ArrayList<>();
                 temperatureMap.put(wholeDate, temperatures);
@@ -89,7 +90,7 @@ public class Weather {
     private static void countMaxValue(File file, File output) throws IOException {
         Map<LocalDate, List<Double>> temperature = new TreeMap<>(readFile(file));
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(output))) {
-            writer.write("Year; Max Temperature");
+            writer.write("Date; Max Temperature");
             writer.newLine();
             for (LocalDate date : temperature.keySet()) {
                 Double maxTemperature = Collections.max(temperature.get(date));
