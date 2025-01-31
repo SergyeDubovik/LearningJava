@@ -6,8 +6,3 @@ public interface Filter {
     PrintedProduction[] filter(PrintedProduction[] productions);
 
 }
-/*
-    1
-
-    2
- */
