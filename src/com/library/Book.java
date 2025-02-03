@@ -27,7 +27,7 @@ public class Book extends PrintedProduction {
                 ", author: " + author +
                 ", anotherAuthor: " + anotherAuthor +
                 ", genre: " + genre +
-                '}';
+                '}' + '\n';
     }
 
     public String getPublisher() {
