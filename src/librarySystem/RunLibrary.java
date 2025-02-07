@@ -2,6 +2,8 @@ package librarySystem;
 
 import com.library.Book;
 import com.library.PrintedProduction;
+import com.library.filter.FromYearTillYearFilter;
+import com.library.filter.GenreFilter;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -39,8 +41,10 @@ public class RunLibrary {
         long fine = library.returnBook(returnDate, book1, ted);
         System.out.println(fine);
 
-        List<PrintedProduction> fantasyBooks = library.genreFilter("fantasy");
-        System.out.println(fantasyBooks);
+        GenreFilter fantasy = new GenreFilter("fantasy");
+        List<PrintedProduction> fantasyBooks = library.filter(fantasy);
+        List<PrintedProduction> booksByYear = library.filter(new FromYearTillYearFilter(1984, 1999));
+        System.out.println(booksByYear);
 
     }
 }

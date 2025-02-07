@@ -2,6 +2,7 @@ package librarySystem;
 
 import com.library.Book;
 import com.library.PrintedProduction;
+import com.library.filter.Filter;
 import com.library.filter.GenreFilter;
 
 import java.time.LocalDate;
@@ -12,8 +13,8 @@ public class Library implements LibraryManagement {
     private List<PrintedProduction> books;
     private List<Customer> customers;
     private Map<Book, Record> borrowedBooks;
-    private final int lease = 30;
-    private final long fineValue = 25;
+    private static final int lease = 30;
+    private static final long fineValue = 25;
 
     public Library() {
         books = new ArrayList<>();
@@ -57,9 +58,8 @@ public class Library implements LibraryManagement {
         return countFine;
     }
 
-    public List<PrintedProduction> genreFilter(String genre) {
-        GenreFilter f = new GenreFilter(genre);
-        PrintedProduction[] filteredBooks = f.filter(books.toArray(new PrintedProduction[0]));
+    public List<PrintedProduction> filter(Filter filter) {
+        PrintedProduction[] filteredBooks = filter.filter(books.toArray(new PrintedProduction[0]));
         return Arrays.asList(filteredBooks);
     }
 }
