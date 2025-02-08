@@ -18,7 +18,7 @@ public class Weather {
     private static final int MEASUREMENTS_PER_YEAR = 24 * 365;
 
     public static void main(String[] args) throws IOException {
-        File file = new File("C:/Users/Сергей/Downloads/open-meteo-40.74N73.91W9m.csv");
+        File file = new File("C:/Users/Сергей/Downloads/open-meteo-35.25S149.08E573m.csv");
 //        File file = new File("D:/open-meteo-40.74N73.91W9m.csv");
         File outputData = new File("C:/Users/Сергей/Desktop/max temperature.csv");
 //        File outputData = new File("D:/max temperature.csv");
@@ -92,9 +92,9 @@ public class Weather {
 //        try (BufferedWriter writer = new BufferedWriter(new FileWriter(output))) {
 //            writer.write("Date; Max Temperature");
 //            writer.newLine();
-
+            outputArticle();
             for (Integer year : temperature.keySet()) {
-                Record tempDate = max(temperature.get(year));
+                Record tempDate = min(temperature.get(year));
 //                writer.write((date + ";" + maxTemperature));
 //                writer.newLine();
                 System.out.println(year + " - " + tempDate);
@@ -110,6 +110,20 @@ public class Weather {
             }
         }
         return rec;
+    }
+
+    private static Record min(List<Record> records) {
+        Record rec = new Record(Double.POSITIVE_INFINITY, null);
+        for (Record record : records) {
+            if (record.getTemperature() < rec.getTemperature()) {
+                rec = record;
+            }
+        }
+        return rec;
+    }
+
+    private static void outputArticle(){
+        System.out.println("Lesser temperature in Canberra, Australia in the last 20 years was:");
     }
 /*
     1.1 создаем класс Record, в котором будет два поля, первое поле будет температурой, второе будет датой этой
