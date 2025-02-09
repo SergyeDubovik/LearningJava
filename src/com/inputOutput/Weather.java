@@ -94,7 +94,7 @@ public class Weather {
 //            writer.newLine();
             outputArticle();
             for (Integer year : temperature.keySet()) {
-                Record tempDate = min(temperature.get(year));
+                Record tempDate = max(temperature.get(year));
 //                writer.write((date + ";" + maxTemperature));
 //                writer.newLine();
                 System.out.println(year + " - " + tempDate);
@@ -123,7 +123,7 @@ public class Weather {
     }
 
     private static void outputArticle(){
-        System.out.println("Lesser temperature in Canberra, Australia in the last 20 years was:");
+        System.out.println("Lowest temperature in Canberra, Australia in the last 20 years was:");
     }
 /*
     1.1 создаем класс Record, в котором будет два поля, первое поле будет температурой, второе будет датой этой

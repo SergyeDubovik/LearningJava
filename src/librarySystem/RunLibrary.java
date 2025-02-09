@@ -8,9 +8,29 @@ import com.library.filter.GenreFilter;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.List;
+import java.util.Scanner;
 
 public class RunLibrary {
     public static void main(String[] args) {
+
+        String exit = "4";
+        Scanner in = new Scanner(System.in);
+        System.out.println("Welcome to library.");
+        while (true) {
+            System.out.println("What would you like to do?");
+            System.out.println("1 - Show available books");
+            System.out.println("2 - Get book");
+            System.out.println("3 - Return book");
+            System.out.println("4 - Exit");
+            System.out.println("Your choice:");
+            String input = in.nextLine();
+            if (input.equals(exit)) {
+                System.out.println("Thanks for visiting, goodbye for now.");
+                in.close();
+                break;
+            }
+            System.out.println("Wrong input, try again");
+        }
 
         Library library = new Library();
 
