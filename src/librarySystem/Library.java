@@ -62,6 +62,27 @@ public class Library implements LibraryManagement {
         PrintedProduction[] filteredBooks = filter.filter(books.toArray(new PrintedProduction[0]));
         return Arrays.asList(filteredBooks);
     }
+
+    @Override
+    public String toString() {
+        return "Library{" +
+                "books=" + books +
+                ", customers=" + customers +
+                ", borrowedBooks=" + borrowedBooks +
+                '}';
+    }
+
+    public List<PrintedProduction> getBooks() {
+        return books;
+    }
+
+    public List<Customer> getCustomers() {
+        return customers;
+    }
+
+    public Map<Book, Record> getBorrowedBooks() {
+        return borrowedBooks;
+    }
 }
 
 

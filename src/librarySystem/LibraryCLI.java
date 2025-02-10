@@ -10,10 +10,21 @@ import java.time.Month;
 import java.util.List;
 import java.util.Scanner;
 
-public class RunLibrary {
+public class LibraryCLI {
     public static void main(String[] args) {
 
-        String exit = "4";
+        Library library = new Library();
+        Book book1 = new Book("Dune", 512, 1983, "hung", "Ed Sheeran",
+                null, "fantasy");
+        Book book2 = new Book("Shining", 433, 1985, "oda", "Steven King",
+                null, "Thriller");
+        Book book3 = new Book("witcher", 452, 2000, "heaven", "Jean Claude",
+                "Dave", "fantasy");
+
+        library.addBook(book1);
+        library.addBook(book2);
+        library.addBook(book3);
+
         Scanner in = new Scanner(System.in);
         System.out.println("Welcome to library.");
         while (true) {
@@ -23,30 +34,32 @@ public class RunLibrary {
             System.out.println("3 - Return book");
             System.out.println("4 - Exit");
             System.out.println("Your choice:");
+
             String input = in.nextLine();
-            if (input.equals(exit)) {
+
+            if (input.equals("1")) {
+                for (PrintedProduction production : library.getBooks()) {
+                    System.out.println(production);
+                }
+            } else if (input.equals("2")) {
+                System.out.println("Implementation of getting book will be added soon");
+
+            } else if (input.equals("3")) {
+                System.out.println("Implementation of returning book will be added soon");
+
+            } else if (input.equals("4")) {
                 System.out.println("Thanks for visiting, goodbye for now.");
-                in.close();
                 break;
+
+            } else {
+                System.out.println("Wrong input, try again");
             }
-            System.out.println("Wrong input, try again");
         }
+        in.close();
 
-        Library library = new Library();
-
-        Book book1 = new Book("Dune", 512, 1983, "hung", "Ed Sheeran",
-                null, "fantasy");
-        Book book2 = new Book("Shining", 433, 1985, "oda", "Steven King",
-                null, "Thriller");
-        Book book3 = new Book("witcher", 452, 2000, "heaven", "Jean Claude",
-                "Dave", "fantasy");
 
         Customer ted = new Customer("Ted");
         Customer tim = new Customer("Tim");
-
-        library.addBook(book1);
-        library.addBook(book2);
-        library.addBook(book3);
 
         library.registerCustomer(ted);
         library.registerCustomer(tim);
