@@ -1,18 +1,19 @@
 package librarySystem;
 
 import com.library.Book;
+import com.library.PrintedProduction;
 
 import java.time.LocalDate;
 
 public interface LibraryManagement {
 
-    void addBook(Book book);
+    void addBook(PrintedProduction book);
 
     void registerCustomer(Customer customer);
 
-    Book getBook(LocalDate currentDay, Book book, Customer customer);
+    PrintedProduction borrowPrintedProduction(LocalDate currentDay, PrintedProduction book, Customer customer);
 
-    long returnBook(LocalDate currentDay, Book book, Customer customer);
+    long returnBook(LocalDate currentDay, PrintedProduction book, Customer customer);
 
 
 }

@@ -12,7 +12,7 @@ import java.util.*;
 public class Library implements LibraryManagement {
     private List<PrintedProduction> books;
     private List<Customer> customers;
-    private Map<Book, Record> borrowedBooks;
+    private Map<PrintedProduction, Record> borrowedBooks;
     private static final int lease = 30;
     private static final long fineValue = 25;
 
@@ -23,7 +23,7 @@ public class Library implements LibraryManagement {
     }
 
     @Override
-    public void addBook(Book book) {
+    public void addBook(PrintedProduction book) {
         books.add(book);
     }
 
@@ -33,7 +33,7 @@ public class Library implements LibraryManagement {
     }
 
     @Override
-    public Book getBook(LocalDate currentDay, Book book, Customer customer) {
+    public PrintedProduction borrowPrintedProduction(LocalDate currentDay, PrintedProduction book, Customer customer) {
         if (books.contains(book)) {
             borrowedBooks.put(book, new Record(customer, currentDay));
             return book;
@@ -43,7 +43,7 @@ public class Library implements LibraryManagement {
     }
 
     @Override
-    public long returnBook(LocalDate currentDay, Book book, Customer customer) {
+    public long returnBook(LocalDate currentDay, PrintedProduction book, Customer customer) {
         long daysDue;
         long countFine = 0;
         Record record = borrowedBooks.get(book);
@@ -80,7 +80,7 @@ public class Library implements LibraryManagement {
         return customers;
     }
 
-    public Map<Book, Record> getBorrowedBooks() {
+    public Map<PrintedProduction, Record> getBorrowedBooks() {
         return borrowedBooks;
     }
 }

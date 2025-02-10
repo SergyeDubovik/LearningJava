@@ -2,6 +2,8 @@ package com.inputOutput;
 
 import java.io.*;
 import java.time.LocalDate;
+import java.time.Month;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class Weather {
@@ -24,6 +26,8 @@ public class Weather {
 //        File outputData = new File("D:/max temperature.csv");
 //        calculateAverageByYear(file);
         countMaxValue(file, outputData);
+
+        dateFormat();
     }
 
     private static Map<Integer, List<Record>> readFile(File file) throws IOException {
@@ -92,13 +96,14 @@ public class Weather {
 //        try (BufferedWriter writer = new BufferedWriter(new FileWriter(output))) {
 //            writer.write("Date; Max Temperature");
 //            writer.newLine();
-            outputArticle();
-            for (Integer year : temperature.keySet()) {
-                Record tempDate = max(temperature.get(year));
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd MMMM", Locale.ENGLISH);
+        outputArticle();
+        for (Integer year : temperature.keySet()) {
+            Record tempDate = max(temperature.get(year));
 //                writer.write((date + ";" + maxTemperature));
 //                writer.newLine();
-                System.out.println(year + " - " + tempDate);
-            }
+            System.out.println(year + " - " + tempDate.getTemperature() + "°, " + tempDate.getDate().format(dateFormatter));
+        }
 //        }
     }
 
@@ -122,8 +127,8 @@ public class Weather {
         return rec;
     }
 
-    private static void outputArticle(){
-        System.out.println("Lowest temperature in Canberra, Australia in the last 20 years was:");
+    private static void outputArticle() {
+        System.out.println("Highest temperature in Canberra, Australia in the last 20 years was:");
     }
 /*
     1.1 создаем класс Record, в котором будет два поля, первое поле будет температурой, второе будет датой этой
@@ -133,4 +138,9 @@ public class Weather {
     1.4 выводим это всё в консоль
  */
 
+    private static void dateFormat() {
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd MMMM, u", Locale.ENGLISH);
+        LocalDate ld = LocalDate.of(2019, Month.DECEMBER, 10);
+        System.out.println(ld.format(dateFormatter));
+    }
 }
