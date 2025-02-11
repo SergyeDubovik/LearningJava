@@ -33,8 +33,25 @@ public class LibraryCLI {
 
             switch (input) {
                 case "1":
-                    for (PrintedProduction production : library.getBooks()) {
-                        System.out.println(production);
+                    System.out.println("Available books:");
+                    System.out.println("    1 - Show all books");
+                    System.out.println("    2 - Filter by Author");
+                    System.out.println("    3 - Filter by From year till year");
+                    System.out.println("    4 - Filter by Genre");
+                    System.out.println("    5 - Filter by Released after ");
+                    System.out.println("    0 - Return to previous menu ");
+                    String subMenuInput = in.nextLine();
+                    switch (subMenuInput) {
+                        case "1":
+                            for (PrintedProduction production : library.getBooks()) {
+                                System.out.println(production);
+                            }
+                            break;
+                        case "0":
+                            break;
+                        default:
+                            System.out.println("Please input correct value");
+                            break;
                     }
                     break;
                 case "2":
