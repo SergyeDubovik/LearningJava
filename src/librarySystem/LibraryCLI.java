@@ -12,7 +12,7 @@ public class LibraryCLI {
         Library library = buildLibrary();
 
         Scanner userInput = new Scanner(System.in);
-        System.out.println("Welcome to library.");
+
         runMainMenu(userInput, library);
     }
 
@@ -20,15 +20,14 @@ public class LibraryCLI {
         boolean exit = false;
         while (!exit) {
             mainMenuDisplay();
-
             String input = userInput.nextLine();
 
             switch (input) {
                 case "1":
                     subMenuDisplay();
-
-                        runSubMenu(userInput, library);
+                    runSubMenu(userInput, library);
                     break;
+
                 case "2":
                     System.out.println("Implementation of getting book will be added soon");
 
@@ -52,26 +51,30 @@ public class LibraryCLI {
     private static void runSubMenu(Scanner in, Library library) {
         boolean backToMainMenu = false;
         while (!backToMainMenu) {
-        String subMenuInput = in.nextLine();
-        switch (subMenuInput) {
-            case "1":
-                for (PrintedProduction production : library.getBooks()) {
-                    System.out.println(production);
-                }
-                subMenuDisplay();
-                break;
-            case "0":
-                System.out.println("Get back to main menu");
-                backToMainMenu = true;
-                break;
-            default:
-                System.out.println("Please input correct value");
-                break;
+            String subMenuInput = in.nextLine();
+
+            switch (subMenuInput) {
+                case "1":
+                    for (PrintedProduction production : library.getBooks()) {
+                        System.out.println(production);
+                    }
+                    subMenuDisplay();
+                    break;
+
+                case "0":
+                    System.out.println("Get back to main menu");
+                    backToMainMenu = true;
+                    break;
+
+                default:
+                    System.out.println("Please input correct value");
+                    break;
+            }
         }
-    }
     }
 
     private static void subMenuDisplay() {
+        System.out.println();
         System.out.println("Available books:");
         System.out.println("    1 - Show all books");
         System.out.println("    2 - Filter by Author");
@@ -83,6 +86,7 @@ public class LibraryCLI {
 
     private static void mainMenuDisplay() {
         System.out.println();
+        System.out.println("Welcome to library.");
         System.out.println("What would you like to do?");
         System.out.println("1 - Show available books");
         System.out.println("2 - Get book");
