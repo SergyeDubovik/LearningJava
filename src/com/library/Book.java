@@ -20,7 +20,8 @@ public class Book extends PrintedProduction {
     @Override
     public String toString() {
         return "Book = { " +
-                "Name: " + getTitle() +
+                "id: " + getId() +
+                ", Name: " + getTitle() +
                 ", Pages: " + getPages() +
                 ", Release: " + getYearOfRelease() +
                 ", publisher: " + publisher +

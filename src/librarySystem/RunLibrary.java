@@ -7,6 +7,7 @@ import com.library.filter.GenreFilter;
 
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.Collection;
 import java.util.List;
 
 public class RunLibrary {
@@ -20,18 +21,21 @@ public class RunLibrary {
 
         LocalDate borrowDate = LocalDate.of(2025, Month.FEBRUARY, 1);
 
-        PrintedProduction borrowedBook = library.borrowPrintedProduction(borrowDate, library.getBooks().get(0), ted);
+        Collection<PrintedProduction> books = library.getBooks();
+        PrintedProduction pp = books.iterator().next();
+        PrintedProduction borrowedBook = library.borrowPrintedProduction(borrowDate, pp, ted);
         System.out.println("Ted borrowed: " + borrowedBook);
 
         LocalDate returnDate = LocalDate.of(2025, Month.MARCH, 22);
 
-        long fine = library.returnBook(returnDate, library.getBooks().get(0), ted);
+        long fine = library.returnBook(returnDate, pp, ted);
         System.out.println(fine);
 
         GenreFilter fantasy = new GenreFilter("fantasy");
         List<PrintedProduction> fantasyBooks = library.filter(fantasy);
         List<PrintedProduction> booksByYear = library.filter(new FromYearTillYearFilter(1984, 1999));
         System.out.println(booksByYear);
+        System.out.println(fantasyBooks);
     }
 
     public static Library buildLibrary() {
@@ -42,10 +46,12 @@ public class RunLibrary {
                 null, "Thriller");
         Book book3 = new Book("witcher", 452, 2000, "heaven", "Jean Claude",
                 "Dave", "fantasy");
+        PrintedProduction pp = new PrintedProduction("truth paper", 23, 1990);
 
         library.addBook(book1);
         library.addBook(book2);
         library.addBook(book3);
+        library.addBook(pp);
         return library;
     }
 }

@@ -4,22 +4,28 @@ public class PrintedProduction {
     private String title;
     private int pages;
     private int yearOfRelease;
+    private final int id;
+    private static int nextId;
 
 
     public PrintedProduction(String name, int pages, int yearOfRelease) {
         this.title = name;
         this.pages = pages;
         this.yearOfRelease = yearOfRelease;
+        this.id = nextId++;
 
     }
+
     @Override
     public String toString() {
-        return "PrintedProduction { " +
-                "name = '" + title + '\'' +
-                "pages = '" + pages + '\'' +
-                "yearOfRelease '" + yearOfRelease + '\'' +
+        return "PrintedProduction {" +
+                "id = " + id +
+                ", title = " + title +
+                ", pages = " + pages +
+                ", yearOfRelease = " + yearOfRelease +
                 '}';
     }
+
     public String getTitle() {
         return title;
     }
@@ -39,4 +45,7 @@ public class PrintedProduction {
         this.yearOfRelease = yearOfRelease;
     }
 
+    public int getId() {
+        return id;
+    }
 }

@@ -13,7 +13,8 @@ public class Magazine extends PrintedProduction {
     @Override
     public String toString() {
         return "Magazine = {" +
-                "Name: " + getTitle() + '\'' +
+                "id: " + getId() +
+                ", Name: " + getTitle() + '\'' +
                 ", Pages: " + getPages() + '\'' +
                 ", Release: " + getYearOfRelease() + '\'' +
                 ", monthlyPeriodicity: " + monthlyPeriodicity +

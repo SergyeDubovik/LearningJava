@@ -10,21 +10,21 @@ import java.time.temporal.ChronoUnit;
 import java.util.*;
 
 public class Library implements LibraryManagement {
-    private List<PrintedProduction> books;
+    private Map<Integer, PrintedProduction> books;
     private List<Customer> customers;
     private Map<PrintedProduction, Record> borrowedBooks;
     private static final int lease = 30;
     private static final long fineValue = 25;
 
     public Library() {
-        books = new ArrayList<>();
+        books = new HashMap<>();
         customers = new ArrayList<>();
         borrowedBooks = new HashMap<>();
     }
 
     @Override
     public void addBook(PrintedProduction book) {
-        books.add(book);
+        books.put(book.getId(), book);
     }
 
     @Override
@@ -34,7 +34,7 @@ public class Library implements LibraryManagement {
 
     @Override
     public PrintedProduction borrowPrintedProduction(LocalDate currentDay, PrintedProduction book, Customer customer) {
-        if (books.contains(book)) {
+        if (books.containsValue(book)) {
             borrowedBooks.put(book, new Record(customer, currentDay));
             return book;
         } else {
@@ -59,7 +59,7 @@ public class Library implements LibraryManagement {
     }
 
     public List<PrintedProduction> filter(Filter filter) {
-        PrintedProduction[] filteredBooks = filter.filter(books.toArray(new PrintedProduction[0]));
+        PrintedProduction[] filteredBooks = filter.filter(books.values().toArray(new PrintedProduction[0]));
         return Arrays.asList(filteredBooks);
     }
 
@@ -72,8 +72,8 @@ public class Library implements LibraryManagement {
                 '}';
     }
 
-    public List<PrintedProduction> getBooks() {
-        return books;
+    public Collection<PrintedProduction> getBooks() {
+        return books.values();
     }
 
     public List<Customer> getCustomers() {

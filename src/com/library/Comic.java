@@ -12,7 +12,8 @@ public class Comic extends Magazine {
     @Override
     public String toString() {
         return "Comic = { " +
-                "Name: " + getTitle() +
+                "id: " + getId() +
+                ", Name: " + getTitle() +
                 ", Pages: " + getPages() +
                 ", Release: " + getYearOfRelease() +
                 ", Monthly periodicity: " + getMonthlyPeriodicity() +
