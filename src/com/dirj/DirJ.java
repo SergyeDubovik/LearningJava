@@ -17,14 +17,14 @@ public class DirJ {
         if (children == null) {
             throw new RuntimeException();
         }
-        System.out.println("          .");
-        System.out.println("          ..");
+        System.out.println("<DIR>" + " ".repeat(16) + '.');
+        System.out.println("<DIR>" + " ".repeat(16) + "..");
         for (File child : children) {
             if (child.isFile()) {
                 String formatted = nf.format(child.length());
-                System.out.printf("%8s", formatted);
+                System.out.printf("%19s", formatted);
             } else {
-                System.out.print("        ");
+                System.out.print("<DIR>" + " ".repeat(14));
             }
             System.out.println("  " + child.getName());
         }
