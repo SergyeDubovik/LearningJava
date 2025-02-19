@@ -22,7 +22,7 @@ public class DirJ {
         }
         date(currentDir);
         System.out.println("  <DIR>" + " ".repeat(16) + '.');
-        date(currentDir);
+        date(currentDir.getParentFile());
         System.out.println("  <DIR>" + " ".repeat(16) + "..");
         for (File child : children) {
             date(child);
