@@ -32,15 +32,17 @@ import java.util.TreeMap;
 public class BirthdayCalculator {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        System.out.println("Date of birth (yyyy-mm-dd):");
         String birthdayDAte = sc.nextLine();
         LocalDate date = LocalDate.parse(birthdayDAte);
-        System.out.println(date.getDayOfWeek());
         Map<DayOfWeek, Integer> stats = new TreeMap<>();
         for (LocalDate d = date; d.isBefore(LocalDate.now()); d = d.plusYears(1)) {
             DayOfWeek dow = d.getDayOfWeek();
             stats.put(dow, stats.getOrDefault(dow, 0) + 1);
         }
-        System.out.println(stats);
+        for (DayOfWeek day : stats.keySet()){
+            System.out.println(day + " " + stats.get(day));
+        }
 
     }
 //    создаем мапу, где ключ - день недели, значение - кол-во раз др
