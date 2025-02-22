@@ -17,31 +17,32 @@ public class DirJ {
     private static void printDir(File currentDir) {
         File[] children = currentDir.listFiles();
         NumberFormat nf = NumberFormat.getInstance(Locale.FRANCE);
+        StringBuilder sb = new StringBuilder();
         if (children == null) {
             throw new RuntimeException();
         }
-        date(currentDir);
-        System.out.println("  <DIR>" + " ".repeat(16) + '.');
-        date(currentDir.getParentFile());
-        System.out.println("  <DIR>" + " ".repeat(16) + "..");
+        date(sb, currentDir);
+        sb.append("  <DIR>").append(" ".repeat(16)).append('.').append('\n');
+        date(sb, currentDir.getParentFile());
+        sb.append("  <DIR>").append(" ".repeat(16)).append("..").append('\n');
         for (File child : children) {
-            date(child);
+            date(sb, child);
             if (child.isFile()) {
                 String formatted = nf.format(child.length());
-                System.out.printf("%21s", formatted);
+                sb.append(String.format("%21s", formatted));
             } else {
-                System.out.print("  <DIR>" + " ".repeat(14));
+                sb.append("  <DIR>").append(" ".repeat(14));
             }
-            System.out.println("  " + child.getName());
+            sb.append("  ").append(child.getName()).append('\n');
         }
+        System.out.print(sb);
     }
 
-    private static void date(File child) {
+    private static void date(StringBuilder b, File child) {
         long dateTime = child.lastModified();
         Date date = new Date(dateTime);
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm");
-        String formatDate = sdf.format(date);
-        System.out.print(formatDate);
+        b.append(sdf.format(date)).append(' ');
     }
 
 }
