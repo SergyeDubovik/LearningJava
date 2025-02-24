@@ -36,14 +36,14 @@ public class BirthdayCalculator {
         String birthdayDAte = sc.nextLine();
         LocalDate date = LocalDate.parse(birthdayDAte);
         Map<DayOfWeek, Integer> stats = new TreeMap<>();
-        int totalLetters = 0;
+        int totalBirthdays = 0;
         for (LocalDate d = date; d.isBefore(LocalDate.now()); d = d.plusYears(1)) {
             DayOfWeek dow = d.getDayOfWeek();
             stats.put(dow, stats.getOrDefault(dow, 0) + 1);
-            totalLetters++;
+            totalBirthdays++;
         }
         for (DayOfWeek day : stats.keySet()){
-            float percent = ((float)stats.get(day) / totalLetters) * 100;
+            float percent = ((float)stats.get(day) / totalBirthdays) * 100;
             System.out.printf("%-10s %4d (%5.2f%%)%n", day, stats.get(day), percent);
         }
 
