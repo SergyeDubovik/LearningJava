@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.Locale;
 
 public class DirJ {
-    private static final String dir = "  <DIR>";
+    private static final String DIR = "  <DIR>";
     public static void main(String[] args) {
         String currentDirName = System.getProperty("user.dir");
         File currentDir = new File(currentDirName);
@@ -23,16 +23,16 @@ public class DirJ {
             throw new RuntimeException();
         }
         sb.append(getLastModifiedDate(currentDir));
-        sb.append(dir).append(" ".repeat(16)).append('.').append('\n');
+        sb.append(DIR).append(" ".repeat(16)).append('.').append('\n');
         sb.append(getLastModifiedDate(currentDir.getParentFile()));
-        sb.append(dir).append(" ".repeat(16)).append("..").append('\n');
+        sb.append(DIR).append(" ".repeat(16)).append("..").append('\n');
         for (File child : children) {
             sb.append(getLastModifiedDate(child));
             if (child.isFile()) {
                 String formatted = nf.format(child.length());
                 sb.append(String.format("%21s", formatted));
             } else {
-                sb.append(dir).append(" ".repeat(14));
+                sb.append(DIR).append(" ".repeat(14));
             }
             sb.append("  ").append(child.getName()).append('\n');
         }
