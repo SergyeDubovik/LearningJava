@@ -3,9 +3,11 @@ package com.library;
 
 import com.library.filter.*;
 
+import java.util.List;
+
 public class Catalog {
     public static void main(String[] args) {
-        PrintedProduction[] available = {
+        List<PrintedProduction> available = List.of(
                 new Book("Gone Girl", 510, 2012, "Grown", "Flynn",
                         null, "Thriller"),
                 new Book("Montezuma's daughter", 232, 1893, "CreateSpace",
@@ -21,7 +23,7 @@ public class Catalog {
                         null, "fantasy"),
                 new Book("Thinking in Java", 1168, 2007, "Print2print",
                         "Bruce Eckel",null, "computer science")
-        };
+        );
 
         Book[] books = {
                 new Book("Gone Girl", 510, 2012, "Grown", "Flynn",
@@ -44,17 +46,15 @@ public class Catalog {
 
 //        System.out.println(contains(available, "Henry Ryder"));
 
-        Filter userFilter = new ComplexFilter(new Filter[] {
-                new AuthorContainsFilter("eckeL"),
-//                new GenreFilter("computer science"),
-//                new ReleasedAfterFilter(2000),
-//                new FromYearTillYearFilter(2000, 2010),
-//                new ComicFilter()
-        });
+        Filter userFilter = new ComplexFilter(List.of(new AuthorContainsFilter("eckeL"),
+                new GenreFilter("computer science"),
+                new ReleasedAfterFilter(2000),
+                new FromYearTillYearFilter(2000, 2010),
+                new ComicFilter()));
 
-        PrintedProduction[] filtered = userFilter.filter(available);
-        for (int i = 0; i < filtered.length; i++) {
-            System.out.println(filtered[i]);
+        List<PrintedProduction> filtered = userFilter.filter(available);
+        for (int i = 0; i < filtered.size(); i++) {
+            System.out.println(filtered.get(i));
         }
 
     }

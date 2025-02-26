@@ -2,21 +2,19 @@ package com.library.filter;
 
 import com.library.PrintedProduction;
 
-public class ComplexFilter implements Filter {
-    private Filter[] filters;
+import java.util.List;
 
-    public ComplexFilter(Filter[] filters) {
+public class ComplexFilter implements Filter {
+    private List<Filter> filters;
+
+    public ComplexFilter(List<Filter> filters) {
         this.filters = filters;
     }
 
     @Override
-    public PrintedProduction[] filter(PrintedProduction[] productions) {
-//        PrintedProduction[] result = new PrintedProduction[productions.length];
-//        for (int i = 0; i < result.length; i++) {
-//            result[i] = productions[i];
-//        }
-        for (int i = 0; i < filters.length; i++) {
-            productions = filters[i].filter(productions);
+    public List<PrintedProduction> filter(List<PrintedProduction> productions) {
+        for (Filter filter : filters) {
+            productions = filter.filter(productions);
         }
         return productions;
     }
