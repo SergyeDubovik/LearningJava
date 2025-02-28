@@ -57,10 +57,8 @@ public class Library implements LibraryManagement {
         }
         return countFine;
     }
-
     public List<PrintedProduction> filter(Filter filter) {
-        PrintedProduction[] filteredBooks = filter.filter(books.values().toArray(new PrintedProduction[0]));
-        return Arrays.asList(filteredBooks);
+        return filter.filter((List<PrintedProduction>) books.values());
     }
 
     @Override
