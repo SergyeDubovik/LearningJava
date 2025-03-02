@@ -42,6 +42,8 @@ public class BirthdayCalculator {
             stats.put(dow, stats.getOrDefault(dow, 0) + 1);
             totalBirthdays++;
         }
+        System.out.println();
+        System.out.println("This is how many times was your birthday on each weekday:");
         for (DayOfWeek day : stats.keySet()){
             float percent = ((float)stats.get(day) / totalBirthdays) * 100;
             System.out.printf("%-10s %4d (%5.2f%%)%n", day, stats.get(day), percent);
