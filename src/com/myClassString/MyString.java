@@ -98,8 +98,8 @@ public class MyString implements CharSequence {
     }
 
     public boolean isBlank() {
-        for (int i = 0; i < data.length; i++) {
-            if (data[i] != ' ') {
+        for (char datum : data) {
+            if (datum != ' ') {
                 return false;
             }
         }
@@ -132,8 +132,8 @@ public class MyString implements CharSequence {
 
     public MyString[] split(char delimiter) {
         int segments = 1;
-        for (int i = 0; i < data.length; i++) {
-            if (data[i] == delimiter) {
+        for (char datum : data) {
+            if (datum == delimiter) {
                 segments++;
             }
         }
@@ -192,8 +192,8 @@ public class MyString implements CharSequence {
     @Override
     public int hashCode() {
         int code = 1;
-        for (int i = 0; i < data.length; i++) {
-            code = 31 * code + data[i];
+        for (char datum : data) {
+            code = 31 * code + datum;
         }
         return code;
     }
