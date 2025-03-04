@@ -15,23 +15,24 @@ public class Temp {
 
         String[] words = {"flairstla", "second", "third la", "bla bla bla"};
         String substring = "la";
-        for (int i = 0; i < words.length; i++) {
-            int first = words[i].indexOf(substring);
-            int second = words[i].lastIndexOf(substring);
+        for (String i : words) {
+            int first = i.indexOf(substring);
+            int second = i.lastIndexOf(substring);
             if (first != second) {
-                System.out.println(words[i]);
+                System.out.println(i);
             }
         }
+        numbersOrLetters();
     }
 
     private static void numbersOrLetters() {
         char[] array2 = {'5', ')', 'g', '2', '(', '(', 'H', 'D', '7', '3'};
         int z = 0;
         int x = 0;
-        for (int i = 0; i < array2.length; i++) {
-            if (array2[i] >= 48 && array2[i] <= 57) {
+        for (int i : array2) {
+            if (i >= 48 && i <= 57) {
                 z++;
-            } else if ((array2[i] >= 65 && array2[i] <= 90) || (array2[i] >= 97 && array2[i] <= 122)) {
+            } else if ((i >= 65 && i <= 90) || (i >= 97 && i <= 122)) {
                 x++;
             }
 
@@ -63,8 +64,8 @@ public class Temp {
 
     public static int sumOfArrayElements(int sum) {
         int[] myArray = {3, -5, 66, 13};
-        for (int i = 0; i < myArray.length; i++) {
-            sum += myArray[i];
+        for (int i : myArray) {
+            sum += i;
         }
         return sum;
     }
@@ -75,11 +76,11 @@ public class Temp {
 
     public static int sumEven(int sum2) {
         int[] myArray = {3, -5, 66, 13, 4};
-        for (int i = 0; i < myArray.length; i++) {
-            if (myArray[i] % 2 != 0) {
+        for (int i : myArray) {
+            if (i % 2 != 0) {
                 continue;
             }
-            sum2 = sum2 + myArray[i];
+            sum2 = sum2 + i;
         }
         return sum2;
     }
@@ -90,11 +91,11 @@ public class Temp {
 
     public static int sumPositive(int sum3) {
         int[] myArray = {3, 5, 13, -51, 31, 4};
-        for (int i = 0; i < myArray.length; i++) {
-            if (myArray[i] / 2 < 0) {
+        for (int i : myArray) {
+            if (i / 2 < 0) {
                 continue;
             }
-            sum3 = sum3 + myArray[i];
+            sum3 = sum3 + i;
         }
         return sum3;
     }
@@ -116,8 +117,8 @@ public class Temp {
         return array;
     }
     public static Object[] printObjectArray(Object[] array) {
-        for (int i = 0; i < array.length; i++) {
-            System.out.println(array[i] + " ");
+        for (Object o : array) {
+            System.out.println(o + " ");
         }
         return array;
     }
@@ -125,9 +126,9 @@ public class Temp {
     public static int sumOfPositiveElements(int[] array) {
 
         int sum = 0;
-        for (int i = 0; i < array.length; i++) {
-            if(array[i] > 0) {
-                sum += array[i];
+        for (int j : array) {
+            if (j > 0) {
+                sum += j;
             }
         }
         return sum;
@@ -137,7 +138,7 @@ public class Temp {
         if (array.length <= 1) {
             throw new RuntimeException("Array too short to sort");
         }
-        int tempNumb = 0;
+        int tempNumb;
         for (int i = 1; i < array.length; i++) {
             for (int j = i; j > 0; j--) {
                 if (array[j] > array[j - 1]) {
@@ -156,9 +157,9 @@ public class Temp {
             throw new RuntimeException("Array is too short to perform any operations");
         }
         int maxValue = 0;
-        for (int i = 0; i < ar.length; i++) {
-            if (ar[i] > maxValue) {
-                maxValue = ar[i];
+        for (int i : ar) {
+            if (i > maxValue) {
+                maxValue = i;
             }
         }
         return maxValue;
