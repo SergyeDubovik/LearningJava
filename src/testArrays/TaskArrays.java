@@ -59,10 +59,10 @@ public class TaskArrays {
         int[] array = {12, -5, 66, 2, 31, 185, 1, 93, 50};
         int n = 92;
         int sum = 0;
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] > n) {
+        for (int j : array) {
+            if (j > n) {
 //                sum = array[i] + sum;
-                sum += array[i];
+                sum += j;
             }
         }
         System.out.println(sum);
@@ -123,8 +123,8 @@ public class TaskArrays {
     private static void oddNumber() {
         int[] array2 = {52, 41, 33, 5, -4, 12};
         int amount = 0;
-        for (int i = 0; i < array2.length; i++) {
-            if (array2[i] % 2 != 0) {
+        for (int j : array2) {
+            if (j % 2 != 0) {
                 amount++;
             }
         }
@@ -149,6 +149,7 @@ public class TaskArrays {
         for (int i = 0; i < array3.length - 1; i++) {
             if (array3[i] > 0 && array3[i + 1] > 0) {
                 result = true;
+                break;
             }
         }
         if (result) {
@@ -186,16 +187,16 @@ public class TaskArrays {
     }
 
     public static int[] printArray(int[] array4) {
-        for (int i = 0; i < array4.length; i++) {
-            System.out.print(array4[i] + " ");
+        for (int j : array4) {
+            System.out.print(j + " ");
 
         }
         return array4;
     }
 
     public static void printArrayLong(long[] array5) {
-        for (int i = 0; i < array5.length; i++) {
-            System.out.print(array5[i] + " ");
+        for (long l : array5) {
+            System.out.print(l + " ");
         }
     }
 
@@ -223,9 +224,9 @@ public class TaskArrays {
     public static void maxElement() {
         int[] array6 = {5, 44, -3, 21, 6};
         int result = Integer.MIN_VALUE;
-        for (int i = 0; i < array6.length; i++) {
-            if (array6[i] > result) {
-                result = array6[i];
+        for (int j : array6) {
+            if (j > result) {
+                result = j;
             }
         }
         System.out.println(result);
@@ -234,9 +235,9 @@ public class TaskArrays {
     public static void minElement() {
         int[] array6 = {5, 44, -3, 21, 6};
         int result = Integer.MAX_VALUE;
-        for (int i = 0; i < array6.length; i++) {
-            if (array6[i] < result) {
-                result = array6[i];
+        for (int j : array6) {
+            if (j < result) {
+                result = j;
             }
         }
         System.out.println(result);
@@ -384,13 +385,13 @@ public class TaskArrays {
         }
         int firstMaxValue = Integer.MIN_VALUE;
         int secondMaxValue = Integer.MIN_VALUE;
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] > firstMaxValue) {
+        for (int j : array) {
+            if (j > firstMaxValue) {
                 secondMaxValue = firstMaxValue;
-                firstMaxValue = array[i];
+                firstMaxValue = j;
             }
-            if (array[i] > secondMaxValue && array[i] < firstMaxValue) {
-                secondMaxValue = array[i];
+            if (j > secondMaxValue && j < firstMaxValue) {
+                secondMaxValue = j;
             }
         }
         return secondMaxValue;
