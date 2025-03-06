@@ -11,23 +11,15 @@ public class Point {
     }
 
     public boolean isRighter(Point a) {
-        if (this.x > a.x) {
-            return true;
-        } else {
-            return false;
-        }
+        return this.x > a.x;
     }
 
     public boolean isHigher(Point other) {
-        if (this.y > other.y) {
-            return true;
-        } else {
-            return false;
-        }
+        return this.y > other.y;
     }
 
     public double distance(Point c) {       // не статический метод (метод обьекта)
-        double length = 0;
+        double length;
         length = Math.sqrt(Math.pow(c.x - this.x, 2) + Math.pow(c.y - this.y, 2));
 
         return length;
