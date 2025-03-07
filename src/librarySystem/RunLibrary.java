@@ -23,12 +23,13 @@ public class RunLibrary {
 
         Collection<PrintedProduction> books = library.getBooks();
         PrintedProduction pp = books.iterator().next();
-        PrintedProduction borrowedBook = library.borrowPrintedProduction(borrowDate, pp, ted);
+        int bookId = pp.getId();
+        PrintedProduction borrowedBook = library.borrowPrintedProduction(borrowDate, bookId, ted);
         System.out.println("Ted borrowed: " + borrowedBook);
 
         LocalDate returnDate = LocalDate.of(2025, Month.MARCH, 22);
 
-        long fine = library.returnBook(returnDate, pp, ted);
+        long fine = library.returnBook(returnDate, bookId, ted);
         System.out.println(fine);
 
         GenreFilter fantasy = new GenreFilter("fantasy");

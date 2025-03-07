@@ -10,9 +10,9 @@ public interface LibraryManagement {
 
     void registerCustomer(Customer customer);
 
-    PrintedProduction borrowPrintedProduction(LocalDate currentDay, PrintedProduction book, Customer customer);
+    PrintedProduction borrowPrintedProduction(LocalDate currentDay, int id, Customer customer);
 
-    long returnBook(LocalDate currentDay, PrintedProduction book, Customer customer);
+    long returnBook(LocalDate currentDay, int id, Customer customer);
 
 
 }

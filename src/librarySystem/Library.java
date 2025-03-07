@@ -33,17 +33,18 @@ public class Library implements LibraryManagement {
     }
 
     @Override
-    public PrintedProduction borrowPrintedProduction(LocalDate currentDay, PrintedProduction book, Customer customer) {
-        if (books.containsValue(book)) {
+    public PrintedProduction borrowPrintedProduction(LocalDate currentDay, int id, Customer customer) {
+        PrintedProduction book = books.get(id);
+        if (book != null) {
             borrowedBooks.put(book, new Record(customer, currentDay));
             return book;
-        } else {
-            return null;
         }
+        return null;
     }
 
     @Override
-    public long returnBook(LocalDate currentDay, PrintedProduction book, Customer customer) {
+    public long returnBook(LocalDate currentDay, int id, Customer customer) {
+        PrintedProduction book = books.get(id);
         long daysDue;
         long countFine = 0;
         Record record = borrowedBooks.get(book);
@@ -55,10 +56,11 @@ public class Library implements LibraryManagement {
             daysDue = ChronoUnit.DAYS.between(returnDate, currentDay);
             countFine = daysDue * fineValue;
         }
+        borrowedBooks.remove(book);
         return countFine;
     }
     public List<PrintedProduction> filter(Filter filter) {
-        return filter.filter((List<PrintedProduction>) books.values());
+        return filter.filter(new ArrayList<>(books.values()));
     }
 
     @Override
