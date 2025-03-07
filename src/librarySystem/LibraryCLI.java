@@ -2,6 +2,7 @@ package librarySystem;
 
 import com.library.PrintedProduction;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 import static librarySystem.RunLibrary.buildLibrary;
@@ -29,8 +30,16 @@ public class LibraryCLI {
                     break;
 
                 case "2":
-                    System.out.println("Implementation of getting book will be added soon");
-
+                    System.out.println("What book do u want to borrow? Please enter book ID");
+                    int bookId = Integer.parseInt(userInput.nextLine());
+                    System.out.println("Please input customer's name:");
+                    String customerName = userInput.nextLine();
+                    Customer customer = new Customer(customerName);
+                    System.out.println("Please input borrow date (yyyy-mm-dd):");
+                    String borrowDate = userInput.nextLine();
+                    LocalDate date = LocalDate.parse(borrowDate);
+                    library.borrowPrintedProduction(date, bookId, customer);
+                    System.out.println("Book borrowed, it should be returned after a month");
                     break;
                 case "3":
                     System.out.println("Implementation of returning book will be added soon");

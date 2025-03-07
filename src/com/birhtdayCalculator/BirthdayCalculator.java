@@ -33,8 +33,8 @@ public class BirthdayCalculator {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Date of birth (yyyy-mm-dd):");
-        String birthdayDAte = sc.nextLine();
-        LocalDate date = LocalDate.parse(birthdayDAte);
+        String birthdayDate = sc.nextLine();
+        LocalDate date = LocalDate.parse(birthdayDate);
         Map<DayOfWeek, Integer> stats = new TreeMap<>();
         int totalBirthdays = 0;
         for (LocalDate d = date; d.isBefore(LocalDate.now()); d = d.plusYears(1)) {
