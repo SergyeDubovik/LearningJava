@@ -1,6 +1,7 @@
 package librarySystem;
 
 import com.library.Book;
+import com.library.Comic;
 import com.library.PrintedProduction;
 import com.library.filter.FromYearTillYearFilter;
 import com.library.filter.GenreFilter;
@@ -48,11 +49,13 @@ public class RunLibrary {
         Book book3 = new Book("witcher", 452, 2000, "heaven", "Jean Claude",
                 "Dave", "fantasy");
         PrintedProduction pp = new PrintedProduction("truth paper", 23, 1990);
+        Comic dc = new Comic("Superman", 154, 1989, 1, "Stew", "Brown");
 
         library.addBook(book1);
         library.addBook(book2);
         library.addBook(book3);
         library.addBook(pp);
+        library.addBook(dc);
         return library;
     }
 }
