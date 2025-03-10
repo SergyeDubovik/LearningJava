@@ -2,6 +2,7 @@ package librarySystem;
 
 import com.library.PrintedProduction;
 
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.Scanner;
 
@@ -30,17 +31,35 @@ public class LibraryCLI {
                     break;
 
                 case "2":
+                    int bookId;
                     System.out.println("What book do u want to borrow? Please enter book ID");
-                    int bookId = Integer.parseInt(userInput.nextLine());
+                    while (true) {
+                        bookId = Integer.parseInt(userInput.nextLine());
+                        if (bookId < 0 || bookId > library.getBooks().size()) {
+                            System.out.println("There is no book contains this id, input correct id");
+                            continue;
+                        }
+                        break;
+                    }
+
                     System.out.println("Please input customer's name:");
                     String customerName = userInput.nextLine();
                     Customer customer = new Customer(customerName);
+
+                    LocalDate localDate = null;
                     System.out.println("Please input borrow date (yyyy-mm-dd):");
-                    String borrowDate = userInput.nextLine();
-                    LocalDate date = LocalDate.parse(borrowDate);
-                    library.borrowPrintedProduction(date, bookId, customer);
-                    System.out.println("Book borrowed, it should be returned after a month");
+                    while (localDate == null) {
+                        String borrowDate = userInput.nextLine();
+                        try {
+                            localDate = LocalDate.parse(borrowDate);
+                            library.borrowPrintedProduction(localDate, bookId, customer);
+                            System.out.println("Book borrowed by id " + bookId + ", it should be returned after a month");
+                        } catch (DateTimeException exception) {
+                            System.out.println("Please input date in correct format as stated above:");
+                        }
+                    }
                     break;
+
                 case "3":
                     System.out.println("Implementation of returning book will be added soon");
 
