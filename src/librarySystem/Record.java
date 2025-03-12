@@ -11,6 +11,12 @@ public class Record {
         this.date = date;
     }
 
+    @Override
+    public String toString() {
+        return "customer: " + customer +
+                ", date: " + date;
+    }
+
     public Customer getCustomer() {
         return customer;
     }

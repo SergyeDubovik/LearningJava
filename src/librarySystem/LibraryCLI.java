@@ -2,6 +2,7 @@ package librarySystem;
 
 import com.library.PrintedProduction;
 
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.Scanner;
 
@@ -30,17 +31,9 @@ public class LibraryCLI {
                     break;
 
                 case "2":
-                    System.out.println("What book do u want to borrow? Please enter book ID");
-                    int bookId = Integer.parseInt(userInput.nextLine());
-                    System.out.println("Please input customer's name:");
-                    String customerName = userInput.nextLine();
-                    Customer customer = new Customer(customerName);
-                    System.out.println("Please input borrow date (yyyy-mm-dd):");
-                    String borrowDate = userInput.nextLine();
-                    LocalDate date = LocalDate.parse(borrowDate);
-                    library.borrowPrintedProduction(date, bookId, customer);
-                    System.out.println("Book borrowed, it should be returned after a month");
+                    lendPrintedProduction(userInput, library);
                     break;
+
                 case "3":
                     System.out.println("Implementation of returning book will be added soon");
 
@@ -56,6 +49,39 @@ public class LibraryCLI {
             }
         }
     }
+
+    private static void lendPrintedProduction(Scanner userInput, Library library) {
+        int bookId;
+        System.out.println("What book do u want to borrow? Please enter book ID");
+        while (true) {
+            bookId = Integer.parseInt(userInput.nextLine());
+            if (bookId < 0 || bookId > library.getBooks().size()) {
+                System.out.println("There is no book contains this id, input correct id");
+                continue;
+            }
+            break;
+        }
+
+        System.out.println("Please input customer's name:");
+        String customerName = userInput.nextLine();
+        Customer customer = new Customer(customerName);
+
+        LocalDate localDate = null;
+        System.out.println("Please input borrow date (yyyy-mm-dd):");
+        while (localDate == null) {
+            String borrowDate = userInput.nextLine();
+            try {
+                localDate = LocalDate.parse(borrowDate);
+                PrintedProduction borrowedBook = library.borrowPrintedProduction(localDate, bookId, customer);
+                System.out.println(borrowedBook.getTitle() + " (id " + bookId + ") taken by " + customerName +
+                        " on " + localDate + ", it should be returned on " + localDate.plusDays(30));
+            } catch (DateTimeException exception) { 
+                System.out.println("Please input date in correct format as stated above:");
+            }
+        }
+    }
+
+
 
     private static void runSubMenu(Scanner in, Library library) {
         boolean backToMainMenu = false;

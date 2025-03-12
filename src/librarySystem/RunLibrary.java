@@ -46,7 +46,7 @@ public class RunLibrary {
                 null, "fantasy");
         Book book2 = new Book("Shining", 433, 1985, "oda", "Steven King",
                 null, "Thriller");
-        Book book3 = new Book("witcher", 452, 2000, "heaven", "Jean Claude",
+        Book book3 = new Book("The Witcher", 452, 2000, "heaven", "Jean Claude",
                 "Dave", "fantasy");
         PrintedProduction pp = new PrintedProduction("truth paper", 23, 1990);
         Comic dc = new Comic("Superman", 154, 1989, 1, "Stew", "Brown");

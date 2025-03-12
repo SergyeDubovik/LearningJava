@@ -10,7 +10,6 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "Customer{" +
-                "name='" + name + '\'' + '}';
+        return "Customer: " + name + '\'';
     }
 }
