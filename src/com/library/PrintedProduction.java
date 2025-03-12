@@ -5,7 +5,7 @@ public class PrintedProduction {
     private int pages;
     private int yearOfRelease;
     private final int id;
-    private static int nextId;
+    private static int nextId = 1;
 
 
     public PrintedProduction(String name, int pages, int yearOfRelease) {

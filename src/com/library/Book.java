@@ -19,16 +19,15 @@ public class Book extends PrintedProduction {
 
     @Override
     public String toString() {
-        return "Book = { " +
+        return "Book - " +
                 "id: " + getId() +
-                ", Name: " + getTitle() +
+                ", Title: " + getTitle() +
                 ", Pages: " + getPages() +
                 ", Release: " + getYearOfRelease() +
                 ", publisher: " + publisher +
                 ", author: " + author +
                 ", anotherAuthor: " + anotherAuthor +
-                ", genre: " + genre +
-                '}';
+                ", genre: " + genre + ", ";
     }
 
     public String getPublisher() {
@@ -55,6 +54,7 @@ public class Book extends PrintedProduction {
     public void setGenre(String genre) {
         this.genre = genre;
     }
+
 
     @Override
     public boolean equals(Object o) {
