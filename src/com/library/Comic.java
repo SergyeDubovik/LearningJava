@@ -11,15 +11,14 @@ public class Comic extends Magazine {
 
     @Override
     public String toString() {
-        return "Comic = { " +
+        return "Comic - " +
                 "id: " + getId() +
-                ", Name: " + getTitle() +
+                ", Title: " + getTitle() +
                 ", Pages: " + getPages() +
                 ", Release: " + getYearOfRelease() +
                 ", Monthly periodicity: " + getMonthlyPeriodicity() +
                 ", Illustrator: " + getIllustrator() +
-                ", Chief Editor: " + getChiefEditor() +
-                '}';
+                ", Chief Editor: " + getChiefEditor();
     }
 
     public String getIllustrator() {

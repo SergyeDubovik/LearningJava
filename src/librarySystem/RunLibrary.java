@@ -2,6 +2,7 @@ package librarySystem;
 
 import com.library.Book;
 import com.library.Comic;
+import com.library.Magazine;
 import com.library.PrintedProduction;
 import com.library.filter.FromYearTillYearFilter;
 import com.library.filter.GenreFilter;
@@ -38,6 +39,9 @@ public class RunLibrary {
         List<PrintedProduction> booksByYear = library.filter(new FromYearTillYearFilter(1984, 1999));
         System.out.println(booksByYear);
         System.out.println(fantasyBooks);
+        for (PrintedProduction p : library.getBooks()) {
+            System.out.println(p);
+        }
     }
 
     public static Library buildLibrary() {
@@ -50,12 +54,14 @@ public class RunLibrary {
                 "Dave", "fantasy");
         PrintedProduction pp = new PrintedProduction("truth paper", 23, 1990);
         Comic dc = new Comic("Superman", 154, 1989, 1, "Stew", "Brown");
+        Magazine sport = new Magazine("Sport", 50, 2002, 4, "Tom");
 
         library.addBook(book1);
         library.addBook(book2);
         library.addBook(book3);
         library.addBook(pp);
         library.addBook(dc);
+        library.addBook(sport);
         return library;
     }
 }

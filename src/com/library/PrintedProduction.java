@@ -18,12 +18,11 @@ public class PrintedProduction {
 
     @Override
     public String toString() {
-        return "PrintedProduction {" +
-                "id = " + id +
-                ", title = " + title +
-                ", pages = " + pages +
-                ", yearOfRelease = " + yearOfRelease +
-                '}';
+        return "Printed Production - " +
+                "id: " + id +
+                ", Title: " + title +
+                ", pages: " + pages +
+                ", yearOfRelease: " + yearOfRelease;
     }
 
     public String getTitle() {
