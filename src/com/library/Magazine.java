@@ -12,14 +12,13 @@ public class Magazine extends PrintedProduction {
 
     @Override
     public String toString() {
-        return "Magazine = {" +
+        return "Magazine - " +
                 "id: " + getId() +
-                ", Name: " + getTitle() + '\'' +
-                ", Pages: " + getPages() + '\'' +
-                ", Release: " + getYearOfRelease() + '\'' +
-                ", monthlyPeriodicity: " + monthlyPeriodicity +
-                ", chiefEditor: " + chiefEditor +
-                '}';
+                ", Title: " + getTitle() +
+                ", Pages: " + getPages() +
+                ", Release: " + getYearOfRelease() +
+                ", Monthly Periodicity: " + monthlyPeriodicity +
+                ", Chief Editor: " + chiefEditor;
     }
 
     public int getMonthlyPeriodicity() {

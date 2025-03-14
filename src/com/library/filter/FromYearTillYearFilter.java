@@ -3,8 +3,8 @@ package com.library.filter;
 import com.library.PrintedProduction;
 
 public class FromYearTillYearFilter extends PredicateFilter {
-    private int fromYear;
-    private int tillYear;
+    private final int fromYear;
+    private final int tillYear;
 
     public FromYearTillYearFilter(int fromYear, int tillYear) {
         this.fromYear = fromYear;
@@ -17,26 +17,5 @@ public class FromYearTillYearFilter extends PredicateFilter {
         return yearOfRelease >= fromYear && tillYear >= yearOfRelease;
     }
 }
-//    @Override
-//    public PrintedProduction[] filter(PrintedProduction[] productions) {
-//        int count = 0;
-//        for (int i = 0; i < productions.length; i++) {
-//            int yearOfRelease = productions[i].getYearOfRelease();
-//            if (yearOfRelease >= fromYear && tillYear >= yearOfRelease) {
-//                count++;
-//            }
-//        }
-//
-//
-//        PrintedProduction[] result = new PrintedProduction[count];
-//        count = 0;
-//        for (int i = 0; i < productions.length; i++) {
-//            int yearOfRelease = productions[i].getYearOfRelease();
-//            if (yearOfRelease >= fromYear && tillYear >= yearOfRelease) {
-//                result[count++] = productions[i];
-//            }
-//        }
-//
-//        return result;
-//    }
+
 
