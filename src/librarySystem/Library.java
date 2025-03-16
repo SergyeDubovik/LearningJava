@@ -49,7 +49,10 @@ public class Library implements LibraryManagement {
         long countFine = 0;
         Record record = borrowedBooks.get(book);
         if (record == null) {
-            throw new RuntimeException("This book is not available");
+            throw new IllegalArgumentException("This book is not available");
+        }
+        if (!customer.equals(record.getCustomer())) {
+            throw new IllegalArgumentException("wrong customer");
         }
         LocalDate returnDate = record.getDate().plusDays(lease);
         if (currentDay.isAfter(returnDate)) {

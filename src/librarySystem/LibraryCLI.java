@@ -35,9 +35,13 @@ public class LibraryCLI {
                     break;
 
                 case "3":
-                    System.out.println("Implementation of returning book will be added soon");
-
+                    returnPrintedProduction(userInput, library);
                     break;
+
+                case "4":
+                    System.out.println("Implementation of borrowed books list will be added soon");
+                    break;
+
                 case "0":
                     System.out.println("Thanks for visiting, goodbye for now.");
                     exit = true;
@@ -75,12 +79,47 @@ public class LibraryCLI {
                 PrintedProduction borrowedBook = library.borrowPrintedProduction(localDate, bookId, customer);
                 System.out.println(borrowedBook.getTitle() + " (id " + bookId + ") taken by " + customerName +
                         " on " + localDate + ", it should be returned on " + localDate.plusDays(30));
-            } catch (DateTimeException exception) { 
+            } catch (DateTimeException exception) {
                 System.out.println("Please input date in correct format as stated above:");
             }
         }
     }
 
+    private static void returnPrintedProduction(Scanner in, Library library) {
+        System.out.println("Which book do u want to return? Lets check it ID:");
+        int bookId = 0;
+        while (true) {
+            try {
+                bookId = Integer.parseInt(in.nextLine());
+                if (bookId < 0 || bookId > library.getBooks().size()) {
+                    System.out.println("Invalid book ID, please input correct value");
+                    continue;
+                }
+                break;
+            } catch (NumberFormatException exception) {
+                System.out.println("U have to input numeric value! Do it below:");
+            }
+        }
+
+        System.out.println("Please input customer's name:");
+        String customerName = in.nextLine();
+        Customer customer = new Customer(customerName);
+
+        LocalDate localDate;
+        System.out.println("Please input return date (yyyy-mm-dd):");
+        String currentDate = in.nextLine();
+        localDate = LocalDate.parse(currentDate);
+
+        try {
+            long fine = library.returnBook(localDate, bookId, customer);
+            if (fine > 0) {
+                System.out.println("You must pay a fine - " + fine + " USD");
+            }
+        } catch (IllegalArgumentException exception) {
+            System.out.println("Incorrect input: " + exception.getMessage());
+        }
+        System.out.println("Thank you for using our service");
+    }
 
 
     private static void runSubMenu(Scanner in, Library library) {
@@ -126,6 +165,7 @@ public class LibraryCLI {
         System.out.println("1 - Show available books");
         System.out.println("2 - Get book");
         System.out.println("3 - Return book");
+        System.out.println("4 - Borrowed books");
         System.out.println("0 - Exit");
         System.out.println("Your choice:");
     }
