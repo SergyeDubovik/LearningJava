@@ -3,12 +3,27 @@ package com.dirj;
 import java.io.File;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
+import java.util.*;
 
 public class DirJ {
     private static final String DIR = "  <DIR>";
+    private static boolean onlyFiles = false;
+    private static boolean lowerCase = false;
+
     public static void main(String[] args) {
+        for (String arg : args) {
+            switch (arg) {
+                case "/B":
+                    onlyFiles = true;
+                    break;
+                case "/L":
+                    lowerCase = true;
+                    break;
+                default:
+                    System.out.println("Unknown command");
+                    return;
+            }
+        }
         String currentDirName = System.getProperty("user.dir");
         File currentDir = new File(currentDirName);
 
@@ -22,19 +37,31 @@ public class DirJ {
         if (children == null) {
             throw new RuntimeException();
         }
-        sb.append(getLastModifiedDate(currentDir));
-        sb.append(DIR).append(" ".repeat(16)).append('.').append('\n');
-        sb.append(getLastModifiedDate(currentDir.getParentFile()));
-        sb.append(DIR).append(" ".repeat(16)).append("..").append('\n');
+        if (!onlyFiles) {
+            sb.append(getLastModifiedDate(currentDir));
+            sb.append(DIR).append(" ".repeat(16)).append('.').append('\n');
+            sb.append(getLastModifiedDate(currentDir.getParentFile()));
+            sb.append(DIR).append(" ".repeat(16)).append("..").append('\n');
+        }
         for (File child : children) {
-            sb.append(getLastModifiedDate(child));
+            if (!onlyFiles) {
+                sb.append(getLastModifiedDate(child));
+            }
             if (child.isFile()) {
                 String formatted = nf.format(child.length());
-                sb.append(String.format("%21s", formatted));
+                if (!onlyFiles) {
+                    sb.append(String.format("%21s", formatted));
+                }
             } else {
-                sb.append(DIR).append(" ".repeat(14));
+                if (!onlyFiles) {
+                    sb.append(DIR).append(" ".repeat(14));
+                }
             }
-            sb.append("  ").append(child.getName()).append('\n');
+            if (lowerCase) {
+                sb.append("  ").append(child.getName().toLowerCase()).append('\n');
+            } else {
+                sb.append("  ").append(child.getName()).append('\n');
+            }
         }
         System.out.print(sb);
     }
