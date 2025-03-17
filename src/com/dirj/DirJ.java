@@ -9,6 +9,7 @@ public class DirJ {
     private static final String DIR = "  <DIR>";
     private static boolean onlyFiles = false;
     private static boolean lowerCase = false;
+    private static boolean helpOption = false;
 
     public static void main(String[] args) {
         for (String arg : args) {
@@ -18,6 +19,9 @@ public class DirJ {
                     break;
                 case "/L":
                     lowerCase = true;
+                    break;
+                case "/?":
+                    helpOption = true;
                     break;
                 default:
                     System.out.println("Unknown command");
@@ -31,6 +35,10 @@ public class DirJ {
     }
 
     private static void printDir(File currentDir) {
+        if (helpOption) {
+            System.out.println("Help message");
+            return;
+        }
         File[] children = currentDir.listFiles();
         NumberFormat nf = NumberFormat.getInstance(Locale.FRANCE);
         StringBuilder sb = new StringBuilder();
