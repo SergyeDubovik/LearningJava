@@ -9,11 +9,11 @@ public class DirJ {
     private static final String DIR = "  <DIR>";
     private static boolean onlyFiles = false;
     private static boolean lowerCase = false;
-    private static boolean helpOption = false;
 
     public static void main(String[] args) {
         for (String arg : args) {
-            switch (arg) {
+            boolean helpOption = false;
+            switch (arg.toUpperCase()) {
                 case "/B":
                     onlyFiles = true;
                     break;
@@ -21,10 +21,13 @@ public class DirJ {
                     lowerCase = true;
                     break;
                 case "/?":
-                    helpOption = true;
+                    if (!helpOption) {
+                        helpMessage();
+                        return;
+                    }
                     break;
                 default:
-                    System.out.println("Unknown command");
+                    System.out.println("Unknown argument '" + arg + "'. Use '/?' argument for help.");
                     return;
             }
         }
@@ -35,10 +38,6 @@ public class DirJ {
     }
 
     private static void printDir(File currentDir) {
-        if (helpOption) {
-            System.out.println("Help message");
-            return;
-        }
         File[] children = currentDir.listFiles();
         NumberFormat nf = NumberFormat.getInstance(Locale.FRANCE);
         StringBuilder sb = new StringBuilder();
@@ -79,6 +78,13 @@ public class DirJ {
         Date date = new Date(dateTime);
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm");
         return sdf.format(date) + " ";
+    }
+    private static void helpMessage() {
+        String message = """
+                /B - Show only files
+                /L - Use lower case
+                """;
+        System.out.println(message);
     }
 
 }
