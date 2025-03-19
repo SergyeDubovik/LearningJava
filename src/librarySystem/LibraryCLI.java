@@ -87,7 +87,7 @@ public class LibraryCLI {
 
     private static void returnPrintedProduction(Scanner in, Library library) {
         System.out.println("Which book do u want to return? Lets check it ID:");
-        int bookId = 0;
+        int bookId;
         while (true) {
             try {
                 bookId = Integer.parseInt(in.nextLine());

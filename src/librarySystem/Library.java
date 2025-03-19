@@ -43,7 +43,7 @@ public class Library implements LibraryManagement {
     }
 
     @Override
-    public long returnBook(LocalDate currentDay, int id, Customer customer) {
+    public long returnBook(LocalDate currentDate, int id, Customer customer) {
         PrintedProduction book = books.get(id);
         long daysDue;
         long countFine = 0;
@@ -55,9 +55,12 @@ public class Library implements LibraryManagement {
             throw new IllegalArgumentException("wrong customer");
         }
         LocalDate returnDate = record.getDate().plusDays(lease);
-        if (currentDay.isAfter(returnDate)) {
-            daysDue = ChronoUnit.DAYS.between(returnDate, currentDay);
+        if (currentDate.isAfter(returnDate)) {
+            daysDue = ChronoUnit.DAYS.between(returnDate, currentDate);
             countFine = daysDue * fineValue;
+        }
+        if (currentDate.isBefore(record.getDate())) {
+            throw new IllegalArgumentException("Error: return date should not be earlier then borrow date");
         }
         borrowedBooks.remove(book);
         return countFine;
