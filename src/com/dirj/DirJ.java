@@ -11,25 +11,32 @@ public class DirJ {
 
     public static void main(String[] args) {
         for (String arg : args) {
-            switch (arg.toUpperCase()) {
-                case "/B":
-                    onlyFileNames = true;
-                    break;
-                case "/L":
-                    lowerCase = true;
-                    break;
-                case "/?":
-                    helpMessage();
-                    return;
-                default:
-                    System.out.println("Unknown argument '" + arg + "'. Use '/?' argument for help.");
-                    return;
+            if (parseArguments(arg)) {
+                return;
             }
         }
         String currentDirName = System.getProperty("user.dir");
         File currentDir = new File(currentDirName);
 
         printDir(currentDir);
+    }
+
+    private static boolean parseArguments(String arg) {
+        switch (arg.toUpperCase()) {
+            case "/B":
+                onlyFileNames = true;
+                break;
+            case "/L":
+                lowerCase = true;
+                break;
+            case "/?":
+                helpMessage();
+                return true;
+            default:
+                System.out.println("Unknown argument '" + arg + "'. Use '/?' argument for help.");
+                return true;
+        }
+        return false;
     }
 
     private static void printDir(File currentDir) {
