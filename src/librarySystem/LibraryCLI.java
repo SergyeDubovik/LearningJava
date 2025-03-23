@@ -39,8 +39,7 @@ public class LibraryCLI {
                     break;
 
                 case "4":
-                    System.out.println(library.getBorrowedBooks());
-                    System.out.println("Implementation of borrowed books list will be added soon");
+                    System.out.println(library.viewBorrowed());
                     break;
 
                 case "0":

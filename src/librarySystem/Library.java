@@ -1,9 +1,7 @@
 package librarySystem;
 
-import com.library.Book;
 import com.library.PrintedProduction;
 import com.library.filter.Filter;
-import com.library.filter.GenreFilter;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -13,8 +11,8 @@ public class Library implements LibraryManagement {
     private Map<Integer, PrintedProduction> books;
     private List<Customer> customers;
     private Map<PrintedProduction, Record> borrowedBooks;
-    private static final int lease = 30;
-    private static final long fineValue = 25;
+    private static final int LEASE = 30;
+    private static final long FINE_VALUE = 25;
 
     public Library() {
         books = new HashMap<>();
@@ -54,10 +52,10 @@ public class Library implements LibraryManagement {
         if (!customer.equals(record.getCustomer())) {
             throw new IllegalArgumentException("wrong customer");
         }
-        LocalDate returnDate = record.getDate().plusDays(lease);
+        LocalDate returnDate = record.getDate().plusDays(LEASE);
         if (currentDate.isAfter(returnDate)) {
             daysDue = ChronoUnit.DAYS.between(returnDate, currentDate);
-            countFine = daysDue * fineValue;
+            countFine = daysDue * FINE_VALUE;
         }
         if (currentDate.isBefore(record.getDate())) {
             throw new IllegalArgumentException("Error: return date should not be earlier then borrow date");
@@ -65,6 +63,28 @@ public class Library implements LibraryManagement {
         borrowedBooks.remove(book);
         return countFine;
     }
+
+    public String viewBorrowed() {
+        StringBuilder sb = new StringBuilder();
+        for (Map.Entry<PrintedProduction, Record> entry : borrowedBooks.entrySet()) {
+            PrintedProduction production = entry.getKey();
+            Record rec = entry.getValue();
+            sb.append("Production: ")
+                    .append(production.getTitle())
+                    .append(", ID: ")
+                    .append(production.getId())
+                    .append(", Borrowed by: ")
+                    .append(rec.getCustomer())
+                    .append(", Expect return until: ")
+                    .append(rec.getDate().plusDays(LEASE));
+            if (rec.getDate().plusDays(LEASE).isBefore(LocalDate.now())) {
+                sb.append(" !!!");
+            }
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
+
     public List<PrintedProduction> filter(Filter filter) {
         return filter.filter(new ArrayList<>(books.values()));
     }
