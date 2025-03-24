@@ -58,7 +58,7 @@ public class Library implements LibraryManagement {
             countFine = daysDue * FINE_VALUE;
         }
         if (currentDate.isBefore(record.getDate())) {
-            throw new IllegalArgumentException("Error: return date should not be earlier then borrow date");
+            throw new IllegalArgumentException("Error: return date should not be earlier than borrow date");
         }
         borrowedBooks.remove(book);
         return countFine;

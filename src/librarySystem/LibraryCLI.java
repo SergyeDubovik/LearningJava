@@ -56,11 +56,11 @@ public class LibraryCLI {
 
     private static void lendPrintedProduction(Scanner userInput, Library library) {
         int bookId;
-        System.out.println("What book do u want to borrow? Please enter book ID");
+        System.out.println("Which book do customer want to borrow? Please enter book ID:");
         while (true) {
             bookId = Integer.parseInt(userInput.nextLine());
             if (bookId < 0 || bookId > library.getBooks().size()) {
-                System.out.println("There is no book contains this id, input correct id");
+                System.out.println("There is no book contains this id, input correct id:");
                 continue;
             }
             break;
@@ -77,7 +77,7 @@ public class LibraryCLI {
             try {
                 localDate = LocalDate.parse(borrowDate);
                 PrintedProduction borrowedBook = library.borrowPrintedProduction(localDate, bookId, customer);
-                System.out.println(borrowedBook.getTitle() + " (id " + bookId + ") taken by " + customerName +
+                System.out.println(borrowedBook.getTitle() + " (ID " + bookId + ") was taken by " + customerName +
                         " on " + localDate + ", it should be returned on " + localDate.plusDays(30));
             } catch (DateTimeException exception) {
                 System.out.println("Please input date in correct format as stated above:");
@@ -86,7 +86,7 @@ public class LibraryCLI {
     }
 
     private static void returnPrintedProduction(Scanner in, Library library) {
-        System.out.println("Which book do u want to return? Lets check it ID:");
+        System.out.println("Which book do customer want to return? Lets check it ID:");
         int bookId;
         while (true) {
             try {
@@ -113,7 +113,7 @@ public class LibraryCLI {
         try {
             long fine = library.returnBook(localDate, bookId, customer);
             if (fine > 0) {
-                System.out.println("You must pay a fine - " + fine + " USD");
+                System.out.println("Customer must pay a fine - " + fine + " USD");
             }
         } catch (IllegalArgumentException exception) {
             System.out.println("Incorrect input: " + exception.getMessage());
@@ -162,7 +162,7 @@ public class LibraryCLI {
         System.out.println("Welcome to library.");
         System.out.println("What would you like to do?");
         System.out.println("1 - Show available books");
-        System.out.println("2 - Get book");
+        System.out.println("2 - Lend book");
         System.out.println("3 - Return book");
         System.out.println("4 - Borrowed books");
         System.out.println("0 - Exit");
