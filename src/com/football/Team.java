@@ -18,8 +18,8 @@ public class Team {
     }
 
     public int calculateScore() {
-        for(int i = 0; i < results.length; i++) {
-            score += results[i].calculateScore(this);
+        for (MatchResult result : results) {
+            score += result.calculateScore(this);
         }
         return score;
     }

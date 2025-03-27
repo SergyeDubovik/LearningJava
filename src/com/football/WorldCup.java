@@ -55,10 +55,10 @@ public class WorldCup {
             }
         }
         Team winner = null;
-        for (int i = 0; i < teams.length; i++) {
-            int score = teams[i].calculateScore();
+        for (Team team : teams) {
+            int score = team.calculateScore();
             if (winner == null || winner.score < score) {
-                winner = teams[i];
+                winner = team;
             }
         }
         return winner.name;

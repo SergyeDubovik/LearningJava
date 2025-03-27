@@ -42,10 +42,10 @@ public class GeometryExamples {
     private static Shape getShapeWithMaxPerimeter(Shape[] shapes) {
         double temp = 0;
         Shape figure = null;
-        for (int i = 0; i < shapes.length; i++) {
-            if (shapes[i].getPerimeter() > temp) {
-                temp = shapes[i].getPerimeter();
-                figure = shapes[i];
+        for (Shape shape : shapes) {
+            if (shape.getPerimeter() > temp) {
+                temp = shape.getPerimeter();
+                figure = shape;
             }
         }
         return figure;
@@ -55,10 +55,10 @@ public class GeometryExamples {
     public static Shape shapeWithMinArea(Shape[] shapes) {
         double temp = Double.MAX_VALUE;
         Shape figure = null;
-        for (int i = 0; i < shapes.length; i++) {
-            if (shapes[i].getArea() < temp) {
-                temp = shapes[i].getArea();
-                figure = shapes[i];
+        for (Shape shape : shapes) {
+            if (shape.getArea() < temp) {
+                temp = shape.getArea();
+                figure = shape;
             }
         }
         return figure;
@@ -67,8 +67,8 @@ public class GeometryExamples {
     // посчитать, сколько фигур из массива имеют периметр больше числа N
     public static int considerFiguresWithPerimeterMoreThanN(Shape[] shapes, int n) {
         int count = 0;
-        for(int i = 0; i < shapes.length; i++) {
-            if(shapes[i].getPerimeter() > n) {
+        for (Shape shape : shapes) {
+            if (shape.getPerimeter() > n) {
                 count++;
             }
         }

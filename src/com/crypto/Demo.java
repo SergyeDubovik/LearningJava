@@ -21,8 +21,8 @@ public class Demo {
 
     }
     public static void printArrayChar(char[] array) {
-        for (int i = 0; i < array.length; i++) {
-            System.out.print(array[i]);
+        for (char c : array) {
+            System.out.print(c);
         }
         System.out.println();
     }

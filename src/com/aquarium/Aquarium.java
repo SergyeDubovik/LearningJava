@@ -5,8 +5,8 @@ public class Aquarium {
 
         LifeThing[] myAquarium = new LifeThing[]
                 {new Fish("carp", "grey"), new Shellfish("rak", 6),
-                new GoldFish("regularGoldFish", "orange", "white"),
-                new LifeThing("frog")};
+                        new GoldFish("regularGoldFish", "orange", "white"),
+                        new LifeThing("frog")};
         for (int i = 0; i < myAquarium.length; i++) {
             System.out.println(myAquarium[i]);
         }
