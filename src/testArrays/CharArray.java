@@ -56,8 +56,8 @@ public class CharArray {
                 array[i] -= 32;
             }
         }
-        for (int i = 0; i < array.length; i++){
-            System.out.print(array[i] + " ");
+        for (char c : array) {
+            System.out.print(c + " ");
 
         }
     }
@@ -72,8 +72,8 @@ public class CharArray {
                 letters[i] += 32;
             }
         }
-        for (int i = 0; i < letters.length; i++) {
-            System.out.print(letters[i] + " ");
+        for (char letter : letters) {
+            System.out.print(letter + " ");
         }
     }
     /*
@@ -92,10 +92,10 @@ public class CharArray {
         char[] brackets = {'5',')', 'g','(','(', '(', 'H', 'D', ')', ')'};
         int openBrackets = 0;
         int closedBrackets = 0;
-        for (int i = 0; i < brackets.length; i++) {
-            if (brackets[i] == '(') {
+        for (char bracket : brackets) {
+            if (bracket == '(') {
                 openBrackets++;
-            } else if (brackets[i] == ')') {
+            } else if (bracket == ')') {
                 closedBrackets++;
             }
         }
@@ -105,10 +105,10 @@ public class CharArray {
     private static boolean task2(char[] array, char left, char right) {
         int openBrackets = 0;
         int closedBrackets = 0;
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] == left) {
+        for (char c : array) {
+            if (c == left) {
                 openBrackets++;
-            } else if (array[i] == right) {
+            } else if (c == right) {
                 closedBrackets++;
             }
         }
@@ -159,7 +159,7 @@ public class CharArray {
     private static int[] arraySort(int[] array) {
         for (int i = 1; i < array.length; i++) {
             for (int j = i; j > 0; j--) {
-                int currentElement = 0;
+                int currentElement;
                 if (array[j] > array[j - 1]) {
                     currentElement = array[j];
                     array[j] = array[j - 1];
@@ -173,15 +173,15 @@ public class CharArray {
     }
 
     private static void printArray(int[] array) {
-        for (int i = 0; i < array.length; i++) {
-            System.out.print(array[i] + " ");
+        for (int j : array) {
+            System.out.print(j + " ");
         }
         System.out.println();
     }
 
     public static void printArrayLong(long[] array) {
-        for (int i = 0; i < array.length; i++) {
-            System.out.println(array[i] + " ");
+        for (long l : array) {
+            System.out.println(l + " ");
         }
         System.out.println();
     }
