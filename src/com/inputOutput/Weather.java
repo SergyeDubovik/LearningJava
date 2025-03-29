@@ -97,7 +97,7 @@ public class Weather {
 //            writer.write("Date; Max Temperature");
 //            writer.newLine();
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd MMMM", Locale.ENGLISH);
-        outputArticle();
+        outputTitle();
         for (Integer year : temperature.keySet()) {
             Record tempDate = max(temperature.get(year));
 //                writer.write((date + ";" + maxTemperature));
@@ -127,7 +127,7 @@ public class Weather {
         return rec;
     }
 
-    private static void outputArticle() {
+    private static void outputTitle() {
         System.out.println("Highest temperature in Canberra, Australia in the last 20 years was:");
     }
 /*
