@@ -49,7 +49,7 @@ public class LifetimeCalculator {
             }
         }
         for (Map.Entry<DayOfWeek, List<Long>> entry : lifespansByDay.entrySet()) {
-            System.out.println(entry.getKey() + " - " + average(entry.getValue()));
+            System.out.printf("%-10s %.2f years%n", entry.getKey(), average(entry.getValue()));
         }
     }
 
