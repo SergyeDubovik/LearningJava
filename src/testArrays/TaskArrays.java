@@ -349,18 +349,6 @@ public class TaskArrays {
     }
 
     /*
-        найти обьем воды в какой-то емкости, зная её профиль поперечного среза
-     */
-
-    public static int volumeWater(int[] array) {
-        int resVolumeOfWater = 0;
-        for (int i = 0; i < array.length; i++) {
-
-        }
-        return resVolumeOfWater;
-    }
-
-    /*
         1 найти наибольший элемент под главной диагональю
      */
 

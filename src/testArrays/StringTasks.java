@@ -84,17 +84,16 @@ public class StringTasks {
     }
 
     public static void sameLettersSuffix(String[] strings) {
-        for (int i = 0; i < strings.length; i++) {
-            char[] res = strings[i].toCharArray();
+        for (String string : strings) {
+            char[] res = string.toCharArray();
             if (res.length > 3 && res[0] == res[res.length - 2] && res[1] == res[res.length - 1]) {
-                System.out.println(strings[i]);
+                System.out.println(string);
             }
         }
     }
 
     public static void sameLettersSuffixOptimised(String[] strings) {
-        for (int i = 0; i < strings.length; i++) {
-            String s = strings[i];
+        for (String s : strings) {
             if (s.length() > 3 && s.charAt(0) == s.charAt(s.length() - 2) && s.charAt(1) == s.charAt(s.length() - 1)) {
                 System.out.println(s);
             }
@@ -102,11 +101,11 @@ public class StringTasks {
     }
 
     public static void sameLettersSuffixOptimised2(String[] strings) {
-        for (int i = 0; i < strings.length; i++) {
-            if (strings[i].length() > 3) {
-                String prefix = strings[i].substring(0, 2);
-                if (strings[i].endsWith(prefix)) {
-                    System.out.println(strings[i]);
+        for (String string : strings) {
+            if (string.length() > 3) {
+                String prefix = string.substring(0, 2);
+                if (string.endsWith(prefix)) {
+                    System.out.println(string);
                 }
 
             }
@@ -148,10 +147,10 @@ public class StringTasks {
      */
     public static String buyHealthyGoods(String[] keyWords, String list) {
         String changed = list;
-        for (int i = 0; i < keyWords.length; i++) {
-            int wordLength = keyWords[i].length();
+        for (String keyWord : keyWords) {
+            int wordLength = keyWord.length();
             String censor = "*".repeat(wordLength);
-            changed = changed.replace(keyWords[i], censor);
+            changed = changed.replace(keyWord, censor);
         }
         return changed;
     }
@@ -163,11 +162,11 @@ public class StringTasks {
         указанная подстрока - "la"
      */
     public static void contains(String[] array, String substring) {
-        for (int i = 0; i < array.length; i++) {
-            int first = array[i].indexOf(substring);
-            int second = array[i].lastIndexOf(substring);
+        for (String string : array) {
+            int first = string.indexOf(substring);
+            int second = string.lastIndexOf(substring);
             if (first != second) {
-                System.out.println(array[i]);
+                System.out.println(string);
             }
         }
     }
@@ -253,10 +252,10 @@ public class StringTasks {
     public static int convertStringToInt(String str) {
         int res = 0;
         char[] temp = str.toCharArray();
-        for (int i = 0; i < temp.length; i++) {
-            int number = temp[i] - '0';
+        for (char c : temp) {
+            int number = c - '0';
             res = res * 10 + number;
-            if (temp[i] < 48 || 58 < temp[i]) {
+            if (c < 48 || 58 < c) {
                 throw new IllegalArgumentException("number contains inappropriate symbols");
             }
         }
