@@ -34,7 +34,7 @@ public class GuessANumberJava {
 
     private static void mainMenu() {
         System.out.println("Welcome to Guess A Number game");
-        System.out.println("Choose o game mode:");
+        System.out.println("Choose a game mode:");
         System.out.println("1 - AI v Player");
         System.out.println("2 - Player v AI");
         System.out.println("3 - How to play");
@@ -43,23 +43,29 @@ public class GuessANumberJava {
 
     private static void againstAI(Scanner scanner) {
         Random random = new Random();
-        System.out.println("Enter the range of numbers you want the target number to be between:");
-        int bound = scanner.nextInt();
-        scanner.nextLine();
-        int secretNumber = random.nextInt(bound) + 1;
+        System.out.println("Enter the range of numbers you want the target number to be between.\nOrigin:");
+        int origin = Integer.parseInt(scanner.nextLine());
+        System.out.println("Bound:");
+        int bound = Integer.parseInt(scanner.nextLine());
+        int secretNumber = random.nextInt(origin, bound + 1);
         int myNumber;
+        int countOfGuesses = 1;
         while (true) {
             System.out.println("Please input your guess number:");
-            myNumber = scanner.nextInt();
-            scanner.nextLine();
+            myNumber = Integer.parseInt(scanner.nextLine());
+                if (myNumber > bound || myNumber < origin) {
+                    System.out.println("You have to input number in the range from " + origin + " to " + bound);
+                    continue;
+                }
             if (myNumber == secretNumber) {
-                System.out.println("Congrats, U nailed it!\n");
+                System.out.println("Congrats, You nailed it! It took you " + countOfGuesses + " attempts!\n");
                 break;
             } else if (myNumber > secretNumber) {
-                System.out.println("Your number must be less than hidden number");
+                System.out.println("Hidden number is less than " + myNumber);
             } else {
-                System.out.println("Your number must be greater than hidden number");
+                System.out.println("Hidden number is greater than " + myNumber);
             }
+            countOfGuesses++;
         }
     }
 
