@@ -4,6 +4,8 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class GuessANumberJava {
+    private static int origin;
+    private static int bound;
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         boolean closeApp = false;
@@ -42,21 +44,18 @@ public class GuessANumberJava {
     }
 
     private static void againstAI(Scanner scanner) {
+        readRange(scanner);
+
         Random random = new Random();
-        System.out.println("Enter the range of numbers you want the target number to be between.\nOrigin:");
-        int origin = Integer.parseInt(scanner.nextLine());
-        System.out.println("Bound:");
-        int bound = Integer.parseInt(scanner.nextLine());
         int secretNumber = random.nextInt(origin, bound + 1);
         int myNumber;
         int countOfGuesses = 1;
         while (true) {
-            System.out.println("Please input your guess number:");
-            myNumber = Integer.parseInt(scanner.nextLine());
-                if (myNumber > bound || myNumber < origin) {
-                    System.out.println("You have to input number in the range from " + origin + " to " + bound);
-                    continue;
-                }
+            myNumber = readNumber(scanner);
+            if (myNumber > bound || myNumber < origin) {
+                System.out.println("You have to input number in the range from " + origin + " to " + bound);
+                continue;
+            }
             if (myNumber == secretNumber) {
                 System.out.println("Congrats, You nailed it! It took you " + countOfGuesses + " attempts!\n");
                 break;
@@ -66,6 +65,32 @@ public class GuessANumberJava {
                 System.out.println("Hidden number is greater than " + myNumber);
             }
             countOfGuesses++;
+        }
+    }
+
+    private static void readRange(Scanner scanner) {
+        System.out.println("Enter the range of numbers you want the target number to be between.");
+        while (true) {
+            System.out.println("Origin:");
+            origin = Integer.parseInt(scanner.nextLine());
+            System.out.println("Bound:");
+            bound = Integer.parseInt(scanner.nextLine());
+            if (origin > bound) {
+                System.out.println("Origin can't be greater than bound.");
+            } else {
+                break;
+            }
+        }
+    }
+
+    private static int readNumber(Scanner scanner) {
+        while (true) {
+            System.out.println("Please input your guess number:");
+            try {
+                return Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Specified input is not a number");
+            }
         }
     }
 
