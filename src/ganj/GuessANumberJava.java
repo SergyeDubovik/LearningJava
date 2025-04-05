@@ -20,14 +20,14 @@ public class GuessANumberJava {
                     System.out.println("Soon...");
                     break;
                 case "3":
-                    help();
+                    helpMessage();
                     break;
                 case "4":
                     System.out.println("Bye");
                     closeApp = true;
                     break;
                 default:
-                    System.out.println("Wrong input");
+                    System.out.println("Invalid input. Try to input a number from the main menu points");
                     break;
             }
         }
@@ -53,7 +53,7 @@ public class GuessANumberJava {
         while (true) {
             myNumber = readNumber(scanner);
             if (myNumber > bound || myNumber < origin) {
-                System.out.println("You have to input number in the range from " + origin + " to " + bound);
+                System.out.println("You have to input a number in the range from " + origin + " to " + bound);
                 continue;
             }
             if (myNumber == secretNumber) {
@@ -94,7 +94,7 @@ public class GuessANumberJava {
         }
     }
 
-    private static void help() {
+    private static void helpMessage() {
         System.out.println("""
                 Enter the range of numbers you want the target number to be between, and press New Target
                 Enter your guess
