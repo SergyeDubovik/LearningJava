@@ -15,8 +15,8 @@ public class ComplexCypher implements Cypher {
         for (int i = 0; i < openText.length; i++) {
             result[i] = openText[i];
         }
-        for (int i = 0; i < cyphers.length; i++) {
-            result = cyphers[i].encode(result);
+        for (Cypher cypher : cyphers) {
+            result = cypher.encode(result);
         }
         return result;
     }
