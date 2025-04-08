@@ -14,7 +14,7 @@ public class GuessANumberJava {
                     againstAI(scanner);
                     break;
                 case "2":
-                    System.out.println("Soon...");
+                    System.out.println("Will be added soon...");
                     break;
                 case "3":
                     helpMessage();
