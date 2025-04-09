@@ -30,16 +30,17 @@ import java.util.Scanner;
 import java.util.TreeMap;
 
 public class BirthdayCalculator {
+    static int totalBirthdays;
+    static LocalDate localDate;
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Date of birth (yyyy-mm-dd):");
         String birthdayDate = sc.nextLine();
         LocalDate date = LocalDate.parse(birthdayDate);
         Map<DayOfWeek, Integer> stats = new TreeMap<>();
-        int totalBirthdays = 0;
-        for (LocalDate d = date; d.isBefore(LocalDate.now()); d = d.plusYears(1)) {
-            DayOfWeek dow = d.getDayOfWeek();
-            stats.put(dow, stats.getOrDefault(dow, 0) + 1);
+        for (localDate = date; localDate.isBefore(LocalDate.now()); localDate = localDate.plusYears(1)) {
+            DayOfWeek dayOfWeek = localDate.getDayOfWeek();
+            stats.put(dayOfWeek, stats.getOrDefault(dayOfWeek, 0) + 1);
             totalBirthdays++;
         }
         System.out.println();
