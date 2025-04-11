@@ -14,7 +14,7 @@ public class GuessANumberJava {
                     againstAI(scanner);
                     break;
                 case "2":
-                    System.out.println("Will be added soon...");
+                    againstHuman(scanner);
                     break;
                 case "3":
                     helpMessage();
@@ -42,6 +42,11 @@ public class GuessANumberJava {
 
     private static void againstAI(Scanner scanner) {
         GameRound gameRound = new GameRound(new AIRiddleMaker(), new HumanGuesser(scanner), scanner);
+        gameRound.process();
+    }
+
+    private static void againstHuman(Scanner scanner){
+        GameRound gameRound = new GameRound(new HumanRiddleMaker(), new AIGuesser(scanner), scanner);
         gameRound.process();
     }
 
