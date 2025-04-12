@@ -9,12 +9,7 @@ import static ganj.CompareResult.LOWER;
 public class AIGuesser implements Guesser {
     private int from;
     private int to;
-    private final Scanner scanner;
-
-    public AIGuesser(Scanner scanner) {
-        this.scanner = scanner;
-    }
-
+    private int guessByAI;
 
     @Override
     public void initialize(int from, int to) {
@@ -24,16 +19,17 @@ public class AIGuesser implements Guesser {
 
     @Override
     public int makeGuess() {
-        Random random = new Random();
-        return random.nextInt(from, to + 1);
+        return guessByAI = (from + to) / 2;
     }
 
     @Override
-    public void notifyResult(CompareResult cr) {
-        if (cr.equals(GREATER)) {
+    public void notifyResult(CompareResult compareResult) {
+        if (compareResult == CompareResult.GREATER) {
             System.out.println("Guess number is greater");
-        } else if (cr.equals(LOWER)) {
+            from = guessByAI + 1;
+        } else if (compareResult == CompareResult.LOWER) {
             System.out.println("Guess number is lower");
+            to = guessByAI - 1;
         } else {
             System.out.println("Congrats, You nailed it!");
         }

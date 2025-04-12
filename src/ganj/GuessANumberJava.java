@@ -46,7 +46,7 @@ public class GuessANumberJava {
     }
 
     private static void againstHuman(Scanner scanner){
-        GameRound gameRound = new GameRound(new HumanRiddleMaker(), new AIGuesser(scanner), scanner);
+        GameRound gameRound = new GameRound(new HumanRiddleMaker(), new AIGuesser(), scanner);
         gameRound.process();
     }
 

@@ -10,10 +10,10 @@ public class HumanRiddleMaker implements RiddleMaker {
         while (true) {
             System.out.println("Let's guess a number from " + from + " to " + to);
             secretNumber = Integer.parseInt(scanner.nextLine());
-            if (secretNumber < from || secretNumber > to) {
-                System.out.println("Entered number is out of range!");
-            } else {
+            if (secretNumber >= from && secretNumber <= to) {
                 break;
+            } else {
+                System.out.println("Entered number is out of range!");
             }
         }
     }
