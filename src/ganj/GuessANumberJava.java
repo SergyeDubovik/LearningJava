@@ -11,10 +11,10 @@ public class GuessANumberJava {
             String input = scanner.nextLine();
             switch (input) {
                 case "1":
-                    againstAI(scanner);
+                    playHumanGuesser(scanner);
                     break;
                 case "2":
-                    System.out.println("Will be added soon...");
+                    playAIGuesser(scanner);
                     break;
                 case "3":
                     helpMessage();
@@ -40,8 +40,13 @@ public class GuessANumberJava {
         System.out.println("4 - Close app");
     }
 
-    private static void againstAI(Scanner scanner) {
+    private static void playHumanGuesser(Scanner scanner) {
         GameRound gameRound = new GameRound(new AIRiddleMaker(), new HumanGuesser(scanner), scanner);
+        gameRound.process();
+    }
+
+    private static void playAIGuesser(Scanner scanner){
+        GameRound gameRound = new GameRound(new HumanRiddleMaker(scanner), new AIGuesser(), scanner);
         gameRound.process();
     }
 
