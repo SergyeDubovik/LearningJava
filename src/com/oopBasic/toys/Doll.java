@@ -1,4 +1,4 @@
-package com.toys;
+package com.oopBasic.toys;
 
 import java.util.Objects;
 

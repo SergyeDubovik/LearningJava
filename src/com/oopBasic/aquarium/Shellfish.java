@@ -1,4 +1,4 @@
-package com.aquarium;
+package com.oopBasic.aquarium;
 
 public class Shellfish extends LifeThing {
     public int limbCount;

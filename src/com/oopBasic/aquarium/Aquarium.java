@@ -1,4 +1,4 @@
-package com.aquarium;
+package com.oopBasic.aquarium;
 
 public class Aquarium {
     public static void main(String[] args) {

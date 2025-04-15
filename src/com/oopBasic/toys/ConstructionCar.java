@@ -1,4 +1,4 @@
-package com.toys;
+package com.oopBasic.toys;
 
 public class ConstructionCar extends Car {
     private String color;
