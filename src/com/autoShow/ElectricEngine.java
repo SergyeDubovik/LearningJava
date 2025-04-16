@@ -1,16 +1,16 @@
 package com.autoShow;
 
-public class ElectroEngine extends Engine {
+public class ElectricEngine extends Engine {
     private double batteryVolume;
 
-    public ElectroEngine(int horsePower, double batteryVolume) {
+    public ElectricEngine(int horsePower, double batteryVolume) {
         super(horsePower);
         this.batteryVolume = batteryVolume;
     }
 
     @Override
     public String toString() {
-        return "ElectroEngine{" +
+        return "ElectricEngine{" +
                 "batteryVolume=" + batteryVolume +
                 '}';
     }

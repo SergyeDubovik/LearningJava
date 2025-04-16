@@ -18,6 +18,3 @@ public class Engine {
         this.horsePower = horsePower;
     }
 }
-/*
-    реализовать расчет бином Ньютона
- */
