@@ -35,6 +35,19 @@ public class Benchmark {
         Collections.sort(numbers);
     }
 
+    private static void bubbleSort(List<Integer> numbers) {
+        int temp;
+        for (int i = 0; i < numbers.size() - 1; i++) {
+            for (int j = 0; j < numbers.size() - i - 1; j++) {
+                if (numbers.get(j) > numbers.get(j + 1)) {
+                    temp = numbers.get(j);
+                    numbers.set(j, numbers.get(j + 1));
+                    numbers.set(j + 1, temp);
+                }
+            }
+        }
+    }
+
     private static void benchmark(List<Integer> numbers) {
         List<Integer> copied = copy(numbers);
         long start = System.nanoTime();
@@ -49,6 +62,13 @@ public class Benchmark {
         elapsedNanos = System.nanoTime() - start;
         duration = Duration.ofNanos(elapsedNanos);
         System.out.println("Quick sort elapsed " + duration);
+
+        copied = copy(numbers);
+        start = System.nanoTime();
+        bubbleSort(copied);
+        elapsedNanos = System.nanoTime() - start;
+        duration = Duration.ofNanos(elapsedNanos);
+        System.out.println("Bubble sort elapsed " + duration);
     }
 
     private static List<Integer> copy(List<Integer> numbers) {
