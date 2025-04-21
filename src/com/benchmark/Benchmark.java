@@ -11,7 +11,7 @@ public class Benchmark {
         List<Integer> numbers = new ArrayList<>();
         Random random = new Random();
         for (int i = 0; i < 100_000; i++) {
-            numbers.add(random.nextInt());
+            numbers.add(random.nextInt(1, 1000 + 1));
         }
         benchmark(numbers);
     }
@@ -21,7 +21,7 @@ public class Benchmark {
         for (int i = 0; i < numbers.size(); i++) {
             int maxElementIndex = i;
             for (int j = i + 1; j < numbers.size(); j++) {
-                if (numbers.get(j) > numbers.get(maxElementIndex)) {
+                if (numbers.get(j) < numbers.get(maxElementIndex)) {
                     maxElementIndex = j;
                 }
             }
@@ -48,6 +48,19 @@ public class Benchmark {
         }
     }
 
+    private static void insertionSort(List<Integer> numbers) {
+        int temp;
+        for (int i = 0; i < numbers.size(); i++) {
+            for (int j = i; j > 0; j--) {
+                if (numbers.get(j) < numbers.get(j - 1)) {
+                    temp = numbers.get(j);
+                    numbers.set(j, numbers.get(j - 1));
+                    numbers.set(j - 1, temp);
+                }
+            }
+        }
+    }
+
     private static void benchmark(List<Integer> numbers) {
         List<Integer> copied = copy(numbers);
         long start = System.nanoTime();
@@ -69,6 +82,13 @@ public class Benchmark {
         elapsedNanos = System.nanoTime() - start;
         duration = Duration.ofNanos(elapsedNanos);
         System.out.println("Bubble sort elapsed " + duration);
+
+        copied = copy(numbers);
+        start = System.nanoTime();
+        insertionSort(copied);
+        elapsedNanos = System.nanoTime() - start;
+        duration = Duration.ofNanos(elapsedNanos);
+        System.out.println("Insertion sort elapsed " + duration);
     }
 
     private static List<Integer> copy(List<Integer> numbers) {
