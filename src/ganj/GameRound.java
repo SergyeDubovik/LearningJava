@@ -1,5 +1,7 @@
 package ganj;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class GameRound {
@@ -20,9 +22,17 @@ public class GameRound {
         readRange(scanner);
         riddleMaker.thinkOfNumberBetween(origin, bound);
         guesser.initialize(origin, bound);
+        Map<Integer, CompareResult> history = new HashMap<>();
         while (true) {
             int guessNumber = guesser.makeGuess();
             CompareResult result = riddleMaker.check(guessNumber);
+            if (history.containsKey(guessNumber)) {
+                if (result != history.get(guessNumber)) {
+                    throw new IllegalStateException("You cheater");
+                }
+            } else {
+                history.put(guessNumber, result);
+            }
             guesser.notifyResult(result);
             attempts++;
             if (result == CompareResult.EQUAL) {
