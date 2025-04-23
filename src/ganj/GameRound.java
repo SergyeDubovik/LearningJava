@@ -28,7 +28,7 @@ public class GameRound {
             CompareResult result = riddleMaker.check(guessNumber);
             if (history.containsKey(guessNumber)) {
                 if (result != history.get(guessNumber)) {
-                    throw new IllegalStateException("You cheater");
+                    throw new IllegalStateException("I see you are a cheater? Banned!");
                 }
             } else {
                 history.put(guessNumber, result);

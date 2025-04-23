@@ -39,10 +39,10 @@ public class GuessANumberJava {
 
     private static void mainMenu() {
         System.out.println("Choose a game mode:");
-        System.out.println("1 - AI v Player");
-        System.out.println("2 - Player v AI");
-        System.out.println("3 - Player v Player");
-        System.out.println("4 - AI v AI");
+        System.out.println("1 - AI RM v Player Gu");
+        System.out.println("2 - Player RM v AI Gu");
+        System.out.println("3 - Player RM v Player Gu");
+        System.out.println("4 - AI RM v AI Gu");
         System.out.println("5 - How to play");
         System.out.println("6 - Close app");
     }
