@@ -1,7 +1,5 @@
 package com.collection.stack;
 
-import java.util.List;
-
 public class StackDemo {
     public static void main(String[] args) {
         Stack<Integer> numbers = new MyStack<>();
@@ -10,5 +8,6 @@ public class StackDemo {
         numbers.push(4);
         numbers.push(5);
         System.out.println(numbers.size());
+        System.out.println(numbers);
     }
 }
