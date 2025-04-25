@@ -184,19 +184,6 @@ public class MyArrayList implements List<String> {
         size++;
     }
 
-//    public String remove(int index)
-//        if (index < 0 || index >= this.index) {
-//            throw new RuntimeException("Index mustn't be less than zero and more than the array's length");
-//        }
-//        String removed = array[index];
-//        for (int i = index + 1; i < array.length; i++) {
-//            array[i - 1] = array[i];
-//        }
-//        this.index--;
-//        return removed;
-
-//
-
     @Override
     public String remove(int index) {
         if (index < 0 || index >= size) {
