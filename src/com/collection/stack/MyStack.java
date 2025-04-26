@@ -28,6 +28,6 @@ public class MyStack<T> implements Stack<T> {
 
     @Override
     public String toString() {
-        return "" + list;
+        return list.toString();
     }
 }
