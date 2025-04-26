@@ -7,8 +7,8 @@ public class MyTreeMapDemo {
         tree.put(6);
         tree.put(45);
         tree.put(7);
+        tree.put(2);
         System.out.println(tree);
-        System.out.println(tree.remove(6));
-        System.out.println(tree.contains(5));
+        System.out.println(tree.contains(7));
     }
 }
