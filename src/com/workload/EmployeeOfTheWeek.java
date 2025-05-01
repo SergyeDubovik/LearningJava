@@ -35,7 +35,7 @@ public class EmployeeOfTheWeek {
         int[] points = new int[employees.length];
         for (int i = 0; i < produced.length; i++) {
             for (int j = 0; j < produced[i].length; j++) {
-                int bonus = 0;
+                int bonus;
                 if (produced[i][j] <= expGoods) {
                     bonus = produced[i][j];
                 } else {
