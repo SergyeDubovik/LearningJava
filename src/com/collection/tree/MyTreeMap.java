@@ -18,7 +18,7 @@ public class MyTreeMap<V extends Comparable<V>> implements Tree<V> {
 
     @Override
     public V remove(V value) {
-        return null;
+        return root.remove(value);
     }
 
     @Override
@@ -60,6 +60,37 @@ public class MyTreeMap<V extends Comparable<V>> implements Tree<V> {
                 } else {
                     left.put(value);
                 }
+            }
+        }
+
+        private V remove(V value) {
+            int compare = value.compareTo(this.value);
+            if (compare < 0) {
+                if (left != null) {
+                    return left.remove(value);
+                }
+            } else if (compare > 0) {
+                if (right != null) {
+                    return right.remove(value);
+                }
+            } else {
+                removeThisNode();
+            }
+            return this.value;
+        }
+
+        private void removeThisNode() {
+            if (left == null && right == null && parent != null) {
+                parent.removeChild(value);
+            }
+        }
+
+        private void removeChild(V value) {
+            if (left != null && value.equals(left.value)) {
+                left = null;
+            }
+            if (right != null && value.equals(right.value)) {
+                right = null;
             }
         }
 
