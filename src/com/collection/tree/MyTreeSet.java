@@ -1,9 +1,6 @@
 package com.collection.tree;
 
-import java.util.Set;
-import java.util.TreeSet;
-
-public class MyTreeMap<V extends Comparable<V>> implements Tree<V> {
+public class MyTreeSet<V extends Comparable<V>> implements Tree<V> {
     private Node<V> root;
 
     @Override
@@ -27,6 +24,11 @@ public class MyTreeMap<V extends Comparable<V>> implements Tree<V> {
             return false;
         }
         return root.contains(value);
+    }
+
+    @Override
+    public int size() {
+        return root == null ? 0 : root.size();
     }
 
     @Override
@@ -80,6 +82,17 @@ public class MyTreeMap<V extends Comparable<V>> implements Tree<V> {
                     return left.contains(value);
                 }
             }
+        }
+
+        private int size() {
+            int size = 1;
+            if (left != null) {
+                size += left.size();
+            }
+            if (right != null) {
+                size += right.size();
+            }
+            return size;
         }
 
         @Override

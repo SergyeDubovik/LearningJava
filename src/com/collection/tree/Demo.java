@@ -1,8 +1,8 @@
 package com.collection.tree;
 
-public class MyTreeMapDemo {
+public class Demo {
     public static void main(String[] args) {
-        Tree<Integer> tree = new MyTreeMap<>();
+        Tree<Integer> tree = new MyTreeSet<>();
         tree.put(5);
         tree.put(6);
         tree.put(45);
@@ -10,5 +10,6 @@ public class MyTreeMapDemo {
         tree.put(2);
         System.out.println(tree);
         System.out.println(tree.contains(7));
+        System.out.println(tree.size());
     }
 }
