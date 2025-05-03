@@ -29,11 +29,7 @@ public class Lesson4 {
     }
 
     public static boolean isRighter(Point a, Point b) {
-        if (a.x > b.x) {
-            return true;
-        } else {
-            return false;
-        }
+        return a.x > b.x;
     }
 
     /*
@@ -41,18 +37,14 @@ public class Lesson4 {
         */
 
     public static boolean isHigher(Point c, Point d) {
-        if (c.y > d.y) {
-            return true;
-        } else {
-            return false;
-        }
+        return c.y > d.y;
     }
     /*
         2 написать метод, который определяет расстояние между двумя точками
      */
 
     public static double distance(Point c, Point d) {
-        double length = 0;
+        double length;
         length = Math.sqrt(Math.pow(c.x - d.x, 2) + Math.pow(c.y - d.y, 2));
 
         return length;
