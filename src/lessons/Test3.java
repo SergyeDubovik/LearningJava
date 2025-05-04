@@ -23,6 +23,7 @@ public class Test3 {
         for (int i = 0; i < array11.length - 1; i++) {
             if (array11[i] % 2 == 0 && array11[i + 1] % 2 == 0) {
                 res = true;
+                break;
             }
         }
         if (res) {
