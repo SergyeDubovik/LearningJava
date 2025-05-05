@@ -8,6 +8,8 @@ package lessons;
 
 
 public class Test3 {
+    static boolean result = false;
+
     public static void main(String[] args) {
         positiveAdjacentElements();
         sumOdd();
@@ -18,19 +20,19 @@ public class Test3 {
     }
 
     private static void positiveAdjacentElements() {
-        int[] array11 = {5, 11, -62, 5, 88, 32};
-        boolean res = false;
+        int[] array11 = {5, 11, -62, 50, 89, 32};
         for (int i = 0; i < array11.length - 1; i++) {
             if (array11[i] % 2 == 0 && array11[i + 1] % 2 == 0) {
-                res = true;
+                result = true;
                 break;
             }
         }
-        if (res) {
-            System.out.println("We have 2 even elements");
-        } else {
-            System.out.println("We don't have 2 even elements");
-        }
+//        if (result) {
+//            System.out.println("We have 2 even elements");
+//        } else {
+//            System.out.println("We don't have 2 even elements");
+//        }
+        System.out.println(result ? "We have 2 even elements" : "We don't have 2 even elements");
 
 
     }
@@ -46,8 +48,7 @@ public class Test3 {
         System.out.println(sum);
     }
     public static double squareS(double side) {
-        double res = Math.pow(side, 2);
-        return res;
+        return Math.pow(side, 2);
     }
 
 
