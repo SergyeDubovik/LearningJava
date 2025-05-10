@@ -1,4 +1,4 @@
-package com.watch;
+package com.epamTasks;
 
 import java.util.Scanner;
 
