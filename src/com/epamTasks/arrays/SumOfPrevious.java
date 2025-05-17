@@ -1,4 +1,4 @@
-package com.epamTasks;
+package com.epamTasks.arrays;
 
 import java.util.Arrays;
 
