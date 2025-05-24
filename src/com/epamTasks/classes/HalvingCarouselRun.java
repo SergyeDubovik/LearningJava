@@ -2,14 +2,12 @@ package com.epamTasks.classes;
 
 import java.util.List;
 
-public class CarouselRun {
-    protected List<Integer> numbers;
-    protected int index;
-
-    public CarouselRun(List<Integer> numbers) {
-        this.numbers = numbers;
+public class HalvingCarouselRun extends CarouselRun {
+    public HalvingCarouselRun(List<Integer> numbers) {
+        super(numbers);
     }
 
+    @Override
     public int next() {
         if (isFinished()) {
             return -1;
@@ -18,7 +16,7 @@ public class CarouselRun {
         while (count < numbers.size()) {
             int currentValue = numbers.get(index);
             if (currentValue > 0) {
-                numbers.set(index, currentValue - 1);
+                numbers.set(index, currentValue / 2);
                 index = (index + 1) % numbers.size();
                 return currentValue;
             }
@@ -27,15 +25,4 @@ public class CarouselRun {
         }
         return -1;
     }
-
-    public boolean isFinished() {
-        for (Integer number : numbers) {
-            if (number > 0) {
-                return false;
-            }
-        }
-        return true;
-    }
-
 }
-

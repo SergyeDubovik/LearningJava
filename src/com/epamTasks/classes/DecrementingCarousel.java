@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DecrementingCarousel {
-    private List<Integer> numbers = new ArrayList<>();
+    protected List<Integer> numbers = new ArrayList<>();
     private int capacity;
-    private boolean accumulatingState = true;
+    protected boolean accumulatingState = true;
 
     public DecrementingCarousel(int capacity) {
         this.capacity = capacity;
