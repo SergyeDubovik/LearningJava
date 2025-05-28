@@ -15,9 +15,9 @@ public class Quadrilateral extends Figure {
 
     @Override
     public double area() {
-        Triangle temp = new Triangle(a, b, c);
-        Triangle temp1 = new Triangle(a, c, d);
-        return temp.area() + temp1.area();
+        Triangle leftTriangle = new Triangle(a, b, c);
+        Triangle rightTriangle = new Triangle(a, c, d);
+        return leftTriangle.area() + rightTriangle.area();
     }
 
     @Override
