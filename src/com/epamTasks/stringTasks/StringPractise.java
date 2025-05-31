@@ -1,6 +1,8 @@
 package com.epamTasks.stringTasks;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.StringJoiner;
 
 public class StringPractise {
@@ -22,7 +24,17 @@ public class StringPractise {
         if (text == null || text.isEmpty() || text.matches("[,.;: ?!]*")) {
             return null;
         }
-        return text.split("[,.;: ?!]+");
+        String[] strings = text.split("[,.;: ?!]+");
+        List<String> result = new ArrayList<>();
+        for (String word : strings) {
+            if (!word.isEmpty()) {
+                result.add(word);
+            }
+        }
+        if (result.isEmpty()) {
+            return null;
+        }
+        return result.toArray(new String[0]);
     }
 
     public static String convertPath(String path, boolean toWin) {
