@@ -1,9 +1,9 @@
 package com.epamTasks.sprintPlanning;
 
 public class Ticket {
-    private int id;
-    private String name;
-    private int estimate;
+    private final int id;
+    private final String name;
+    private final int estimate;
     private boolean completed = false;
 
     public Ticket(int id, String name, int estimate) {

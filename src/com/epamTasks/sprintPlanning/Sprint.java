@@ -1,9 +1,9 @@
 package com.epamTasks.sprintPlanning;
 
 public class Sprint {
-    private int capacity;
-    private int ticketsLimit;
-    private Ticket[] tickets;
+    private final int capacity;
+    private final int ticketsLimit;
+    private final Ticket[] tickets;
     private int countTickets;
 
     public Sprint(int capacity, int ticketsLimit) {

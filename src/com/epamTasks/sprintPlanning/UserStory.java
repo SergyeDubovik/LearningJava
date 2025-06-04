@@ -1,7 +1,7 @@
 package com.epamTasks.sprintPlanning;
 
 public class UserStory extends Ticket {
-    private UserStory[] dependencies;
+    private final UserStory[] dependencies;
 
     public UserStory(int id, String name, int estimate, UserStory... dependsOn) {
         super(id, name, estimate);

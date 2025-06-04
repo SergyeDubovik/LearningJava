@@ -1,7 +1,7 @@
 package com.epamTasks.sprintPlanning;
 
 public class Bug extends Ticket {
-    private UserStory relatedUserStory;
+    private final UserStory relatedUserStory;
 
     public static Bug createBug(int id, String name, int estimate, UserStory userStory) {
         if (userStory == null || !userStory.isCompleted()) {
