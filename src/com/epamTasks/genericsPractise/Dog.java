@@ -2,7 +2,7 @@ package com.epamTasks.genericsPractise;
 
 public class Dog {
 
-    protected String name;
+    private String name;
 
     public Dog(String name) {
         this.name = name;

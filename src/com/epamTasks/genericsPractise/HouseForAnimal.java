@@ -13,7 +13,7 @@ public class HouseForAnimal<T> {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for (T resident : residents) {
-            sb.append(resident.toString());
+            sb.append(resident.toString()).append("\n");
         }
         return sb.toString();
     }

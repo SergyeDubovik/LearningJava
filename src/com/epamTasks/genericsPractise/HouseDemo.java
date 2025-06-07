@@ -6,7 +6,9 @@ public class HouseDemo {
         HouseForAnimal<Dog> dogHouseForAnimal = new HouseForAnimal<>();
 
         Cat masha = new Cat("Masha");
+        Cat barsik = new Cat("Barsik");
         catHouseForAnimal.enter(masha);
+        catHouseForAnimal.enter(barsik);
         System.out.println(catHouseForAnimal);
 
         Dog butch = new Dog("Butch");
