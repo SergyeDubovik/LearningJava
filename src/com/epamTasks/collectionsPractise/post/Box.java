@@ -1,4 +1,4 @@
-package com.epamTasks.collectionsPractise;
+package com.epamTasks.collectionsPractise.post;
 
 import java.math.BigDecimal;
 import java.util.Objects;

@@ -1,4 +1,6 @@
-package com.epamTasks.collectionsPractise;
+package com.epamTasks.collectionsPractise.post;
+
+import com.epamTasks.collectionsPractise.post.Box;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
