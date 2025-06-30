@@ -1,4 +1,4 @@
-package com.epamTasks.ioStreams;
+package com.epamTasks.ioStreams.cipherCreator;
 
 import java.io.IOException;
 import java.io.InputStream;
