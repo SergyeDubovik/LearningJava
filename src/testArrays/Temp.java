@@ -1,28 +1,46 @@
 package testArrays;
 
+import java.util.List;
+
 import static testArrays.TaskArrays.printArray;
 
 public class Temp {
     public static void main(String[] args) {
-        int[] myArray = {1, 21, -2, 55, 4, -31};
-        int[] myArray1 = {1, 2, 44};
-        System.out.println(findMaxElement(myArray));
-//        printArray(insertionSort(myArray));
-            printArray(sortAr(myArray1));
-        System.out.println();
-        int[] array = {3, -1, 52, -3, 4};
-        System.out.println(sumOfPositiveElements(array));
+//        int[] myArray = {1, 21, -2, 55, 4, -31};
+//        int[] myArray1 = {1, 2, 44};
+//        System.out.println(findMaxElement(myArray));
+////        printArray(insertionSort(myArray));
+//            printArray(sortAr(myArray1));
+//        System.out.println();
+//        int[] array = {3, -1, 52, -3, 4};
+//        System.out.println(sumOfPositiveElements(array));
+//
+//        String[] words = {"flairstla", "second", "third la", "bla bla bla"};
+//        String substring = "la";
+//        for (String i : words) {
+//            int first = i.indexOf(substring);
+//            int second = i.lastIndexOf(substring);
+//            if (first != second) {
+//                System.out.println(i);
+//            }
+//        }
+//        numbersOrLetters();
+        streamTest();
+    }
 
-        String[] words = {"flairstla", "second", "third la", "bla bla bla"};
-        String substring = "la";
-        for (String i : words) {
-            int first = i.indexOf(substring);
-            int second = i.lastIndexOf(substring);
-            if (first != second) {
-                System.out.println(i);
-            }
-        }
-        numbersOrLetters();
+    /*
+        create immutable list
+        -> get elements which contains of only letters a-p
+        -> get letter by char
+        -> input to console
+     */
+    private static void streamTest() {
+        List<String> words = List.of("john", "jack", "phillip", "antoni", "pit");
+        List<Character> result = words.stream()
+                .filter(w -> w.matches("[a-p]+"))
+                .map(w -> w.charAt(2))
+                .toList();
+        System.out.println(result);
     }
 
     private static void numbersOrLetters() {
