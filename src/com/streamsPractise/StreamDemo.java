@@ -7,6 +7,12 @@ public class StreamDemo {
         streamTest();
     }
 
+    /**
+        creates an immutable list
+        -> filters words that contains only letters from 'a' to 'p'
+        -> extracts the third character from each filtered words (charAt(2))
+        -> prints the resulting list of characters to console
+     */
     private static void streamTest() {
         List<String> words = List.of("john", "jack", "phillip", "antoni", "pit");
         List<Character> result = words.stream()

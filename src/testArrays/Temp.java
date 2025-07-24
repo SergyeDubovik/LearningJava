@@ -25,22 +25,6 @@ public class Temp {
 //            }
 //        }
 //        numbersOrLetters();
-        streamTest();
-    }
-
-    /*
-        create immutable list
-        -> get elements which contains of only letters a-p
-        -> get letter by char
-        -> input to console
-     */
-    private static void streamTest() {
-        List<String> words = List.of("john", "jack", "phillip", "antoni", "pit");
-        List<Character> result = words.stream()
-                .filter(w -> w.matches("[a-p]+"))
-                .map(w -> w.charAt(2))
-                .toList();
-        System.out.println(result);
     }
 
     private static void numbersOrLetters() {
