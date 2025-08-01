@@ -3,25 +3,25 @@ package librarySystem;
 import java.time.LocalDate;
 
 public class Record {
-    private Customer customer;
-    private LocalDate date;
+    private final Customer customer;
+    private final LocalDate borrowDate;
 
     public Record(Customer customer, LocalDate date) {
         this.customer = customer;
-        this.date = date;
+        this.borrowDate = date;
     }
 
     @Override
     public String toString() {
         return "customer: " + customer +
-                ", date: " + date;
+                ", date: " + borrowDate;
     }
 
     public Customer getCustomer() {
         return customer;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public LocalDate getBorrowDate() {
+        return borrowDate;
     }
 }

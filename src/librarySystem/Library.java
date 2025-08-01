@@ -52,12 +52,12 @@ public class Library implements LibraryManagement {
         if (!customer.equals(record.getCustomer())) {
             throw new IllegalArgumentException("wrong customer");
         }
-        LocalDate returnDate = record.getDate().plusDays(LEASE);
+        LocalDate returnDate = record.getBorrowDate().plusDays(LEASE);
         if (currentDate.isAfter(returnDate)) {
             daysDue = ChronoUnit.DAYS.between(returnDate, currentDate);
             countFine = daysDue * FINE_VALUE;
         }
-        if (currentDate.isBefore(record.getDate())) {
+        if (currentDate.isBefore(record.getBorrowDate())) {
             throw new IllegalArgumentException("Error: return date should not be earlier than borrow date");
         }
         borrowedBooks.remove(book);
@@ -76,8 +76,8 @@ public class Library implements LibraryManagement {
                     .append(", Borrowed by: ")
                     .append(rec.getCustomer())
                     .append(", Expect return until: ")
-                    .append(rec.getDate().plusDays(LEASE));
-            if (rec.getDate().plusDays(LEASE).isBefore(LocalDate.now())) {
+                    .append(rec.getBorrowDate().plusDays(LEASE));
+            if (rec.getBorrowDate().plusDays(LEASE).isBefore(LocalDate.now())) {
                 sb.append(" !!!");
             }
             sb.append("\n");

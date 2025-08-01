@@ -39,7 +39,8 @@ public class LibraryCLI {
                     break;
 
                 case "4":
-                    System.out.println(library.viewBorrowed());
+                    booksSortingMenuDisplay();
+                    runBooksSortingMenu(userInput, library);
                     break;
 
                 case "0":
@@ -146,6 +147,30 @@ public class LibraryCLI {
         }
     }
 
+    private static void runBooksSortingMenu(Scanner input, Library library) {
+        boolean backToPreviousMenu = false;
+        while (!backToPreviousMenu) {
+            String in = input.nextLine();
+            switch (in) {
+                case "1":
+                    System.out.println("sort by author soon...");
+                    break;
+                case "2":
+                    System.out.println("sort by title soon...");
+                    break;
+                case "3":
+                    System.out.println("sort by return date soon...");
+                    break;
+                case "0":
+                    backToPreviousMenu = true;
+                default:
+                    System.out.println("wrong input");
+                    break;
+            }
+        }
+
+    }
+
     private static void subMenuDisplay() {
         System.out.println();
         System.out.println("Available books:");
@@ -164,8 +189,15 @@ public class LibraryCLI {
         System.out.println("1 - Show available books");
         System.out.println("2 - Lend book");
         System.out.println("3 - Return book");
-        System.out.println("4 - Borrowed books");
+        System.out.println("4 - Show Borrowed books");
         System.out.println("0 - Exit");
         System.out.println("Your choice:");
+    }
+
+    private static void booksSortingMenuDisplay() {
+        System.out.println("1 - by author");
+        System.out.println("2 - by book name");
+        System.out.println("3 - by expected return date");
+        System.out.println("0 - back to previous menu");
     }
 }
