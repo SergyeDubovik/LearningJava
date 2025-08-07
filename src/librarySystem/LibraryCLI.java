@@ -1,10 +1,11 @@
 package librarySystem;
 
+import com.library.Book;
 import com.library.PrintedProduction;
 
 import java.time.DateTimeException;
 import java.time.LocalDate;
-import java.util.Scanner;
+import java.util.*;
 
 import static librarySystem.RunLibrary.buildLibrary;
 
@@ -153,7 +154,17 @@ public class LibraryCLI {
             String in = input.nextLine();
             switch (in) {
                 case "1":
-                    System.out.println("sort by author soon...");
+                    List<Map.Entry<PrintedProduction, Record>> borrowedByAuthor =
+                            new ArrayList<>(library.getBorrowedBooks().entrySet());
+                    borrowedByAuthor.stream()
+                            .filter(entry -> entry.getKey() instanceof Book)
+                            .sorted(Comparator.comparing(entry ->
+                                    ((Book) entry.getKey()).getAuthor().toLowerCase()))
+                            .forEach(entry -> {
+                                Book book = (Book) entry.getKey();
+                                Record rec = entry.getValue();
+                                System.out.println(book.getAuthor());
+                            });
                     break;
                 case "2":
                     System.out.println("sort by title soon...");
