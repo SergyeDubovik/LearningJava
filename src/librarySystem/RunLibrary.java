@@ -62,6 +62,7 @@ public class RunLibrary {
         library.addBook(pp);
         library.addBook(dc);
         library.addBook(sport);
+        library.borrowPrintedProduction(LocalDate.of(2025, 8, 7), 1, new Customer("george"));
         library.borrowPrintedProduction(LocalDate.of(2025, 3, 12), 2, new Customer("ted"));
         library.borrowPrintedProduction(LocalDate.of(2025, 3, 9), 3, new Customer("neo"));
         return library;

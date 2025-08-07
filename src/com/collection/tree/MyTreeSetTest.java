@@ -3,8 +3,6 @@ package com.collection.tree;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.Set;
-
 public class MyTreeSetTest {
     private final MyTreeSet<Integer> set = new MyTreeSet<>();
     @Test

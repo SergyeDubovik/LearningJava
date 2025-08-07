@@ -157,17 +157,24 @@ public class LibraryCLI {
                     List<Map.Entry<PrintedProduction, Record>> borrowedByAuthor =
                             new ArrayList<>(library.getBorrowedBooks().entrySet());
                     borrowedByAuthor.stream()
-                            .filter(entry -> entry.getKey() instanceof Book)
+//                            .filter(entry -> entry.getKey() instanceof Book)
                             .sorted(Comparator.comparing(entry ->
                                     ((Book) entry.getKey()).getAuthor().toLowerCase()))
                             .forEach(entry -> {
                                 Book book = (Book) entry.getKey();
-                                Record rec = entry.getValue();
-                                System.out.println(book.getAuthor());
+                                System.out.println(book.getAuthor() + ", Book: " + book.getTitle());
                             });
                     break;
                 case "2":
-                    System.out.println("sort by title soon...");
+                    List<Map.Entry<PrintedProduction, Record>> borrowedByTitle =
+                            new ArrayList<>(library.getBorrowedBooks().entrySet());
+                            borrowedByTitle.stream()
+                                    .sorted(Comparator.comparing(entry ->
+                                            ( entry.getKey()).getTitle().toLowerCase()))
+                                    .forEach(entry -> {
+                                        PrintedProduction pp = entry.getKey();
+                                        System.out.println("Sorted borrowed production: " + pp.getTitle());
+                                    });
                     break;
                 case "3":
                     System.out.println("sort by return date soon...");
