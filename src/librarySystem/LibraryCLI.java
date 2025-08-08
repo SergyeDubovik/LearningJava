@@ -168,16 +168,26 @@ public class LibraryCLI {
                 case "2":
                     List<Map.Entry<PrintedProduction, Record>> borrowedByTitle =
                             new ArrayList<>(library.getBorrowedBooks().entrySet());
-                            borrowedByTitle.stream()
-                                    .sorted(Comparator.comparing(entry ->
-                                            ( entry.getKey()).getTitle().toLowerCase()))
-                                    .forEach(entry -> {
-                                        PrintedProduction pp = entry.getKey();
-                                        System.out.println("Sorted borrowed production: " + pp.getTitle());
-                                    });
+                    borrowedByTitle.stream()
+                            .sorted(Comparator.comparing(entry ->
+                                    (entry.getKey()).getTitle().toLowerCase()))
+                            .forEach(entry -> {
+                                PrintedProduction pp = entry.getKey();
+                                System.out.println("Sorted borrowed production: " + pp.getTitle());
+                            });
                     break;
                 case "3":
-                    System.out.println("sort by return date soon...");
+                    List<Map.Entry<PrintedProduction, Record>> byBorrowDate =
+                            new ArrayList<>(library.getBorrowedBooks().entrySet());
+                    byBorrowDate.stream()
+                            .sorted(Comparator.comparing(entry ->
+                                    entry.getValue().getBorrowDate().plusDays(30)))
+                            .forEach(entry -> {
+                                PrintedProduction prod = entry.getKey();
+                                Record rec = entry.getValue();
+                                LocalDate expectedReturnDate = rec.getBorrowDate().plusDays(30);
+                                System.out.println(prod.getTitle() + ", Expected return date: " + expectedReturnDate);
+                            });
                     break;
                 case "0":
                     backToPreviousMenu = true;
