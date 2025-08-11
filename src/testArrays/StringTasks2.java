@@ -11,5 +11,33 @@ public class StringTasks2 {
                 }
             }
         }
+        StringBuilder sb = new StringBuilder("Hello").reverse();
+        System.out.println(sb);
+        String s = "Hello world Java";
+        System.out.println(reverse(s));
+    }
+
+    /**
+     *
+     * @param input - "Hello world Java"
+     * @return - "olleH dlrow avaJ"
+     */
+    public static String reverse(String input) {
+        String[] separated = input.split(" ");
+        StringBuilder sb = new StringBuilder();
+        char[] temp;
+        for (int i = 0; i < separated.length; i++) {
+            temp = separated[i].toCharArray();
+            for (int left = 0, right = temp.length - 1; left < right; left++, right--) {
+                char swap = temp[left];
+                temp[left] = temp[right];
+                temp[right] = swap;
+            }
+            sb.append(new String(temp));
+            if (i != separated.length - 1) {
+                sb.append(" ");
+            }
+        }
+        return sb.toString();
     }
 }
