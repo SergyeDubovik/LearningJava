@@ -15,6 +15,7 @@ public class StringTasks2 {
         System.out.println(sb);
         String s = "Hello world Java";
         System.out.println(reverse(s));
+        System.out.println(mirrorReverse(s));
     }
 
     /**
@@ -24,10 +25,13 @@ public class StringTasks2 {
      */
     public static String reverse(String input) {
         String[] separated = input.split(" ");
+        return wordReverse(separated);
+    }
+
+    private static String wordReverse(String[] separated) {
         StringBuilder sb = new StringBuilder();
-        char[] temp;
         for (int i = 0; i < separated.length; i++) {
-            temp = separated[i].toCharArray();
+            char[] temp = separated[i].toCharArray();
             for (int left = 0, right = temp.length - 1; left < right; left++, right--) {
                 char swap = temp[left];
                 temp[left] = temp[right];
@@ -38,6 +42,11 @@ public class StringTasks2 {
                 sb.append(" ");
             }
         }
+        return sb.toString();
+    }
+
+    public static String mirrorReverse(String input) {
+        StringBuilder sb = new StringBuilder(input).reverse();
         return sb.toString();
     }
 }
