@@ -1,5 +1,9 @@
 package testArrays;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
+
 public class StringTasks2 {
     public static void main(String[] args) {
         String[] input = {"apple", "banana", "apple", "orange", "banana", "grape"};
@@ -16,10 +20,10 @@ public class StringTasks2 {
         String s = "Hello world Java";
         System.out.println(reverse(s));
         System.out.println(mirrorReverse(s));
+        containsEqualHash();
     }
 
     /**
-     *
      * @param input - "Hello world Java"
      * @return - "olleH dlrow avaJ"
      */
@@ -48,5 +52,24 @@ public class StringTasks2 {
     public static String mirrorReverse(String input) {
         StringBuilder sb = new StringBuilder(input).reverse();
         return sb.toString();
+    }
+
+    public static void containsEqualHash() {
+        Random random = new Random();
+        Map<Integer, String> data = new HashMap<>();
+        while (true) {
+            char[] temp = new char[9];
+            for (int i = 0; i < temp.length; i++) {
+                temp[i] = (char) ('a' + random.nextInt(26));
+            }
+            String str = new String(temp);
+            int hash = str.hashCode();
+            if (data.containsKey(hash) && !data.get(hash).equals(str)) {
+                System.out.println("hashcode - " + hash);
+                System.out.println(data.get(hash) + ", " + str);
+                break;
+            }
+            data.put(hash, str);
+        }
     }
 }
