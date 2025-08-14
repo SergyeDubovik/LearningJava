@@ -57,6 +57,7 @@ public class StringTasks2 {
     public static void containsEqualHash() {
         Random random = new Random();
         Map<Integer, String> data = new HashMap<>();
+        int attempts = 0;
         while (true) {
             char[] temp = new char[9];
             for (int i = 0; i < temp.length; i++) {
@@ -64,9 +65,11 @@ public class StringTasks2 {
             }
             String str = new String(temp);
             int hash = str.hashCode();
+            attempts++;
             if (data.containsKey(hash) && !data.get(hash).equals(str)) {
                 System.out.println("hashcode - " + hash);
                 System.out.println(data.get(hash) + ", " + str);
+                System.out.println("sum of attempts: " + attempts);
                 break;
             }
             data.put(hash, str);
