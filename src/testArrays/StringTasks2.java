@@ -29,7 +29,7 @@ public class StringTasks2 {
      */
     public static String reverse(String input) {
         String[] separated = input.split(" ");
-        return wordReverse(separated);
+        return reverseString(separated);
     }
 
     private static String wordReverse(String[] separated) {
@@ -51,6 +51,18 @@ public class StringTasks2 {
 
     public static String mirrorReverse(String input) {
         StringBuilder sb = new StringBuilder(input).reverse();
+        return sb.toString();
+    }
+
+    private static String reverseString(String[] input) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < input.length; i++) {
+            String reversedWord = new StringBuilder(input[i]).reverse().toString();
+            sb.append(reversedWord);
+            if (i < input.length - 1) {
+                sb.append(" ");
+            }
+        }
         return sb.toString();
     }
 
