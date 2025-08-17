@@ -66,6 +66,9 @@ public class StringTasks2 {
         return sb.toString();
     }
 
+    /**
+     * search two different strings with equal hash
+     */
     public static void containsEqualHash() {
         Random random = new Random();
         Map<Integer, String> data = new HashMap<>();
