@@ -5,7 +5,7 @@ public class ParkingDemo {
         Parking parking = new ParkingImpl(20, new SimplePricingCalculator());
         parking.enter("AA8888AA");
         parking.enter("XA1234AA");
-        Thread.sleep(5_000);
+        Thread.sleep(10_000);
         parking.exit("AA8888AA");
         parking.enter("XA7777AA");
     }

@@ -9,10 +9,14 @@ public class SimplePricingCalculator implements PricingCalculator {
         BigDecimal lessThanHour = BigDecimal.ZERO;
         BigDecimal perHour = new BigDecimal(20);
         BigDecimal perDay = new BigDecimal(300);
-        if (duration.compareTo(Duration.ofHours(1))< 0) {
+        if (duration.compareTo(Duration.ofHours(1)) < 0) {
             return lessThanHour;
         } else if (duration.compareTo(Duration.ofDays(1)) < 0) {
             long hours = duration.toHours();
+            long extraMinutes = duration.toMinutes() % 60;
+            if (extraMinutes > 0) {
+                hours += 1;
+            }
             BigDecimal convertedHours = BigDecimal.valueOf(hours);
             return perHour.multiply(convertedHours);
         } else {

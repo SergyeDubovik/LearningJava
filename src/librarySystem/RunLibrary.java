@@ -47,9 +47,9 @@ public class RunLibrary {
     public static Library buildLibrary() {
         Library library = new Library();
         Book book1 = new Book("Dune", 512, 1983, "hung", "Ed Sheeran",
-                null, "fantasy");
+                "-", "fantasy");
         Book book2 = new Book("Shining", 433, 1985, "oda", "Steven King",
-                null, "Thriller");
+                "-", "Thriller");
         Book book3 = new Book("The Witcher", 452, 2000, "heaven", "Jean Claude",
                 "Dave", "fantasy");
         PrintedProduction pp = new PrintedProduction("truth paper", 23, 1990);
