@@ -8,15 +8,12 @@ public class ParkingCLI {
         Parking someParking = new ParkingImpl(10, new SimplePricingCalculator());
         Scanner scanner = new Scanner(System.in);
 
-        display(someParking, scanner);
+        runMenu(someParking, scanner);
 
     }
-    private static void display(Parking parking, Scanner sc) {
+    private static void runMenu(Parking parking, Scanner sc) {
         while (true) {
-            System.out.println("Welcome to our car parking");
-            System.out.println("1 - Enter");
-            System.out.println("2 - Exit");
-            System.out.println("0 - Close app");
+            menuDisplay();
             String choice = sc.nextLine();
             switch (choice) {
                 case "1":
@@ -42,6 +39,11 @@ public class ParkingCLI {
                     System.out.println("Wrong input, try again");
             }
         }
-
+    }
+    private static void menuDisplay() {
+        System.out.println("Welcome to our car parking");
+        System.out.println("1 - Enter");
+        System.out.println("2 - Exit");
+        System.out.println("0 - Close app");
     }
 }
