@@ -29,8 +29,12 @@ public class ParkingCLI {
                 case "2":
                     System.out.println("Waiting for input car number...");
                     String carNumberOnExit = sc.nextLine();
-                    BigDecimal pay = parking.exit(carNumberOnExit);
-                    System.out.println("Was paid: " + pay);
+                    try {
+                        BigDecimal pay = parking.exit(carNumberOnExit);
+                        System.out.println("Was paid: " + pay + "$");
+                    } catch (RuntimeException e) {
+                        System.out.println("Error: " + e.getMessage());
+                    }
                     break;
                 case "0":
                     System.out.println("Bye");
@@ -41,6 +45,7 @@ public class ParkingCLI {
         }
     }
     private static void menuDisplay() {
+        System.out.println();
         System.out.println("Welcome to our car parking");
         System.out.println("1 - Enter");
         System.out.println("2 - Exit");

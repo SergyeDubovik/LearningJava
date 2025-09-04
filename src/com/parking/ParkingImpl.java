@@ -25,7 +25,7 @@ public class ParkingImpl implements Parking {
         for (int i = 0; i < isFree.length; i++) {
             if (isFree[i]) {
                 isFree[i] = false;
-                LocalDateTime enterCar = LocalDateTime.now();
+                LocalDateTime enterCar = LocalDateTime.now().minusMinutes(110);
                 ParkingRecord record = new ParkingRecord(i, enterCar);
                 visitors.put(carNumber, record);
                 return true;
@@ -37,7 +37,7 @@ public class ParkingImpl implements Parking {
     @Override
     public BigDecimal exit(String carNumber) {
         if (!visitors.containsKey(carNumber)) {
-            throw new RuntimeException();
+            throw new RuntimeException("Car not found");
         }
         LocalDateTime now = LocalDateTime.now();
         ParkingRecord record = visitors.get(carNumber);
