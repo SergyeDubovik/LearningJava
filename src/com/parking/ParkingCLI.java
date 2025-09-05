@@ -13,28 +13,14 @@ public class ParkingCLI {
     }
     private static void runMenu(Parking parking, Scanner sc) {
         while (true) {
-            menuDisplay();
+            displayMenu();
             String choice = sc.nextLine();
             switch (choice) {
                 case "1":
-                    System.out.println("Waiting for input car number...");
-                    String carNumber = sc.nextLine();
-                    boolean successInput = parking.enter(carNumber);
-                    if (successInput) {
-                        System.out.println("Car may parking");
-                    } else {
-                        System.out.println("Sorry, parking already full");
-                    }
+                    enterCar(parking, sc);
                     break;
                 case "2":
-                    System.out.println("Waiting for input car number...");
-                    String carNumberOnExit = sc.nextLine();
-                    try {
-                        BigDecimal pay = parking.exit(carNumberOnExit);
-                        System.out.println("Was paid: " + pay + "$");
-                    } catch (RuntimeException e) {
-                        System.out.println("Error: " + e.getMessage());
-                    }
+                    exitCar(parking, sc);
                     break;
                 case "0":
                     System.out.println("Bye");
@@ -44,7 +30,30 @@ public class ParkingCLI {
             }
         }
     }
-    private static void menuDisplay() {
+
+    private static void enterCar(Parking parking, Scanner scanner) {
+        System.out.println("Waiting for input car number...");
+        String carNumber = scanner.nextLine();
+        boolean successInput = parking.enter(carNumber);
+        if (successInput) {
+            System.out.println("Car parked successfully");
+        } else {
+            System.out.println("Sorry, parking is already full");
+        }
+    }
+
+    private static void exitCar(Parking parking, Scanner scanner) {
+        System.out.println("Waiting for input car number...");
+        String carNumberOnExit = scanner.nextLine();
+        try {
+            BigDecimal pay = parking.exit(carNumberOnExit);
+            System.out.println("Was paid: " + pay + "$");
+        } catch (RuntimeException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+    private static void displayMenu() {
         System.out.println();
         System.out.println("Welcome to our car parking");
         System.out.println("1 - Enter");
