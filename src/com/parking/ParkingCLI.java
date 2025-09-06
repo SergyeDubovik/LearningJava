@@ -24,11 +24,7 @@ public class ParkingCLI {
                     exitCar(parking, sc);
                     break;
                 case "0":
-//                    try {
-//                        saveData(carNumber, enterCar, record.getSlot());
-//                    } catch (IOException e) {
-//                        throw new RuntimeException(e);
-//                    }
+                    saveToFile((ParkingImpl) parking);
                     System.out.println("Bye");
                     return;
                 default:
@@ -53,15 +49,23 @@ public class ParkingCLI {
         String carNumberOnExit = scanner.nextLine();
         try {
             BigDecimal pay = parking.exit(carNumberOnExit);
-            System.out.println("Was paid: " + "$" + pay);
+            System.out.println("Was paid: $" + pay);
         } catch (RuntimeException e) {
             System.out.println("Error: " + e.getMessage());
         }
     }
 
+    private static void saveToFile(ParkingImpl parking) {
+        try {
+            parking.saveData();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     private static void displayMenu() {
         System.out.println();
-        System.out.println("Welcome to our car parking");
+        System.out.println("Welcome to car parking");
         System.out.println("1 - Car Enter");
         System.out.println("2 - Car Exit");
         System.out.println("0 - Close app");

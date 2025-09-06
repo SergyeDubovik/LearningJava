@@ -36,15 +36,6 @@ public class ParkingImpl implements Parking {
         return false;
     }
 
-    private static void saveData(String carNumber, LocalDateTime enterTime, int slot) throws IOException {
-        try (FileWriter fileWriter = new FileWriter("parking.csv", true)) {
-            DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-            String formattedDate = enterTime.format(dateTimeFormatter);
-            String line = carNumber + ", " + formattedDate + ", " + slot + "\n";
-            fileWriter.write(line);
-        }
-    }
-
 
     @Override
     public BigDecimal exit(String carNumber) {
@@ -58,6 +49,23 @@ public class ParkingImpl implements Parking {
         isFree[record.getSlot()] = true;
         visitors.remove(carNumber);
         return calculator.calculate(duration);
+    }
+
+    public void saveData() throws IOException {
+        if (visitors.isEmpty()) {
+            System.out.println("No cars to write");
+            return;
+        }
+        try (BufferedWriter bufferedWriter = new BufferedWriter(
+                new FileWriter("C:\\Users\\sergey\\IdeaProjects\\parking.csv", true))) {
+            for (Map.Entry<String, ParkingRecord> entry : visitors.entrySet()) {
+                ParkingRecord pr = entry.getValue();
+                DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+                String formattedDate = pr.getEnterTime().format(dateTimeFormatter);
+                String line = entry.getKey() + ", " + formattedDate + ", " + pr.getSlot() + "\n";
+                bufferedWriter.write(line);
+            }
+        }
     }
 }
 
