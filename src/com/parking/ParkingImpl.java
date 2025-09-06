@@ -1,9 +1,6 @@
 package com.parking;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -30,14 +27,9 @@ public class ParkingImpl implements Parking {
         for (int i = 0; i < isFree.length; i++) {
             if (isFree[i]) {
                 isFree[i] = false;
-                LocalDateTime enterCar = LocalDateTime.now().minusMinutes(110);
+                LocalDateTime enterCar = LocalDateTime.now();
                 ParkingRecord record = new ParkingRecord(i, enterCar);
                 visitors.put(carNumber, record);
-                try {
-                    saveData(carNumber, enterCar, record.getSlot());
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
                 return true;
             }
         }
@@ -45,11 +37,10 @@ public class ParkingImpl implements Parking {
     }
 
     private static void saveData(String carNumber, LocalDateTime enterTime, int slot) throws IOException {
-        try
-                (FileWriter fileWriter = new FileWriter("report_parking.csv", true)) {
-            DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
+        try (FileWriter fileWriter = new FileWriter("parking.csv", true)) {
+            DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
             String formattedDate = enterTime.format(dateTimeFormatter);
-            String line = "Enter car, " + carNumber + ", " + formattedDate + ", " + "slot - " + slot + "\n";
+            String line = carNumber + ", " + formattedDate + ", " + slot + "\n";
             fileWriter.write(line);
         }
     }

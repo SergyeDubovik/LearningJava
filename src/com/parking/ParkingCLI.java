@@ -1,5 +1,6 @@
 package com.parking;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Scanner;
 
@@ -23,6 +24,11 @@ public class ParkingCLI {
                     exitCar(parking, sc);
                     break;
                 case "0":
+//                    try {
+//                        saveData(carNumber, enterCar, record.getSlot());
+//                    } catch (IOException e) {
+//                        throw new RuntimeException(e);
+//                    }
                     System.out.println("Bye");
                     return;
                 default:
@@ -47,7 +53,7 @@ public class ParkingCLI {
         String carNumberOnExit = scanner.nextLine();
         try {
             BigDecimal pay = parking.exit(carNumberOnExit);
-            System.out.println("Was paid: " + pay + "$");
+            System.out.println("Was paid: " + "$" + pay);
         } catch (RuntimeException e) {
             System.out.println("Error: " + e.getMessage());
         }
@@ -56,8 +62,8 @@ public class ParkingCLI {
     private static void displayMenu() {
         System.out.println();
         System.out.println("Welcome to our car parking");
-        System.out.println("1 - Enter");
-        System.out.println("2 - Exit");
+        System.out.println("1 - Car Enter");
+        System.out.println("2 - Car Exit");
         System.out.println("0 - Close app");
     }
 }
