@@ -1,17 +1,19 @@
 package com.parking;
 
+import java.io.*;
 import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 public class ParkingImpl implements Parking {
-    private int size;
-    private boolean[] isFree;
-    private PricingCalculator calculator;
-    private Map<String, ParkingRecord> visitors = new HashMap<>();
+    private final int size;
+    private final boolean[] isFree;
+    private final PricingCalculator calculator;
+    private final Map<String, ParkingRecord> visitors = new HashMap<>();
 
     public ParkingImpl(int size, PricingCalculator calculator) {
         this.size = size;
@@ -34,10 +36,20 @@ public class ParkingImpl implements Parking {
         return false;
     }
 
+    private static void saveData(String carNumber, LocalDateTime enterTime, int slot) throws IOException {
+        try (FileWriter fileWriter = new FileWriter("parking.csv", true)) {
+            DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+            String formattedDate = enterTime.format(dateTimeFormatter);
+            String line = carNumber + ", " + formattedDate + ", " + slot + "\n";
+            fileWriter.write(line);
+        }
+    }
+
+
     @Override
     public BigDecimal exit(String carNumber) {
         if (!visitors.containsKey(carNumber)) {
-            throw new RuntimeException();
+            throw new RuntimeException("Car not found");
         }
         LocalDateTime now = LocalDateTime.now();
         ParkingRecord record = visitors.get(carNumber);
