@@ -5,8 +5,8 @@ import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class ParkingCLI {
-    public static void main(String[] args) {
-        Parking someParking = new ParkingImpl(10, new SimplePricingCalculator());
+    public static void main(String[] args) throws IOException {
+        Parking someParking = new ParkingImpl(2, new SimplePricingCalculator());
         Scanner scanner = new Scanner(System.in);
 
         runMenu(someParking, scanner);
@@ -24,7 +24,7 @@ public class ParkingCLI {
                     exitCar(parking, sc);
                     break;
                 case "0":
-                    saveToFile((ParkingImpl) parking);
+                    saveToFile(parking);
                     System.out.println("Bye");
                     return;
                 default:
@@ -36,12 +36,15 @@ public class ParkingCLI {
     private static void enterCar(Parking parking, Scanner scanner) {
         System.out.println("Waiting for input car number...");
         String carNumber = scanner.nextLine();
-        boolean successInput = parking.enter(carNumber);
-        if (successInput) {
-            System.out.println("Car parked successfully");
-        } else {
-            System.out.println("Sorry, parking is already full");
+        try {
+            boolean successInput = parking.enter(carNumber);
+            if (successInput) {
+                System.out.println("Car parked successfully");
+            }
+        } catch (RuntimeException exception) {
+            System.out.println(exception.getMessage());
         }
+
     }
 
     private static void exitCar(Parking parking, Scanner scanner) {
@@ -55,10 +58,11 @@ public class ParkingCLI {
         }
     }
 
-    private static void saveToFile(ParkingImpl parking) {
+    private static void saveToFile(Parking parking) {
         try {
             parking.saveData();
         } catch (IOException e) {
+            System.err.println("Failed to save parking data" + e.getMessage());
             throw new RuntimeException(e);
         }
     }

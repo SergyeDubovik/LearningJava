@@ -24,6 +24,9 @@ public class ParkingImpl implements Parking {
 
     @Override
     public boolean enter(String carNumber) {
+        if (visitors.containsKey(carNumber)) {
+            throw new RuntimeException("Car " + carNumber + " is already parked");
+        }
         for (int i = 0; i < isFree.length; i++) {
             if (isFree[i]) {
                 isFree[i] = false;
@@ -33,6 +36,7 @@ public class ParkingImpl implements Parking {
                 return true;
             }
         }
+        System.out.println("Sorry, parking is already full");
         return false;
     }
 
@@ -51,19 +55,21 @@ public class ParkingImpl implements Parking {
         return calculator.calculate(duration);
     }
 
+    @Override
     public void saveData() throws IOException {
         if (visitors.isEmpty()) {
             System.out.println("No cars to write");
             return;
         }
         try (BufferedWriter bufferedWriter = new BufferedWriter(
-                new FileWriter("C:\\Users\\sergey\\IdeaProjects\\parking.csv", true))) {
+                new FileWriter("parking.csv", true))) {
             for (Map.Entry<String, ParkingRecord> entry : visitors.entrySet()) {
                 ParkingRecord pr = entry.getValue();
                 DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
                 String formattedDate = pr.getEnterTime().format(dateTimeFormatter);
-                String line = entry.getKey() + ", " + formattedDate + ", " + pr.getSlot() + "\n";
+                String line = entry.getKey() + "," + formattedDate + "," + pr.getSlot() + "\n";
                 bufferedWriter.write(line);
+                System.out.println(line);
             }
         }
     }
