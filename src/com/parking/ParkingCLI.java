@@ -61,9 +61,9 @@ public class ParkingCLI {
     private static void saveToFile(Parking parking) {
         try {
             parking.saveData();
+            System.out.println("Saving data completed successfully!");
         } catch (IOException e) {
             System.err.println("Failed to save parking data" + e.getMessage());
-            throw new RuntimeException(e);
         }
     }
 
