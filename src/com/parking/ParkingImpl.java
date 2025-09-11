@@ -62,14 +62,40 @@ public class ParkingImpl implements Parking {
             return;
         }
         try (BufferedWriter bufferedWriter = new BufferedWriter(
-                new FileWriter("parking.csv", true))) {
+                new FileWriter("parking.csv"))) {
             for (Map.Entry<String, ParkingRecord> entry : visitors.entrySet()) {
                 ParkingRecord pr = entry.getValue();
                 DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
                 String formattedDate = pr.getEnterTime().format(dateTimeFormatter);
                 String line = entry.getKey() + "," + formattedDate + "," + pr.getSlot() + "\n";
                 bufferedWriter.write(line);
-                System.out.println(line);
+                System.out.println("Car in the parking - " + line);
+            }
+        }
+    }
+
+    @Override
+    public void loadData() throws IOException {
+        File file = new File("parking.csv");
+        if (!file.exists()) {
+            return;
+        }
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("parking.csv"))) {
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+//                System.out.println("[" + line + "]");
+                String[] partsOfData = line.split(",");
+                if (partsOfData.length < 3) {
+                    continue;
+                }
+                String carNumber = partsOfData[0].trim();
+                DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+                String date = partsOfData[1].trim();
+                LocalDateTime localDateTime = LocalDateTime.parse(date, dateTimeFormatter);
+                int slot = Integer.parseInt(partsOfData[2].trim());
+                ParkingRecord value = new ParkingRecord(slot, localDateTime);
+                visitors.put(carNumber, value);
+                isFree[slot] = false;
             }
         }
     }

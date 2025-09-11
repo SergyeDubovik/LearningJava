@@ -6,7 +6,8 @@ import java.util.Scanner;
 
 public class ParkingCLI {
     public static void main(String[] args) throws IOException {
-        Parking someParking = new ParkingImpl(2, new SimplePricingCalculator());
+        Parking someParking = new ParkingImpl(5, new SimplePricingCalculator());
+        someParking.loadData();
         Scanner scanner = new Scanner(System.in);
 
         runMenu(someParking, scanner);
