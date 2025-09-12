@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class ParkingCLI {
     public static void main(String[] args) throws IOException {
-        Parking someParking = new ParkingImpl(5, new SimplePricingCalculator());
+        Parking someParking = new ParkingImpl(10, new SimplePricingCalculator());
         someParking.loadData();
         Scanner scanner = new Scanner(System.in);
 
@@ -64,7 +64,7 @@ public class ParkingCLI {
             parking.saveData();
             System.out.println("Saving data completed successfully!");
         } catch (IOException e) {
-            System.err.println("Failed to save parking data" + e.getMessage());
+            System.out.println("Failed to save parking data " + e.getMessage());
         }
     }
 
