@@ -47,7 +47,7 @@ public class ParkingImpl implements Parking {
     @Override
     public BigDecimal exit(String carNumber) {
         if (!visitors.containsKey(carNumber)) {
-            throw new RuntimeException("Car not found");
+            throw new RuntimeException("Car not found. Please verify data and try again.");
         }
         LocalDateTime now = LocalDateTime.now();
         ParkingRecord record = visitors.get(carNumber);
@@ -61,7 +61,7 @@ public class ParkingImpl implements Parking {
     @Override
     public void saveData() throws IOException {
         if (visitors.isEmpty()) {
-            System.out.println("No cars to write");
+            System.out.println("The parking is empty. No data to save.");
             return;
         }
         try (BufferedWriter bufferedWriter = new BufferedWriter(
@@ -71,7 +71,6 @@ public class ParkingImpl implements Parking {
                 String formattedDate = pr.getEnterTime().format(formatter);
                 String line = entry.getKey() + "," + formattedDate + "," + pr.getSlot() + "\n";
                 bufferedWriter.write(line);
-                System.out.println("Car in the parking - " + line);
             }
         }
     }
@@ -91,30 +90,45 @@ public class ParkingImpl implements Parking {
                 }
                 String carNumber = partsOfData[0].trim();
                 String date = partsOfData[1].trim();
-                LocalDateTime localDateTime;
-                try {
-                    localDateTime = LocalDateTime.parse(date, formatter);
-                } catch (DateTimeParseException exception) {
-                    System.out.println("Could not parse date, please check format " + exception);
+                LocalDateTime localDateTime = tryParseDateTime(date);
+                if (localDateTime == null) {
                     continue;
                 }
-                int slot;
-                try {
-                    slot = Integer.parseInt(partsOfData[2].trim());
-                    if (slot < 0) {
-                        System.out.println("Slot number shouldn't be less than zero. Found: " + slot);
-                        continue;
-                    }
-                } catch (NumberFormatException e) {
-                    System.out.println("Couldn't parse slot, slot should be a number " + e);
+                Integer slot = tryParseSlot(partsOfData);
+                if (slot == null) {
                     continue;
                 }
-
                 ParkingRecord value = new ParkingRecord(slot, localDateTime);
                 visitors.put(carNumber, value);
                 isFree[slot] = false;
             }
         }
+    }
+
+    private static Integer tryParseSlot(String[] partsOfData) {
+        int slot;
+        try {
+            slot = Integer.parseInt(partsOfData[2].trim());
+            if (slot < 0) {
+                System.out.println("Slot number shouldn't be less than zero. Found: " + slot);
+                return null;
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Couldn't parse slot, slot should be a number " + e);
+            return null;
+        }
+        return slot;
+    }
+
+    private LocalDateTime tryParseDateTime(String date) {
+        LocalDateTime localDateTime;
+        try {
+            localDateTime = LocalDateTime.parse(date, formatter);
+        } catch (DateTimeParseException exception) {
+            System.out.println("Could not parse date, please check format " + exception);
+            return null;
+        }
+        return localDateTime;
     }
 }
 
