@@ -39,7 +39,7 @@ public class ParkingImpl implements Parking {
                 return true;
             }
         }
-        System.out.println("Sorry, parking is already full");
+        System.out.println("Sorry, parking is already full. " + visitors.size() + "/" + size + " slots taken");
         return false;
     }
 
