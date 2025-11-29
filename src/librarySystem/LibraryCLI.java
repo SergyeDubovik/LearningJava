@@ -181,11 +181,11 @@ public class LibraryCLI {
                             new ArrayList<>(library.getBorrowedBooks().entrySet());
                     byBorrowDate.stream()
                             .sorted(Comparator.comparing(entry ->
-                                    entry.getValue().getBorrowDate().plusDays(30)))
+                                    entry.getValue().borrowDate().plusDays(30)))
                             .forEach(entry -> {
                                 PrintedProduction prod = entry.getKey();
                                 Record rec = entry.getValue();
-                                LocalDate expectedReturnDate = rec.getBorrowDate().plusDays(30);
+                                LocalDate expectedReturnDate = rec.borrowDate().plusDays(30);
                                 System.out.println(prod.getTitle() + ", Expected return date: " + expectedReturnDate);
                             });
                     break;
