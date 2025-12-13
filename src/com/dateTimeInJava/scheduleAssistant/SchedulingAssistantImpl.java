@@ -4,6 +4,7 @@ import java.time.*;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class SchedulingAssistantImpl implements SchedulingAssistant {
 
@@ -138,28 +139,22 @@ public class SchedulingAssistantImpl implements SchedulingAssistant {
     }
 
     private LocalDate getEndDate(LocalDate startDate, MeetingTimingPreferences.PeriodPreference period) {
-        switch (period) {
-            case TODAY:
-            case TOMORROW:
-                return startDate;
-            case THIS_WEEK:
-                // week runs sunday to saturday
-                // find the saturday of the current week
-                int dayOfWeek = startDate.getDayOfWeek().getValue(); // Monday=1, ..., Sunday=7
+        if (Objects.requireNonNull(period) == MeetingTimingPreferences.PeriodPreference.THIS_WEEK) {// week runs sunday to saturday
+            // find the saturday of the current week
+            int dayOfWeek = startDate.getDayOfWeek().getValue(); // Monday=1, ..., Sunday=7
 
-                // if it's sunday (7), saturday is 6 days ahead
-                // if it's monday (1), saturday is 5 days ahead
-                // if it's saturday (6), saturday is today (0 days ahead)
-                int daysUntilSaturday;
-                if (dayOfWeek == 7) { // Sunday
-                    daysUntilSaturday = 6;
-                } else {
-                    daysUntilSaturday = 6 - dayOfWeek;
-                }
-                return startDate.plusDays(daysUntilSaturday);
-            default:
-                return startDate;
+            // if it's sunday (7), saturday is 6 days ahead
+            // if it's monday (1), saturday is 5 days ahead
+            // if it's saturday (6), saturday is today (0 days ahead)
+            int daysUntilSaturday;
+            if (dayOfWeek == 7) { // Sunday
+                daysUntilSaturday = 6;
+            } else {
+                daysUntilSaturday = 6 - dayOfWeek;
+            }
+            return startDate.plusDays(daysUntilSaturday);
         }
+        return startDate;
     }
 
     private boolean canScheduleMeeting(LocalDateTime gmtMeetingStart, long durationMinutes) {

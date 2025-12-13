@@ -3,6 +3,7 @@ package com.dateTimeInJava.dateTimeFormatter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.util.Locale;
 
 public class FormattingDates {
     public static void main(String[] args) {
@@ -22,6 +23,9 @@ public class FormattingDates {
         String formatStyleDate = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM).format(localDateTime);
         // result: 10 дек. 2025 г., 23:55:35
         System.out.println(formatStyleDate);
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("DDD", Locale.US);
+        System.out.println(formatter.format(LocalDateTime.now()));
     }
 
     // Other Predefined formatters below
