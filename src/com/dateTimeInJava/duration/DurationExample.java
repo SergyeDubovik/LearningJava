@@ -41,6 +41,17 @@ public class DurationExample {
         System.out.println(duration4.toDays()); // 0
         System.out.println(ChronoUnit.DAYS.between(a, b)); // 0
         System.out.println(ChronoUnit.DAYS.between(a.toLocalDate(), b.toLocalDate())); // 1
+
+        // calculate how to apply 'Duration' for future and past dates
+        LocalDateTime now = LocalDateTime.now();
+        Duration twoDays = Duration.ofDays(2);
+
+        LocalDateTime future = now.plus(twoDays);
+        LocalDateTime past = now.minus(twoDays);
+
+        System.out.println("Now: " + now);
+        System.out.println("Future: " + future);
+        System.out.println("Past: " + past);
     }
 
 }
