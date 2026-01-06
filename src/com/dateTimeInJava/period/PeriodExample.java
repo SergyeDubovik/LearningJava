@@ -33,6 +33,6 @@ public class PeriodExample {
         LocalDate birth = LocalDate.of(1978, 8, 8);
         LocalDate now = LocalDate.now();
         Period age = Period.between(birth, now);
-        System.out.println(age.getYears() + age.getMonths() + age.getDays());
+        System.out.println("Years: " + age.getYears() + ", Months: " + age.getMonths() + ", Days: " + age.getDays());
     }
 }
