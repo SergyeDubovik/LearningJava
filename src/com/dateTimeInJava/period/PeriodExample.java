@@ -21,5 +21,18 @@ public class PeriodExample {
         // amount of days between two dates:
         long daysBetweenPeriod = ChronoUnit.DAYS.between(localDate, localDate1);
         System.out.println(daysBetweenPeriod);
+
+        // addition and subtraction Period
+        LocalDate today = LocalDate.now();
+        LocalDate future = today.plus(Period.ofYears(2));
+        LocalDate past = today.minus(Period.ofYears(1));
+        System.out.println(future);
+        System.out.println(past);
+
+        // calculate person's age
+        LocalDate birth = LocalDate.of(1978, 8, 8);
+        LocalDate now = LocalDate.now();
+        Period age = Period.between(birth, now);
+        System.out.println(age.getYears() + age.getMonths() + age.getDays());
     }
 }
