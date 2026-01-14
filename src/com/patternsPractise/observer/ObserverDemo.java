@@ -6,6 +6,7 @@ public class ObserverDemo {
 
         service.addObserver(new EmailObserver());
         service.addObserver(new LogObserver());
+        service.addObserver(new MetricsObserver());
 
         service.placeOrder();
     }
