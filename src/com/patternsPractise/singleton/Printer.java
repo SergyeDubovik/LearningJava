@@ -6,7 +6,7 @@ public class Printer {
     private Printer() {
     }
 
-    public static Printer getInstance() {
+    public static synchronized Printer getInstance() {
         if (instance == null) {
             instance = new Printer();
         }
