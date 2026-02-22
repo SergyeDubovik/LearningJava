@@ -14,7 +14,7 @@ public class MyThread extends Thread {
             try {
                 Thread.sleep(500);
             } catch (InterruptedException exception) {
-                exception.printStackTrace();
+                System.out.println("thread was interrupted");
             }
         }
     }
